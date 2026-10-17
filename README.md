@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Lessons written by hand](https://img.shields.io/badge/content-self--study%20textbook-brightgreen)](CURRICULUM-MAP.md)
 
+![CodePath Masterclass wordmark: a branching path symbol beside the words CodePath Masterclass](assets/branding/wordmark.svg)
+
 ---
 
 Welcome. This repository is a **complete, structured, self-study software engineering curriculum**
