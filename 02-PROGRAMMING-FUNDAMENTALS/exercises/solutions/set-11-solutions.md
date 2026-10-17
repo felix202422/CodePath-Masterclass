@@ -50,15 +50,16 @@ list verified.
 
 ## Exercise 4 — The delivered bug, full cycle (independent)
 
-**Answer.** Written as performed:
+**Answer.** Written as performed (all figures below verified by running the program):
 
-1. **Reproduce:** run the given program → prints something ≠ 25.0 (e.g. `20.0`). Same every
-   run.
+1. **Reproduce:** run the given program → prints `15.0`, not the required `25.0`. Same every
+   run. (Expected, from the requirement: values over 15 are 20 and 30; their average is 25.)
 2. **Classify:** no error, exit 0, wrong answer → **logic**. Tool: evidence, not tracebacks.
 3. **Hypothesise (one):** "`total = p` assigns instead of accumulates" — a single, falsifiable
    claim.
-4. **Test (smallest):** `print(total, p)` inside the loop. Output `10 10`, `20 20`, `30 30` —
-   total tracks the *last* value. Hypothesis confirmed; nothing else needed changing.
+4. **Test (smallest):** `print(total, p)` inside the loop. Output `0 10`, `20 20`, `30 30` —
+   total tracks the *last passing* value (10 never assigns: it fails `p > 15`). Hypothesis
+   confirmed; nothing else needed changing.
 5. **Verify and clean up:** fix to `total += p`; original list → `25.0`; second list `[5, 25]` →
    `25.0`; delete the debug print.
 

@@ -22,12 +22,16 @@ silently *succeed* at the wrong thing (`*` on strings) as loudly as they fail.
 ```python
 print(f"{pi:.2f}")      # 3.14
 print(f"{n:,}")         # 1,234,567
-print(f"{rate:.1%}")    # 7.3%        (0.0725 * 100 = 7.25 -> one decimal: 7.3)
+print(f"{rate:.1%}")    # 7.2%        (verified: see the note below - NOT the 7.3 you may expect)
 print(f"{label:<8}|")   # TSH     |
 ```
 
-**Criteria check:** ☐ four specs ☐ real output captured ☐ rounding of 7.25 → 7.3 explained
-(0.5 rounds to even in f-strings — try `{0.125:.2f}` to see it).
+**Criteria check:** ☐ four specs ☐ real output captured ☐ the surprising `7.2%` explained.
+
+**Why 7.2% and not 7.3%:** `0.0725` has no exact binary representation and stores as a value
+*just below* 7.25/100, so one-decimal rounding lands on 7.2 — 01's binary-imprecision lesson,
+visible in a format spec. Separately, exact halves round to even in f-strings: `{0.125:.2f}`
+prints `0.12`, not `0.13 (0.125 IS exact in binary, so the even-digit rule decides).
 
 ## Exercise 3 — The retry loop
 
