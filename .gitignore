@@ -1,0 +1,55 @@
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Editors ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Secrets: never commit real credentials ---
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+!**/test/fixtures/example.key
+credentials.json
+secrets/
+
+# --- Python (validation scripts) ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# --- Node (frontend examples) ---
+node_modules/
+dist/
+build/
+.vite/
+
+# --- Java / Maven (backend examples) ---
+target/
+*.class
+.gradle/
+out/
+
+# --- Dart / Flutter (mobile examples) ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.iml
+.pub-cache/
+.pub/
+
+# --- Logs and local scratch ---
+*.log
+scratch/
+tmp/

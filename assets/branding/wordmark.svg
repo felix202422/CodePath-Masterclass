@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="180" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">CodePath Masterclass wordmark</title>
+  <desc id="desc">Dark banner with a branching path symbol and the words CodePath Masterclass: from your first line of code to professional software engineering.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="180" rx="14" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="719" height="179" rx="13.5" fill="none" stroke="#30363d"/>
+
+  <!-- Branching path motif: a trunk that splits into milestones -->
+  <g stroke-linecap="round" fill="none">
+    <path d="M56 140 C 56 96, 56 74, 84 60" stroke="#58a6ff" stroke-width="7"/>
+    <path d="M56 140 C 56 118, 82 112, 106 110" stroke="#58a6ff" stroke-width="7" opacity="0.55"/>
+    <path d="M84 60 C 112 46, 118 44, 136 44" stroke="#58a6ff" stroke-width="7" opacity="0.3"/>
+  </g>
+  <g fill="#1f6feb">
+    <circle cx="56" cy="140" r="11"/>
+    <circle cx="84" cy="60" r="8"/>
+    <circle cx="106" cy="110" r="6.5" opacity="0.55"/>
+  </g>
+  <circle cx="136" cy="44" r="5.5" fill="#79c0ff" opacity="0.5"/>
+  <path d="M148 36 l14 8 -14 8 z" fill="#79c0ff" opacity="0.5"/>
+
+  <!-- Wordmark -->
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+    <text x="190" y="86" font-size="46" font-weight="700" fill="#e6edf3" letter-spacing="1">
+      CODE<tspan fill="#58a6ff">PATH</tspan>
+    </text>
+    <text x="190" y="118" font-size="21" font-weight="600" fill="#8b949e" letter-spacing="6">
+      MASTERCLASS
+    </text>
+    <text x="190" y="150" font-size="14.5" fill="#6e7681">
+      From your first line of code to professional software engineering.
+    </text>
+  </g>
+</svg>
