@@ -119,15 +119,15 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `START-07` `frequently-asked-questions.md`
 
 **01-COMPUTER-FOUNDATIONS** (prereq: 00)
-- [ ] `COMP-01` `README.md`
-- [ ] `COMP-02` `computer-hardware.md`
-- [ ] `COMP-03` `software-and-operating-systems.md`
-- [ ] `COMP-04` `files-and-processes.md`
-- [ ] `COMP-05` `binary-and-number-systems.md`
-- [ ] `COMP-06` `logic-and-boolean-algebra.md`
-- [ ] `COMP-07` `memory-and-storage.md`
-- [ ] `COMP-08` `how-programs-execute.md`
-- [ ] `COMP-09` `exercises/` problem sets + solutions
+- [x] `COMP-01` `README.md`
+- [x] `COMP-02` `computer-hardware.md` — with `assets/computer-foundations/computer-architecture.svg` and `storage-hierarchy.svg`
+- [x] `COMP-03` `software-and-operating-systems.md`
+- [x] `COMP-04` `files-and-processes.md`
+- [x] `COMP-05` `binary-and-number-systems.md`
+- [x] `COMP-06` `logic-and-boolean-algebra.md`
+- [x] `COMP-07` `memory-and-storage.md`
+- [x] `COMP-08` `how-programs-execute.md`
+- [x] `COMP-09` `exercises/` problem sets + `exercises/solutions/` (7 sets, separated with warning header)
 
 **02-PROGRAMMING-FUNDAMENTALS** (prereq: 01)
 - [ ] `PROG-01` `README.md`
@@ -511,9 +511,9 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-17 (M0, M1, and 00-START-HERE complete)
-- **Next batch:** Batch 3 — `01-COMPUTER-FOUNDATIONS` lessons (`COMP-02` … `COMP-08` + exercises,
-  first subject diagrams in `assets/computer-foundations/`)
+- **Last updated:** 2026-10-17 (M0, M1, 00-START-HERE, and 01-COMPUTER-FOUNDATIONS complete)
+- **Next batch:** Batch 4 — `02-PROGRAMMING-FUNDAMENTALS` lessons (`PROG-02` … `PROG-13` + exercises);
+  teaching language confirmed as Python 3.13 (see `PROG-15`)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts.
 - **Validation state:** `check-curriculum.py` passes (22/22 subjects); `check-links.py` passes with

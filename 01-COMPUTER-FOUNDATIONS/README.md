@@ -29,13 +29,13 @@ rules that are, for them, arbitrary.
 
 ## Lessons
 
-- `computer-hardware.md` — the components and the storage hierarchy
-- `software-and-operating-systems.md` — what an OS does for a program
-- `files-and-processes.md` — paths, permissions, and what "a running program" is
-- `binary-and-number-systems.md` — base-2, base-16, and representation of numbers and text
-- `logic-and-boolean-algebra.md` — truth tables, operators, and logical equivalence
-- `memory-and-storage.md` — RAM, cache, disk, and the cost of moving data
-- `how-programs-execute.md` — instructions, compilation, interpretation, and the execution cycle
+- [computer-hardware.md](computer-hardware.md) — the components and the storage hierarchy
+- [software-and-operating-systems.md](software-and-operating-systems.md) — what an OS does for a program
+- [files-and-processes.md](files-and-processes.md) — paths, permissions, and what "a running program" is
+- [binary-and-number-systems.md](binary-and-number-systems.md) — base-2, base-16, and representation of numbers and text
+- [logic-and-boolean-algebra.md](logic-and-boolean-algebra.md) — truth tables, operators, and logical equivalence
+- [memory-and-storage.md](memory-and-storage.md) — RAM, cache, disk, and the cost of moving data
+- [how-programs-execute.md](how-programs-execute.md) — instructions, compilation, interpretation, and the execution cycle
 
 ## Exercises and practice
 

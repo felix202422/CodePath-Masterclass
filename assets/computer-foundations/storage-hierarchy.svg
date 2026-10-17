@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-labelledby="title desc">
+  <title id="title">The storage hierarchy: speed versus capacity</title>
+  <desc id="desc">Stacked bands from fastest and smallest at the top to slowest and largest at the bottom: registers, cache, RAM, solid state drive, hard disk, and remote storage, annotated with approximate access times.</desc>
+  <rect width="860" height="430" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+
+  <text x="30" y="44" font-family="'Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#1f2937">The storage hierarchy — faster means smaller and more expensive</text>
+  <text x="30" y="70" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#57606a">Approximate access times; ranges are typical, not specifications.</text>
+
+  <!-- rows: x, y, width, color, label, detail, time -->
+  <g font-family="'Segoe UI',Arial,sans-serif">
+    <rect x="40" y="96"  width="360" height="46" rx="6" fill="#0969da"/>
+    <text x="58" y="125" font-size="15" font-weight="700" fill="#ffffff">Registers (inside the CPU)</text>
+    <text x="420" y="125" font-size="13.5" fill="#1f2937">a few bytes – kilobytes</text>
+    <text x="700" y="125" font-size="13.5" font-weight="600" fill="#0969da">~0.3 ns</text>
+
+    <rect x="40" y="150" width="420" height="46" rx="6" fill="#1f6feb"/>
+    <text x="58" y="179" font-size="15" font-weight="700" fill="#ffffff">CPU cache (L1–L3)</text>
+    <text x="480" y="179" font-size="13.5" fill="#1f2937">megabytes</text>
+    <text x="700" y="179" font-size="13.5" font-weight="600" fill="#1f6feb">~1–10 ns</text>
+
+    <rect x="40" y="204" width="500" height="46" rx="6" fill="#1f883d"/>
+    <text x="58" y="233" font-size="15" font-weight="700" fill="#ffffff">Main memory (RAM)</text>
+    <text x="560" y="233" font-size="13.5" fill="#1f2937">gigabytes</text>
+    <text x="700" y="233" font-size="13.5" font-weight="600" fill="#1f883d">~50–100 ns</text>
+
+    <rect x="40" y="258" width="580" height="46" rx="6" fill="#9a6700"/>
+    <text x="58" y="287" font-size="15" font-weight="700" fill="#ffffff">Solid-state drive (SSD)</text>
+    <text x="640" y="287" font-size="13.5" fill="#ffffff">hundreds of GB</text>
+    <text x="740" y="287" font-size="13.5" font-weight="600" fill="#ffffff">~100 µs</text>
+
+    <rect x="40" y="312" width="650" height="46" rx="6" fill="#cf222e"/>
+    <text x="58" y="341" font-size="15" font-weight="700" fill="#ffffff">Hard disk (HDD)</text>
+    <text x="700" y="341" font-size="13.5" font-weight="600" fill="#cf222e">~5–10 ms</text>
+
+    <rect x="40" y="366" width="720" height="46" rx="6" fill="#57606a"/>
+    <text x="58" y="395" font-size="15" font-weight="700" fill="#ffffff">Remote / network storage</text>
+    <text x="740" y="395" font-size="13.5" font-weight="600" fill="#57606a">ms → s</text>
+  </g>
+
+  <text x="40" y="424" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">Reading from disk is roughly 10 million times slower than reading a register — which is why programs copy what they need into memory first.</text>
+</svg>
