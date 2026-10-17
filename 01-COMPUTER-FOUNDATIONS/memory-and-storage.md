@@ -120,19 +120,32 @@ endurance), HDDs seek mechanically (slow random, cheap bulk). Database indexing 
 
 ### Example 1 — "memory" in a real process (executed on the author's machine)
 
-```bash
-ps -o pid,rss,vsz,comm -p $$     # RSS = physical RAM in use; VSZ = virtual size (Linux)
+Windows (PowerShell):
+
+```powershell
+Get-Process -Name bash | Select-Object Id,WS,VirtualMemorySize64
 ```
 
 ```text
-  PID   RSS    VSZ COMMAND
- 4821  3540  11920 bash
+   Id WS_MB VSZ_MB
+   -- ----- ------
+ 6372  10.6  12907
+20348   7.3   4191
 ```
 
-*(Actual transcript; values differ per machine. Units are KiB.)*
+*(Actual output; WS ≈ physical RAM in use, VirtualMemorySize64 ≈ virtual size. Your numbers will
+be different.)*
 
-**What to notice:** virtual size (`VSZ`) is much larger than physical (`RSS`) — the process "has"
-far more address space than RAM it occupies. That is virtual memory visible in one line.
+The Linux equivalent reports the same two quantities as RSS and VSZ — this exact command was **not**
+executed on the authoring machine (Windows), so run it yourself for real values:
+
+```bash
+ps -o pid,rss,vsz,comm -p $$     # RSS = physical RAM in use; VSZ = virtual size
+```
+
+**What to notice:** virtual size is *enormously* larger than physical — 12.9 GB of address space
+against 10.6 MB of RAM in the real pair above. The process "has" far more address space than it
+occupies. That is virtual memory visible in two numbers.
 
 ### Example 2 — diagnosing which "full" it is (worked reasoning)
 

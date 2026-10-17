@@ -139,7 +139,17 @@ Result:  total = 9 when price = 10 → WRONG
 "total equals price plus one"* would catch it — which is precisely why testing
 ([14-TESTING-AND-QUALITY](../14-TESTING-AND-QUALITY/README.md)) exists as a discipline.
 
-### Example 2 — compile once, then the cycle runs (transcript, executed)
+### Example 2 — compile once, then the cycle runs (executed on the author's machine)
+
+The program — save as `Hello.java`:
+
+```java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
+```
 
 ```bash
 javac --release 21 -d out Hello.java    # translation stage: any error stops here
@@ -147,10 +157,11 @@ java -cp out Hello                      # JVM loads bytecode; the cycle runs
 ```
 
 ```text
-Hello                                  # expected output of the example program
+Hello
 ```
 
-*(Exact output shown is the example's stated expectation; setup is covered in
+*(Actually executed with JDK 25 targeting `--release 21`: compile and run both exited 0 with the
+output shown. Setup is covered in
 [04-JAVA-PROGRAMMING/java-environment-setup.md](../04-JAVA-PROGRAMMING/java-environment-setup.md).)*
 
 **What to notice:** two separate stages with two separate failure domains — the first prints

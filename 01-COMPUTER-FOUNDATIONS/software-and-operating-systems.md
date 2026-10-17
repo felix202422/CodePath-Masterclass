@@ -121,8 +121,9 @@ exactly what subjects 03 and 16 teach concretely.
 ### Example 1 — two processes sharing one CPU (executed observation)
 
 Open Task Manager (Windows) or `top` (Linux) and watch two programs run simultaneously. The CPU
-percentages move; no process holds 100% indefinitely. On the author's machine, an idle desktop
-showed dozens of processes and a CPU total far below 100% while everything felt simultaneous.
+percentages move; no process holds 100% indefinitely. Measured on the author's writing machine
+while everything felt simultaneous: **371 processes** running and a **CPU load of 42%** — hundreds
+of things served while the processors stayed far from saturated.
 
 **What to notice:** simultaneity is *scheduling*, not parallel magic — the OS is handing out turns.
 (Nuance for later: with multiple cores, several processes genuinely run at once — the principle

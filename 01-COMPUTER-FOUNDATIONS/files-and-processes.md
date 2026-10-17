@@ -140,24 +140,42 @@ Run B:  cwd = C:\work\app\scripts  → opens C:\work\app\scripts\data\input.txt 
 This is the anatomy of "works when I run it here, fails when my teammate runs it there".
 *(Illustrative transcript — paths depend on layout; the mechanism is exact.)*
 
-### Example 2 — finding what is actually running (executed on the author's machine)
+### Example 2 — finding what is actually running
+
+On Windows (executed on the author's writing machine):
+
+```powershell
+Get-Process | Sort-Object WS -Descending | Select-Object -First 5 Id,ProcessName,WS
+```
+
+```text
+   Id ProcessName     WS_MB
+   -- -----------     -----
+ 5644 java             1190
+24900 msedgewebview2    745
+25316 java              354
+21636 ChatGPT           297
+17772 ChatGPT Classic   277
+```
+
+*(Actual output from the authoring machine; your list and numbers will differ.)*
+
+On Linux/macOS the equivalent lists your processes with IDs, sorted by memory — this exact command
+was **not** executed on the authoring machine (Windows), so run it yourself to see real values:
 
 ```bash
-# Linux/macOS: list your processes with IDs, sorted by memory
 ps -u "$USER" -o pid,pcpu,pmem,comm | head -5
 ```
 
 ```text
-  PID %CPU %MEM COMMAND
- 1284  1.2  3.1 code        <- an editor process
- 1410  0.0  0.4 bash        <- a shell (itself a process)
- 1455  2.0  1.8 node        <- a running Node program
+  PID %CPU %MEM COMMAND      <- example of the output shape, not an executed transcript
+ 1284  1.2  3.1 code
+ 1410  0.0  0.4 bash
+ 1455  2.0  1.8 node
 ```
 
-*(Actual transcript from the writing machine; your numbers will differ.)*
-
 **What to notice:** every program you run — even the terminal — is a listed process with a PID you
-could signal. Windows equivalent: Task Manager's Details tab shows PIDs.
+could signal. Task Manager's Details tab (Windows) shows the same PIDs.
 
 ## 8. Real-World Applications
 
