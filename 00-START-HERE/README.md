@@ -28,15 +28,19 @@ nothing to install yet.
 
 Suggested order, each building on the previous:
 
-- `how-to-use-this-repository.md` — navigation, how exercises and solutions are separated, the
-  quality gate, and how progress is tracked.
-- `how-programming-works.md` — what computers do, what a program is, and why "the computer is fast
-  but literal" explains almost every beginner bug.
-- `learning-method.md` — retrieval practice, spacing, and the predict/run/break loop that turns
-  reading into skill.
-- `study-planning.md` — turning a busy life into a sustainable weekly rhythm.
-- `prerequisite-map.md` — the dependency graph of all 21 subjects, and how to place yourself in it.
-- `frequently-asked-questions.md` — the questions every beginner asks in week one, answered once.
+1. [how-to-use-this-repository.md](how-to-use-this-repository.md) — navigation, how exercises and
+   solutions are separated, the quality gate, and how progress is tracked.
+2. [how-programming-works.md](how-programming-works.md) — what a program is, from human instruction
+   to machine execution, and why "the computer is fast but literal" explains almost every beginner
+   bug.
+3. [learning-method.md](learning-method.md) — retrieval practice, spacing, and the
+   predict/run/break loop that turns reading into skill (with drills).
+4. [study-planning.md](study-planning.md) — sizing a plan from your worst realistic week, outputs
+   instead of hours, and the missed-week protocol.
+5. [prerequisite-map.md](prerequisite-map.md) — the dependency graph of all 22 subjects, why each
+   edge exists, and how to place yourself in it with evidence.
+6. [frequently-asked-questions.md](frequently-asked-questions.md) — the questions every beginner
+   asks in week one, answered once.
 
 ## Exercises and practice
 

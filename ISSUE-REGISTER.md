@@ -110,13 +110,13 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M2 — Foundations content (Phase C)
 
 **00-START-HERE**
-- [ ] `START-01` `README.md` subject overview
-- [ ] `START-02` `how-to-use-this-repository.md`
-- [ ] `START-03` `how-programming-works.md` — from human instruction to machine execution
-- [ ] `START-04` `learning-method.md` — retrieval practice, spaced review, debugging as learning
-- [ ] `START-05` `study-planning.md` — building a realistic weekly plan
-- [ ] `START-06` `prerequisite-map.md` — dependency graph of the whole curriculum
-- [ ] `START-07` `frequently-asked-questions.md`
+- [x] `START-01` `README.md` subject overview
+- [x] `START-02` `how-to-use-this-repository.md`
+- [x] `START-03` `how-programming-works.md` — from human instruction to machine execution
+- [x] `START-04` `learning-method.md` — retrieval practice, spaced review, debugging as learning
+- [x] `START-05` `study-planning.md` — building a realistic weekly plan
+- [x] `START-06` `prerequisite-map.md` — dependency graph of the whole curriculum
+- [x] `START-07` `frequently-asked-questions.md`
 
 **01-COMPUTER-FOUNDATIONS** (prereq: 00)
 - [ ] `COMP-01` `README.md`
@@ -511,11 +511,11 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-17 (M0 and M1 complete; 27 planned link targets remain, all tracked here)
-- **Next batch:** Batch 2 — M2 content begins with `00-START-HERE` lessons (`START-02` … `START-07`),
-  which also closes the planned-link targets in SUPPORT.md and 00-START-HERE/README.md
+- **Last updated:** 2026-10-17 (M0, M1, and 00-START-HERE complete)
+- **Next batch:** Batch 3 — `01-COMPUTER-FOUNDATIONS` lessons (`COMP-02` … `COMP-08` + exercises,
+  first subject diagrams in `assets/computer-foundations/`)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts.
-- **Validation state:** `check-curriculum.py` passes (22/22 subjects present); `check-links.py`
-  passes with 27 planned-but-unwritten targets reported as PLAN warnings (all point into subject
-  directories that are being written batch by batch; `--strict` turns them into failures in Phase K).
+- **Validation state:** `check-curriculum.py` passes (22/22 subjects); `check-links.py` passes with
+  planned targets reported as PLAN warnings (down from 27 as 00-START-HERE landed); `--strict`
+  turns them into failures in Phase K.
