@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-labelledby="title desc">
+  <title id="title">Assignment moves the arrow — it does not overwrite the box</title>
+  <desc id="desc">Three panels showing Python's variable model. First, count equals four: the name count binds to the value object 4. Second, count equals count plus one: the name is rebound to a new value object 5 while the old 4 becomes unreferenced. Third, two names a and b can both bind to the same value object.</desc>
+  <rect width="860" height="430" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+
+  <text x="30" y="44" font-family="'Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#1f2937">Assignment moves the arrow — it does not overwrite the box</text>
+  <text x="30" y="70" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#57606a">Python's model: a variable is a name bound to a value object.</text>
+
+  <g font-family="'Segoe UI',Arial,sans-serif">
+    <!-- Panel A: initial binding -->
+    <text x="40" y="104" font-size="13.5" font-weight="700" fill="#57606a">count = 4</text>
+    <rect x="40" y="120" width="120" height="44" rx="6" fill="#0969da"/>
+    <text x="100" y="147" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">count</text>
+    <line x1="160" y1="142" x2="268" y2="142" stroke="#57606a" stroke-width="2"/>
+    <polygon points="268,142 258,137 258,147" fill="#57606a"/>
+    <rect x="272" y="120" width="92" height="44" rx="6" fill="#1f883d"/>
+    <text x="318" y="147" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="206" y="134" font-size="12" fill="#57606a" text-anchor="middle">binds</text>
+    <text x="100" y="180" font-size="11.5" fill="#57606a" text-anchor="middle">name</text>
+    <text x="318" y="180" font-size="11.5" fill="#57606a" text-anchor="middle">value object</text>
+
+    <!-- divider -->
+    <line x1="416" y1="96" x2="416" y2="196" stroke="#d0d7de" stroke-width="1.5"/>
+
+    <!-- Panel B: rebinding -->
+    <text x="440" y="104" font-size="13.5" font-weight="700" fill="#57606a">count = count + 1</text>
+    <rect x="440" y="120" width="120" height="44" rx="6" fill="#0969da"/>
+    <text x="500" y="147" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">count</text>
+    <rect x="672" y="120" width="92" height="30" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-dasharray="4 3"/>
+    <text x="718" y="141" font-size="13" fill="#8c959f" text-anchor="middle" text-decoration="line-through">4</text>
+    <text x="718" y="108" font-size="11.5" fill="#8c959f" text-anchor="middle">old value, unreferenced</text>
+    <path d="M 560 142 L 660 142" stroke="#57606a" stroke-width="2" stroke-dasharray="5 4"/>
+    <rect x="672" y="164" width="92" height="44" rx="6" fill="#1f883d"/>
+    <text x="718" y="191" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+    <path d="M 560 152 C 610 200, 620 186, 668 186" stroke="#0969da" stroke-width="2.5" fill="none"/>
+    <polygon points="668,186 658,181 658,191" fill="#0969da"/>
+    <text x="596" y="228" font-size="12" fill="#0969da" text-anchor="middle">now binds here</text>
+
+    <!-- Panel C: aliasing preview -->
+    <text x="40" y="248" font-size="13.5" font-weight="700" fill="#57606a">a = 4  →  b = a</text>
+    <rect x="40" y="264" width="92" height="38" rx="6" fill="#0969da"/>
+    <text x="86" y="289" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
+    <rect x="40" y="312" width="92" height="38" rx="6" fill="#0969da"/>
+    <text x="86" y="337" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">b</text>
+    <line x1="132" y1="283" x2="228" y2="297" stroke="#57606a" stroke-width="2"/>
+    <polygon points="228,297 218,294 220,303" fill="#57606a"/>
+    <line x1="132" y1="331" x2="228" y2="311" stroke="#57606a" stroke-width="2"/>
+    <polygon points="228,311 220,316 218,307" fill="#57606a"/>
+    <rect x="232" y="282" width="92" height="44" rx="6" fill="#1f883d"/>
+    <text x="278" y="309" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="392" y="300" font-size="12.5" fill="#1f2937">Two names, one object — the same model</text>
+    <text x="392" y="320" font-size="12.5" fill="#1f2937">explains why lists behave the way they do</text>
+    <text x="392" y="340" font-size="12.5" fill="#1f2937">when we reach arrays and strings.</text>
+  </g>
+
+  <text x="40" y="396" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">Reassignment rebinds the name to a new object; the old value vanishes once nothing refers to it (the garbage collector reclaims it).</text>
+</svg>

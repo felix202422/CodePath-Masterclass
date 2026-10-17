@@ -37,10 +37,14 @@ learn programming ideas rather than language ceremony. (The first *typed* langua
 [04](../04-JAVA-PROGRAMMING/README.md).) Teaching-language versions are pinned in
 [VERSIONS.md](../VERSIONS.md).
 
-- `computational-thinking.md` · `algorithms-and-pseudocode.md` · `flowcharts.md`
-- `variables-and-data-types.md` · `operators.md` · `input-and-output.md`
-- `conditional-statements.md` · `loops.md` · `functions-and-methods.md`
-- `arrays-and-strings.md` · `debugging-fundamentals.md` · `modular-programming.md`
+- [computational-thinking.md](computational-thinking.md) · [algorithms-and-pseudocode.md](algorithms-and-pseudocode.md) · [flowcharts.md](flowcharts.md)
+- [variables-and-data-types.md](variables-and-data-types.md) · [operators.md](operators.md) · [input-and-output.md](input-and-output.md)
+- [conditional-statements.md](conditional-statements.md) · [loops.md](loops.md) · [functions-and-methods.md](functions-and-methods.md)
+- [arrays-and-strings.md](arrays-and-strings.md) · [debugging-fundamentals.md](debugging-fundamentals.md) · [modular-programming.md](modular-programming.md)
+
+All twelve lessons are written. Every Python transcript in them was executed on the authoring
+machine (Python 3.13.5 — see [VERSIONS.md](../VERSIONS.md)); nothing is claimed as "actual output"
+without a run behind it.
 
 ## Exercises and practice
 

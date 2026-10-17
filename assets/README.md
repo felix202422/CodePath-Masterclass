@@ -57,7 +57,11 @@ Never substitute a generated illustration for a precise technical diagram. A dec
 | File | Topic | Type | Source / author | License | Notes |
 |---|---|---|---|---|---|
 | `branding/wordmark.svg` | Branding | SVG | Original, drawn for this repository | MIT (same as repository) | Wordmark used in the README header |
-| _(per-subject diagrams appear here as they are written)_ | | | | | |
+| `computer-foundations/computer-architecture.svg` | Computer architecture | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 01 `computer-hardware.md` |
+| `computer-foundations/storage-hierarchy.svg` | Storage hierarchy | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 01 `computer-hardware.md` |
+| `programming/assignment-and-rebinding.svg` | Variable binding and rebinding | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `variables-and-data-types.md` |
+| `programming/function-call-stack.svg` | Call stack frames on function call | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `functions-and-methods.md` |
+| `programming/debugging-cycle.svg` | The debugging cycle | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `debugging-fundamentals.md` |
 
 ## Naming and quality rules
 

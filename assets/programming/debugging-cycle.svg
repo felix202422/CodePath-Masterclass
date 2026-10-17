@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-labelledby="title desc">
+  <title id="title">The debugging cycle</title>
+  <desc id="desc">Five stages arranged in a loop connected by arrows: one, reproduce the bug on demand; two, read the error message and locate the failing line; three, form exactly one hypothesis; four, test the smallest change that could confirm it; five, verify the fix on other inputs and clean up debug code. The ring closes with an arrow from stage five back to stage one. The center caption reads: one experiment, one answer.</desc>
+  <rect width="860" height="430" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+
+  <text x="30" y="44" font-family="'Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#1f2937">The debugging cycle</text>
+  <text x="30" y="70" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#57606a">Debugging is a loop of small experiments, not a single guess.</text>
+
+  <g font-family="'Segoe UI',Arial,sans-serif">
+    <!-- 1 reproduce -->
+    <rect x="330" y="92" width="200" height="58" rx="8" fill="#0969da"/>
+    <text x="430" y="116" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">1 · Reproduce</text>
+    <text x="430" y="136" font-size="12" fill="#ffffff" text-anchor="middle">make the bug happen on demand</text>
+
+    <!-- 2 read -->
+    <rect x="596" y="164" width="216" height="58" rx="8" fill="#1f6feb"/>
+    <text x="704" y="188" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">2 · Read the message</text>
+    <text x="704" y="208" font-size="12" fill="#ffffff" text-anchor="middle">error text + failing line first</text>
+
+    <!-- 3 hypothesis -->
+    <rect x="536" y="304" width="216" height="58" rx="8" fill="#9a6700"/>
+    <text x="644" y="328" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">3 · One hypothesis</text>
+    <text x="644" y="348" font-size="12" fill="#ffffff" text-anchor="middle">a guess that could be wrong</text>
+
+    <!-- 4 test -->
+    <rect x="108" y="304" width="216" height="58" rx="8" fill="#1f883d"/>
+    <text x="216" y="328" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">4 · Test smallest change</text>
+    <text x="216" y="348" font-size="12" fill="#ffffff" text-anchor="middle">one change, then run it</text>
+
+    <!-- 5 verify -->
+    <rect x="48" y="164" width="216" height="58" rx="8" fill="#8250df"/>
+    <text x="156" y="188" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">5 · Verify and clean up</text>
+    <text x="156" y="208" font-size="12" fill="#ffffff" text-anchor="middle">other inputs? remove debug code</text>
+
+    <!-- connecting arrows -->
+    <path d="M 500 128 C 545 138, 572 150, 590 164" stroke="#57606a" stroke-width="2" fill="none"/>
+    <polygon points="596,168 584,165 589,155" fill="#57606a"/>
+    <path d="M 700 226 C 700 262, 686 284, 666 298" stroke="#57606a" stroke-width="2" fill="none"/>
+    <polygon points="662,304 651,291 673,291" fill="#57606a"/>
+    <line x1="532" y1="336" x2="328" y2="336" stroke="#57606a" stroke-width="2"/>
+    <polygon points="320,336 334,331 334,341" fill="#57606a"/>
+    <path d="M 160 300 C 130 284, 130 252, 142 228" stroke="#57606a" stroke-width="2" fill="none"/>
+    <polygon points="146,220 135,233 155,231" fill="#57606a"/>
+    <path d="M 192 162 C 250 128, 300 116, 324 110" stroke="#57606a" stroke-width="2" fill="none"/>
+    <polygon points="332,108 318,103 320,117" fill="#57606a"/>
+
+    <!-- center caption -->
+    <text x="430" y="246" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">one experiment</text>
+    <text x="430" y="266" font-size="13.5" font-weight="700" fill="#1f2937" text-anchor="middle">= one answer</text>
+  </g>
+
+  <text x="40" y="400" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">Changing three things at once and "fixing" the bug teaches nothing — you cannot tell which change mattered. Stage 3 keeps the loop scientific.</text>
+  <text x="40" y="422" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">The ring closes at stage 5: when another symptom remains, or the fix fails on other inputs, the cycle starts again at stage 1.</text>
+</svg>

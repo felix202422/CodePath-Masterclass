@@ -130,21 +130,21 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `COMP-09` `exercises/` problem sets + `exercises/solutions/` (7 sets, separated with warning header)
 
 **02-PROGRAMMING-FUNDAMENTALS** (prereq: 01)
-- [ ] `PROG-01` `README.md`
-- [ ] `PROG-02` `computational-thinking.md`
-- [ ] `PROG-03` `algorithms-and-pseudocode.md`
-- [ ] `PROG-04` `flowcharts.md`
-- [ ] `PROG-05` `variables-and-data-types.md`
-- [ ] `PROG-06` `operators.md`
-- [ ] `PROG-07` `input-and-output.md`
-- [ ] `PROG-08` `conditional-statements.md`
-- [ ] `PROG-09` `loops.md`
-- [ ] `PROG-10` `functions-and-methods.md`
-- [ ] `PROG-11` `arrays-and-strings.md`
-- [ ] `PROG-12` `debugging-fundamentals.md`
-- [ ] `PROG-13` `modular-programming.md`
-- [ ] `PROG-14` `exercises/` + solutions
-- [ ] `PROG-15` Decide the teaching language for 02 (Python 3.13 recommended: zero-install, used only here and in scripts) — **decided: Python**
+- [x] `PROG-01` `README.md` — lesson list now live links; executed-transcript policy stated
+- [x] `PROG-02` `computational-thinking.md` — with `assets/programming/` diagrams planned below
+- [x] `PROG-03` `algorithms-and-pseudocode.md` — linear vs binary search, real traces
+- [x] `PROG-04` `flowcharts.md` — Mermaid charts; grade flowchart ↔ code both directions
+- [x] `PROG-05` `variables-and-data-types.md` — with `assets/programming/assignment-and-rebinding.svg`
+- [x] `PROG-06` `operators.md` — precedence workups; `%`/`//` toolbox; real outputs
+- [x] `PROG-07` `input-and-output.md` — retry loop and formatting, transcripts via piped stdin
+- [x] `PROG-08` `conditional-statements.md` — real `SyntaxError` transcript for `=` vs `==`
+- [x] `PROG-09` `loops.md` — off-by-one executed beside its fix
+- [x] `PROG-10` `functions-and-methods.md` — with `assets/programming/function-call-stack.svg`; mutable-default trap executed
+- [x] `PROG-11` `arrays-and-strings.md` — immutability wall shown via real `TypeError`
+- [x] `PROG-12` `debugging-fundamentals.md` — with `assets/programming/debugging-cycle.svg`; real tracebacks
+- [x] `PROG-13` `modular-programming.md` — three-file program executed; real `ModuleNotFoundError`
+- [x] `PROG-14` `exercises/` 12 sets + `exercises/solutions/` 12 files (warning headers, executed capstone reference)
+- [x] `PROG-15` Teaching language decided: **Python 3.13** — installed on the authoring machine (3.13.5), every example executed
 
 **03-DEVELOPER-TOOLS** (prereq: 02)
 - [ ] `TOOL-01` `README.md`
@@ -511,11 +511,15 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-17 (M0, M1, 00-START-HERE, and 01-COMPUTER-FOUNDATIONS complete)
-- **Next batch:** Batch 4 — `02-PROGRAMMING-FUNDAMENTALS` lessons (`PROG-02` … `PROG-13` + exercises);
-  teaching language confirmed as Python 3.13 (see `PROG-15`)
+- **Last updated:** 2026-10-17 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS, and
+  02-PROGRAMMING-FUNDAMENTALS complete)
+- **Next batch:** Batch 5 — `03-DEVELOPER-TOOLS` (`TOOL-02` … `TOOL-12`: terminal, Windows
+  environment, Linux, editors, package managers, environment variables, Git through GitHub
+  workflows, and the troubleshooting guides)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
-  official docs and labelled illustrations rather than executed transcripts.
+  official docs and labelled illustrations rather than executed transcripts. Git and terminal
+  lessons in 03 *can* be executed here (Git Bash is the authoring shell) — hold them to the
+  executed standard where possible.
 - **Validation state:** `check-curriculum.py` passes (22/22 subjects); `check-links.py` passes with
-  planned targets reported as PLAN warnings (down from 27 as 00-START-HERE landed); `--strict`
-  turns them into failures in Phase K.
+  planned targets reported as PLAN warnings (shrinking as subjects land); `--strict` turns them
+  into failures in Phase K.

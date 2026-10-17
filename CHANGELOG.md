@@ -9,6 +9,11 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 02 — Programming Fundamentals** — twelve lessons (computational thinking through
+  modular programming) with every Python transcript **executed** on the authoring machine
+  (Python 3.13.5), three original SVG diagrams (`assets/programming/`: assignment/rebinding,
+  call stack, debugging cycle), twelve exercise sets and twelve separated solution files, plus a
+  modular-programming capstone whose reference implementation was run and hand-verified.
 - **Version baseline** — `VERSIONS.md` pinning every tool version lessons are written against,
   verified 2026-10-17 against official sources, with deliberate-choice rationales.
 - **Issue register** — `ISSUE-REGISTER.md`: the full curriculum backlog with milestones, a standard

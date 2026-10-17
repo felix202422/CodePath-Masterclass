@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" role="img" aria-labelledby="title desc">
+  <title id="title">What happens when a function is called: the call stack</title>
+  <desc id="desc">Left side: a stack of frames. At the bottom, the interpreter starts the program and pushes a main frame. Calling greet pushes a greet frame with its own parameter name bound to Ada. Arrows show frames are pushed on call and popped on return. Right side: three numbered steps showing that greet returns the string Hello Ada, greet's frame is removed, and main continues with the returned value.</desc>
+  <rect width="860" height="470" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+
+  <text x="30" y="44" font-family="'Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#1f2937">What happens when a function is called: the call stack</text>
+  <text x="30" y="70" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#57606a">Each call pushes a frame with its own parameters; the return value travels back up.</text>
+
+  <g font-family="'Segoe UI',Arial,sans-serif">
+    <!-- left: stack -->
+    <text x="60" y="102" font-size="13.5" font-weight="700" fill="#57606a">Call stack (grows upward)</text>
+
+    <rect x="80" y="112" width="240" height="64" rx="6" fill="#0969da"/>
+    <text x="200" y="138" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">greet(name="Ada")</text>
+    <text x="200" y="160" font-size="12.5" fill="#ffffff" text-anchor="middle">runs now · parameter: name → "Ada"</text>
+
+    <rect x="80" y="192" width="240" height="64" rx="6" fill="#1f6feb"/>
+    <text x="200" y="218" font-size="14.5" font-weight="700" fill="#ffffff" text-anchor="middle">main()</text>
+    <text x="200" y="240" font-size="12.5" fill="#ffffff" text-anchor="middle">waiting for greet to return</text>
+
+    <rect x="80" y="272" width="240" height="56" rx="6" fill="#57606a"/>
+    <text x="200" y="296" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">interpreter start</text>
+    <text x="200" y="316" font-size="12.5" fill="#ffffff" text-anchor="middle">runs the file from top to bottom</text>
+
+    <!-- up / down arrows -->
+    <line x1="52" y1="270" x2="52" y2="120" stroke="#1f883d" stroke-width="2.5"/>
+    <polygon points="52,112 46,124 58,124" fill="#1f883d"/>
+    <text x="52" y="348" font-size="12" fill="#1f883d" text-anchor="middle">push</text>
+    <text x="52" y="364" font-size="12" fill="#1f883d" text-anchor="middle">on call</text>
+
+    <line x1="348" y1="120" x2="348" y2="270" stroke="#cf222e" stroke-width="2.5"/>
+    <polygon points="348,278 342,266 354,266" fill="#cf222e"/>
+    <text x="348" y="102" font-size="12" fill="#cf222e" text-anchor="middle">pop</text>
+    <text x="348" y="118" font-size="12" fill="#cf222e" text-anchor="middle">on return</text>
+
+    <!-- right: return sequence -->
+    <text x="420" y="102" font-size="13.5" font-weight="700" fill="#57606a">Then the return, step by step</text>
+
+    <rect x="420" y="112" width="390" height="64" rx="6" fill="#ddf4ff" stroke="#0969da"/>
+    <text x="440" y="138" font-size="13.5" font-weight="700" fill="#0969da">1 · greet finishes</text>
+    <text x="440" y="160" font-size="13" fill="#1f2937">produces the string "Hello, Ada!" and hands it back</text>
+
+    <line x1="615" y1="176" x2="615" y2="196" stroke="#57606a" stroke-width="2"/>
+    <polygon points="615,204 609,192 621,192" fill="#57606a"/>
+
+    <rect x="420" y="204" width="390" height="64" rx="6" fill="#ddf4ff" stroke="#0969da"/>
+    <text x="440" y="230" font-size="13.5" font-weight="700" fill="#0969da">2 · greet's frame is popped</text>
+    <text x="440" y="252" font-size="13" fill="#1f2937">the name "Ada" is gone — it lived only inside that frame</text>
+
+    <line x1="615" y1="268" x2="615" y2="288" stroke="#57606a" stroke-width="2"/>
+    <polygon points="615,296 609,284 621,284" fill="#57606a"/>
+
+    <rect x="420" y="296" width="390" height="64" rx="6" fill="#dafbe1" stroke="#1f883d"/>
+    <text x="440" y="322" font-size="13.5" font-weight="700" fill="#1f883d">3 · main continues</text>
+    <text x="440" y="344" font-size="13" fill="#1f2937">the returned value can now be stored or printed</text>
+  </g>
+
+  <text x="40" y="424" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">Parameters are local to their frame: a variable inside greet cannot see main's variables, and vice versa. That is scope.</text>
+  <text x="40" y="446" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" fill="#57606a">Recursion simply pushes more frames — the same mechanism, which is why deep recursion can exhaust the stack.</text>
+</svg>
