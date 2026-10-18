@@ -111,23 +111,25 @@ commits on a named branch* — everything downstream degrades if that box is wro
 Before any platform, Git can print what you are proposing — executed here:
 
 ```console
-$ git request-pull origin/main ae7dbad
-fatal: 'ae7dbad' does not appear to be a git repository
+$ git request-pull origin/main HEAD
+fatal: 'HEAD' does not appear to be a git repository
 fatal: Could not read from remote repository.
 
-warn: No match for commit e956cd7a1128ec933e1d2a6aa38270af12142d8c found at ae7dbad
+Please make sure you have the correct access rights
+and the repository exists.
+warn: No match for commit ae7dbaddee51ab42f71b4f12c6ef769cad763db4 found at HEAD
 warn: Are you sure you pushed 'HEAD' there?
-The following changes since commit e956cd7a1128ec933e1d2a6aa38270af12142d8c:
+The following changes since commit e47194d9c313e9446b5b33fde5d39f3206d80686:
 
-  Merge branch 'feature/greeting' (2026-10-18 18:19:19 +0300)
+  Greet the world (2026-10-18 18:16:37 +0300)
 
 are available in the Git repository at:
 
-  ae7dbad
+  HEAD
 
-for you to fetch changes up to e956cd7a1128ec933e1d2a6aa38270af12142d8c:
+for you to fetch changes up to ae7dbaddee51ab42f71b4f12c6ef769cad763db4:
 
-  Merge branch 'feature/greeting' (2026-10-18 18:19:19 +0300)
+  Greet everyone (2026-10-18 18:16:38 +0300)
 
 ----------------------------------------------------------------
 Learner Example (1):
