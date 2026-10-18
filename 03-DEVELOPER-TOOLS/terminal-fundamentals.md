@@ -197,22 +197,26 @@ $ echo 'line one' > log.txt && echo 'line two' >> log.txt && cat log.txt
 line one
 line two
 
-$ cat notes/does-not-exist.txt 2> failed.txt
-exit code: 0
+$ cat notes/does-not-exist.txt 2> failed.txt; echo "exit code: $?"
+exit code: 1
 
 $ cat failed.txt
 cat: notes/does-not-exist.txt: No such file or directory
 
-$ cat notes/does-not-exist.txt > out.txt 2>&1
+$ cat notes/does-not-exist.txt > out.txt 2>&1; echo "exit code: $?"
+exit code: 1
 $ wc -c < out.txt
 57
 ```
 
-- `>` truncates and writes; `>>` appends. `2>` redirects the stderr channel only.
-- In the third command the shell's own exit code is 0 because the *last* command, `wc`, succeeded —
-  `$?` always reports the most recent command.
-- `2>&1` means "send descriptor 2 to wherever descriptor 1 currently goes" — errors and results in
-  one file, in order.
+- `>` truncates and writes; `>>` appends. `2>` reroutes the stderr channel only — the message
+  lands in the file, the screen stays clean.
+- The failing `cat` still exits **1** with its output redirected: `$?` is the *command's* verdict,
+  unaffected by where its channels go. And the 57 bytes `wc -c` counts are exactly that one error
+  line (56 characters) plus its newline — the error travelled through descriptor 2 into the file.
+- `2>&1` means "send descriptor 2 to wherever descriptor 1 currently goes" — one file, both
+  channels, in order. (Had the `wc` been the last command with no `echo` after it, `$?` would hold
+  `wc`'s verdict instead: `$?` always reports the most recent command.)
 
 **Example 5 — find, paths, and quoting**
 
