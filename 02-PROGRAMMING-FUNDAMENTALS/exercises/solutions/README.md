@@ -4,7 +4,7 @@
 skill. If you peeked, redo the affected exercise one week later without looking — that second
 attempt is the one you keep.
 
-Each file mirrors one set from [../exercises/README.md](../exercises/README.md). Solutions give
+Each file mirrors one set from [the exercise sets](../README.md). Solutions give
 reasoning and completion-criteria checks, not only final answers — a criterion you cannot tick
 from the text tells you to go back and produce the missing evidence yourself.
 

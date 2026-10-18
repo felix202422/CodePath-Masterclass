@@ -62,6 +62,8 @@ Never substitute a generated illustration for a precise technical diagram. A dec
 | `programming/assignment-and-rebinding.svg` | Variable binding and rebinding | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `variables-and-data-types.md` |
 | `programming/function-call-stack.svg` | Call stack frames on function call | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `functions-and-methods.md` |
 | `programming/debugging-cycle.svg` | The debugging cycle | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `debugging-fundamentals.md` |
+| `tools/git-three-areas.svg` | Git's three areas and the pointer chain | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 03 `git-fundamentals.md` |
+| `tools/branch-merge-flow.svg` | Branch divergence, merge commit, conflict markers | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 03 `branching-and-merging.md` |
 
 ## Naming and quality rules
 

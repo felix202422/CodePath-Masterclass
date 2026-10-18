@@ -147,18 +147,18 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `PROG-15` Teaching language decided: **Python 3.13** — installed on the authoring machine (3.13.5), every example executed
 
 **03-DEVELOPER-TOOLS** (prereq: 02)
-- [ ] `TOOL-01` `README.md`
-- [ ] `TOOL-02` `terminal-fundamentals.md`
-- [ ] `TOOL-03` `windows-development-environment.md`
-- [ ] `TOOL-04` `linux-fundamentals.md`
-- [ ] `TOOL-05` `editors-and-ides.md`
-- [ ] `TOOL-06` `package-managers.md`
-- [ ] `TOOL-07` `environment-variables.md`
-- [ ] `TOOL-08` `git-fundamentals.md`
-- [ ] `TOOL-09` `branching-and-merging.md`
-- [ ] `TOOL-10` `github-workflows.md`
-- [ ] `TOOL-11` `pull-requests-and-code-review.md`
-- [ ] `TOOL-12` `troubleshooting/` diagnosis guides and exercises
+- [x] `TOOL-01` `README.md` — live lesson links + executed-transcript policy stated
+- [x] `TOOL-02` `terminal-fundamentals.md` — pipelines, redirection, exit codes; every transcript executed
+- [x] `TOOL-03` `windows-development-environment.md` — three shells, PATH, execution policy, `wsl --status` genuinely “not installed” on the authoring machine
+- [x] `TOOL-04` `linux-fundamentals.md` — FHS, permissions, processes; Git Bash transcripts labelled **[executed: Git Bash]**, ineffective `chmod` shown as the platform seam; real-distribution blocks labelled illustration
+- [x] `TOOL-05` `editors-and-ides.md` — `git ls-files --eol` and `od -c` proofs, `.gitattributes`/`.editorconfig`, VS Code 1.140.0 executed
+- [x] `TOOL-06` `package-managers.md` — npm 11.8.0 offline flow executed end to end (install, lockfile, `npm ci` destroy-and-reproduce); pip version executed; Maven row cited from `VERSIONS.md`
+- [x] `TOOL-07` `environment-variables.md` — export/inheritance and broken-PATH experiments executed; `.env` + `git check-ignore -v` proof executed with a fake key
+- [x] `TOOL-08` `git-fundamentals.md` — full sandbox history executed: three diffs, restore family, stash, amend, reflog, `reset --hard` both directions; with `assets/tools/git-three-areas.svg`
+- [x] `TOOL-09` `branching-and-merging.md` — fast-forward, `--no-ff` merge, engineered conflict with markers, `merge --abort`, rebase — all executed; with `assets/tools/branch-merge-flow.svg`
+- [x] `TOOL-10` `github-workflows.md` — remote/push/clone/fetch/pull executed against a local bare origin (incl. the real empty-clone failure); GitHub web UI and Actions blocks labelled illustration (`gh` unauthenticated)
+- [x] `TOOL-11` `pull-requests-and-code-review.md` — `git request-pull`, three-dot diff, `--no-ff` merge executed; PR/review walkthroughs labelled illustration
+- [x] `TOOL-12` `troubleshooting/` — README method + 9 diagnosis guides (command-not-found, line-endings, permission-denied, git-recovery, merge-conflict, clone-empty, no-upstream, dependency-tree, review-loop) + `exercises.md` graded drills (Tier 1–4, Milestone 2 capstone)
 
 ## M3 — Core programming (Phase D)
 
@@ -511,15 +511,18 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-17 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS, and
-  02-PROGRAMMING-FUNDAMENTALS complete)
-- **Next batch:** Batch 5 — `03-DEVELOPER-TOOLS` (`TOOL-02` … `TOOL-12`: terminal, Windows
-  environment, Linux, editors, package managers, environment variables, Git through GitHub
-  workflows, and the troubleshooting guides)
+- **Last updated:** 2026-10-18 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+  02-PROGRAMMING-FUNDAMENTALS, and 03-DEVELOPER-TOOLS complete — TOOL-01…12 all done)
+- **Next batch:** Batch 6 — `04-JAVA-PROGRAMMING` (`JAVA-02` … `JAVA-23`: environment setup through
+  build tools; every example must compile with `javac --release 21` — JDK 25.0.4.1 and Maven 3.9.16
+  are installed on the writing machine, so the executed-transcript standard applies)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
-  official docs and labelled illustrations rather than executed transcripts. Git and terminal
-  lessons in 03 *can* be executed here (Git Bash is the authoring shell) — hold them to the
-  executed standard where possible.
-- **Validation state:** `check-curriculum.py` passes (22/22 subjects); `check-links.py` passes with
-  planned targets reported as PLAN warnings (shrinking as subjects land); `--strict` turns them
-  into failures in Phase K.
+  official docs and labelled illustrations rather than executed transcripts. `gh` is installed but
+  unauthenticated (401), so 03's GitHub web-UI and Actions blocks are labelled illustrations and
+  GitHub issues stay in this register (QA-09 pending). Real-Linux commands in 03 are labelled
+  where Git Bash could not execute them honestly — the ineffective `chmod` is shown as the seam,
+  not hidden.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 57 subject files, 109 image
+  refs); `check-links.py` exit 0 (105 files, 0 broken, 37 planned targets); 13/13 Mermaid blocks
+  in 03 parse VALID via the JSDOM harness; both new `assets/tools/*.svg` parse as XML; fence
+  parity clean across all 22 files of 03. `--strict` turns planned targets into failures in Phase K.

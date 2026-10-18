@@ -9,6 +9,14 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 03 — Developer Tools** — ten lessons (terminal fundamentals, Windows environment,
+  Linux fundamentals, editors and IDEs, package managers, environment variables, Git fundamentals,
+  branching and merging, GitHub workflows, pull requests and code review) with transcripts
+  executed on the authoring machine (Git Bash, Git 2.55.0; PowerShell, cmd, and `wsl --status`
+  probes actually run; sandbox repositories using a placeholder identity); two original SVG
+  diagrams (`assets/tools/`); and `troubleshooting/` — nine diagnosis guides plus the graded
+  drills in `exercises.md` that carry this subject's practice per `CURRICULUM-MAP.md`. GitHub web
+  UI, Actions, and real-Linux blocks are labelled illustrations where they could not be executed.
 - **Subject 02 — Programming Fundamentals** — twelve lessons (computational thinking through
   modular programming) with every Python transcript **executed** on the authoring machine
   (Python 3.13.5), three original SVG diagrams (`assets/programming/`: assignment/rebinding,

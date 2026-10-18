@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">Branching, merging, and conflicts</title>
+  <desc id="desc">A commit graph: a shared base on the left splits into an upper feature branch and a lower main branch; the two converge at a merge commit drawn as a double circle. A callout box shows conflict markers with HEAD's side above the separator and the incoming branch below, labelled as the point where Git stops and asks you.</desc>
+  <rect width="900" height="430" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+
+  <text x="30" y="42" font-family="'Segoe UI',Arial,sans-serif" font-size="19" font-weight="700" fill="#1f2937">Parallel work, joins, and where Git stops</text>
+  <text x="30" y="66" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="#57606a">Branches are pointers over shared history; a merge commit has two parents.</text>
+
+  <g font-family="'Segoe UI',Arial,sans-serif">
+    <!-- commit graph -->
+    <!-- edges first (under nodes) -->
+    <line x1="80" y1="170" x2="180" y2="170" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="180" y1="170" x2="300" y2="120" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="180" y1="170" x2="300" y2="220" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="300" y1="120" x2="420" y2="120" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="300" y1="220" x2="420" y2="220" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="420" y1="120" x2="530" y2="170" stroke="#57606a" stroke-width="2.5"/>
+    <line x1="420" y1="220" x2="530" y2="170" stroke="#57606a" stroke-width="2.5"/>
+
+    <!-- commits -->
+    <circle cx="80" cy="170" r="12" fill="#ffffff" stroke="#57606a" stroke-width="2.5"/>
+    <text x="80" y="200" font-size="12" text-anchor="middle" fill="#57606a">base</text>
+
+    <circle cx="180" cy="170" r="12" fill="#ffffff" stroke="#57606a" stroke-width="2.5"/>
+    <text x="180" y="200" font-size="12" text-anchor="middle" fill="#57606a">start</text>
+
+    <circle cx="300" cy="120" r="12" fill="#ddf4ff" stroke="#0969da" stroke-width="2.5"/>
+    <text x="300" y="104" font-size="12" text-anchor="middle" fill="#0969da">feat A</text>
+
+    <circle cx="420" cy="120" r="12" fill="#ddf4ff" stroke="#0969da" stroke-width="2.5"/>
+    <text x="420" y="104" font-size="12" text-anchor="middle" fill="#0969da">feat B</text>
+
+    <circle cx="300" cy="220" r="12" fill="#dafbe1" stroke="#1a7f37" stroke-width="2.5"/>
+    <text x="300" y="250" font-size="12" text-anchor="middle" fill="#1a7f37">main 1</text>
+
+    <circle cx="420" cy="220" r="12" fill="#dafbe1" stroke="#1a7f37" stroke-width="2.5"/>
+    <text x="420" y="250" font-size="12" text-anchor="middle" fill="#1a7f37">main 2</text>
+
+    <!-- merge commit: double circle -->
+    <circle cx="530" cy="170" r="15" fill="#dafbe1" stroke="#1a7f37" stroke-width="3"/>
+    <circle cx="530" cy="170" r="9" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="530" y="204" font-size="12" text-anchor="middle" fill="#1a7f37">merge (2 parents)</text>
+
+    <!-- branch labels -->
+    <rect x="446" y="86" width="86" height="26" rx="6" fill="#0969da"/>
+    <text x="489" y="104" font-size="12.5" font-weight="700" text-anchor="middle" fill="#ffffff">feature/…</text>
+
+    <rect x="446" y="236" width="70" height="26" rx="6" fill="#1a7f37"/>
+    <text x="481" y="254" font-size="12.5" font-weight="700" text-anchor="middle" fill="#ffffff">main</text>
+
+    <!-- annotations -->
+    <text x="240" y="152" font-size="12" fill="#57606a">divergence</text>
+    <text x="560" y="146" font-size="12.5" fill="#1a7f37">both sides advanced:</text>
+    <text x="560" y="163" font-size="12.5" fill="#1a7f37">merge commit, or conflict</text>
+    <text x="560" y="180" font-size="12.5" fill="#57606a">if the same lines changed</text>
+
+    <!-- fast-forward note -->
+    <rect x="30" y="284" width="380" height="46" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+    <text x="44" y="304" font-size="13" font-weight="700" fill="#1f2937">Fast-forward: only possible when main never moved</text>
+    <text x="44" y="322" font-size="12.5" fill="#57606a">Git just slides the pointer — no merge commit appears in the graph.</text>
+
+    <!-- conflict callout -->
+    <rect x="440" y="284" width="430" height="120" rx="8" fill="#fff8c5" stroke="#9a6700" stroke-width="2"/>
+    <text x="456" y="308" font-size="13.5" font-weight="700" fill="#7d4e00">Where Git stops: the same lines changed on both sides</text>
+    <text x="456" y="332" font-size="13" font-family="'Cascadia Mono','Consolas',monospace" fill="#1f2937">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  (yours)</text>
+    <text x="456" y="354" font-size="13" font-family="'Cascadia Mono','Consolas',monospace" fill="#1f2937">====================</text>
+    <text x="456" y="376" font-size="13" font-family="'Cascadia Mono','Consolas',monospace" fill="#1f2937">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/… (theirs)</text>
+    <text x="456" y="397" font-size="12.5" fill="#7d4e00">You write the combined truth, git add declares it solved, commit finishes the merge.</text>
+
+    <text x="30" y="372" font-size="12.5" fill="#57606a">Status says UU (both updated). Exit code 1 = paused, not broken.</text>
+    <text x="30" y="392" font-size="12.5" fill="#57606a">merge --abort restores the pre-merge state exactly — the safe retreat.</text>
+  </g>
+</svg>

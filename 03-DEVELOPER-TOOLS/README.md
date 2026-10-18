@@ -35,15 +35,27 @@ junior.
 
 ## Lessons
 
-- `terminal-fundamentals.md` · `windows-development-environment.md` · `linux-fundamentals.md`
-- `editors-and-ides.md` · `package-managers.md` · `environment-variables.md`
-- `git-fundamentals.md` · `branching-and-merging.md` · `github-workflows.md`
-- `pull-requests-and-code-review.md`
-- `troubleshooting/` — environment problems with diagnosis procedures
+- [terminal-fundamentals.md](terminal-fundamentals.md) · [windows-development-environment.md](windows-development-environment.md) · [linux-fundamentals.md](linux-fundamentals.md)
+- [editors-and-ides.md](editors-and-ides.md) · [package-managers.md](package-managers.md) · [environment-variables.md](environment-variables.md)
+- [git-fundamentals.md](git-fundamentals.md) · [branching-and-merging.md](branching-and-merging.md) · [github-workflows.md](github-workflows.md)
+- [pull-requests-and-code-review.md](pull-requests-and-code-review.md)
+- [troubleshooting/](troubleshooting/README.md) — nine diagnosis guides plus the graded drills
+
+All ten lessons are written. Every transcript claimed as actual output in them was executed on the
+authoring machine (Windows 11, Git Bash, Git 2.55.0 — see [VERSIONS.md](../VERSIONS.md) for the
+author environment); sandbox Git repositories use the placeholder identity `Learner Example`, so no
+personal configuration or real account enters a lesson. Transcripts that could not be executed here
+(PowerShell/cmd snippets beyond the ones captured, live GitHub web UI sessions, real Linux
+packagers) are explicitly labelled **illustration** in place — the honesty rule is stated per
+transcript, not assumed.
 
 ## Exercises and practice
 
-Every command in these lessons is meant to be executed on your own machine, including the wrong
+Practice for this subject lives in [troubleshooting/exercises.md](troubleshooting/exercises.md):
+drills that put your own environment into a real broken state (broken PATH, lost commit, engineered
+merge conflict, empty clone) and require diagnosis, repair, and a stated prevention. The guides in
+[troubleshooting/](troubleshooting/README.md) are their answer keys — attempt first, read second.
+Beyond the drills: every command in these lessons is meant to be executed on your own machine, including the wrong
 versions on purpose (`cd` to the wrong place, delete a file and recover it, create and resolve a
 merge conflict). The Git exercises demand a real history: at least 20 commits across 5 branches,
 one conflict resolved by hand, and one mistake recovered with `git restore`/`git revert`.
