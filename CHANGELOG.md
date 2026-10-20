@@ -9,7 +9,16 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
-- **Subject 03 — Developer Tools** — ten lessons (terminal fundamentals, Windows environment,
+- **Subject 04 — Java Programming** — twenty-one lessons (environment setup through build tools)
+  with every transcript **executed** on the authoring machine (JDK 25.0.4.1 with
+  `javac --release 21`, Maven 3.9.16): the compile/run cycle with `javap` major-version proof,
+  verbatim compiler and runtime error transcripts (truthy refusal, `private access`, `new T()`
+  erasure refusals, CME, deadlock dumps, OOM-inside-the-catch at `-Xmx32m`/`-Xmx64m`), a
+  two-run lost-update race (39251 / 39633) beside executed `synchronized`/`AtomicInteger` fixes,
+  a full Maven build end-to-end (cold 17.5 s vs warm 7.3 s, `BUILD SUCCESS`, jar run output),
+  one original SVG diagram (`assets/java/inheritance-diagram.svg`), twenty-one exercise sets
+  and twenty-one separated solution files. Gradle is absent from the writing machine and is
+  labelled as such rather than simulated. — ten lessons (terminal fundamentals, Windows environment,
   Linux fundamentals, editors and IDEs, package managers, environment variables, Git fundamentals,
   branching and merging, GitHub workflows, pull requests and code review) with transcripts
   executed on the authoring machine (Git Bash, Git 2.55.0; PowerShell, cmd, and `wsl --status`

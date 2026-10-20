@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-labelledby="title desc">
+  <title id="title">Inheritance and construction order for the Animal/Dog hierarchy</title>
+  <desc id="desc">Animal is the parent class holding the kind field and speak and toString methods. Dog extends Animal, overriding speak and toString and adding fetch. Construction order arrows show super chaining from Dog into Animal, and a side panel lists the executed constructor output.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0969da"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #ffffff; stroke: #57606a; stroke-width: 1.5; }
+    .parent { fill: #ddf4ff; stroke: #0969da; stroke-width: 2; }
+    .child { fill: #dafbe1; stroke: #1a7f37; stroke-width: 2; }
+    .hd { font: 700 15px "Segoe UI", sans-serif; fill: #1f2328; }
+    .mono { font: 13px Consolas, monospace; fill: #1f2328; }
+    .small { font: 12px "Segoe UI", sans-serif; fill: #57606a; }
+    .lbl { font: 700 13px "Segoe UI", sans-serif; fill: #1f2328; }
+    .note { font: 12px Consolas, monospace; fill: #1f2328; }
+    .ovr { fill: #fff4ce; stroke: #9a6700; stroke-width: 1.5; }
+  </style>
+
+  <rect x="0" y="0" width="840" height="520" fill="#ffffff"/>
+
+  <!-- Parent class -->
+  <g>
+    <rect x="60" y="40" width="300" height="150" rx="6" class="parent"/>
+    <rect x="60" y="40" width="300" height="30" rx="6" fill="#0969da"/>
+    <text x="75" y="61" class="hd" fill="#ffffff">class Animal (parent)</text>
+    <text x="75" y="95" class="mono">String kind = "animal"</text>
+    <text x="75" y="120" class="mono">Animal()            // ctor</text>
+    <text x="75" y="145" class="mono">speak() -&gt; "..."</text>
+    <text x="75" y="170" class="mono">toString() -&gt; "Animal[kind]"</text>
+  </g>
+
+  <!-- Child class -->
+  <g>
+    <rect x="60" y="300" width="300" height="170" rx="6" class="child"/>
+    <rect x="60" y="300" width="300" height="30" rx="6" fill="#1a7f37"/>
+    <text x="75" y="321" class="hd" fill="#ffffff">class Dog extends Animal</text>
+    <text x="75" y="355" class="mono">Dog() { super(); ... }</text>
+    <rect x="68" y="366" width="284" height="22" rx="4" class="ovr" stroke-dasharray="0"/>
+    <text x="75" y="382" class="mono">@Override speak() -&gt; "woof"</text>
+    <rect x="68" y="394" width="284" height="22" rx="4" class="ovr" stroke-dasharray="0"/>
+    <text x="75" y="410" class="mono">@Override toString() -&gt; "Dog(...)";</text>
+    <text x="75" y="440" class="mono">fetch()  // new in Dog only</text>
+    <text x="75" y="462" class="small">inherited: kind, speak's contract, ctor chaining</text>
+  </g>
+
+  <!-- extends arrow -->
+  <line x1="150" y1="300" x2="150" y2="196" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="160" y="252" class="lbl">extends (is-a)</text>
+
+  <!-- super() chain arrow -->
+  <path d="M 360 330 C 440 330 440 115 372 115" fill="none" stroke="#0969da" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowBlue)"/>
+  <text x="392" y="222" class="lbl" fill="#0969da">super() first</text>
+  <text x="392" y="240" class="small">parent ctor runs before child body</text>
+
+  <!-- Reference views -->
+  <g>
+    <rect x="470" y="40" width="340" height="120" rx="6" class="box"/>
+    <text x="486" y="66" class="hd">Two references, one object</text>
+    <text x="486" y="94" class="mono">Dog d = new Dog();      // d.speak() -&gt; woof</text>
+    <text x="486" y="118" class="mono">Animal a = d;           // a.speak() -&gt; woof</text>
+    <text x="486" y="142" class="small">runtime type decides; the declared type only gates the call</text>
+  </g>
+
+  <!-- Executed output panel -->
+  <g>
+    <rect x="470" y="190" width="340" height="150" rx="6" class="box"/>
+    <text x="486" y="216" class="hd">Executed: java Inherit</text>
+    <text x="486" y="244" class="note">Animal ctor</text>
+    <text x="486" y="266" class="note">Dog ctor</text>
+    <text x="486" y="288" class="note">speak=woof  kind=animal</text>
+    <text x="486" y="310" class="note">Dog(Animal[animal])</text>
+    <text x="486" y="332" class="small">constructor order + inherited field, verbatim</text>
+  </g>
+
+  <!-- Downcast warning -->
+  <g>
+    <rect x="470" y="370" width="340" height="100" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/>
+    <text x="486" y="396" class="hd" fill="#82071e">Downcast is a claim</text>
+    <text x="486" y="422" class="mono">Animal x = new Animal();</text>
+    <text x="486" y="444" class="mono">(Dog) x  -&gt;  ClassCastException</text>
+    <text x="486" y="464" class="small">check instanceof / pattern-match first</text>
+  </g>
+</svg>

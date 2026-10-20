@@ -64,6 +64,7 @@ Never substitute a generated illustration for a precise technical diagram. A dec
 | `programming/debugging-cycle.svg` | The debugging cycle | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 02 `debugging-fundamentals.md` |
 | `tools/git-three-areas.svg` | Git's three areas and the pointer chain | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 03 `git-fundamentals.md` |
 | `tools/branch-merge-flow.svg` | Branch divergence, merge commit, conflict markers | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 03 `branching-and-merging.md` |
+| `java/inheritance-diagram.svg` | Inheritance and construction order for the Animal/Dog hierarchy | SVG | Original, drawn for this repository | MIT (same as repository) | Used by 04 `inheritance.md` |
 
 ## Naming and quality rules
 

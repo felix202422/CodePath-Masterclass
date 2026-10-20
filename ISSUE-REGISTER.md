@@ -163,29 +163,29 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M3 — Core programming (Phase D)
 
 **04-JAVA-PROGRAMMING** (prereq: 02, 03) — baseline Java 21, see `VERSIONS.md`
-- [ ] `JAVA-01` `README.md`
-- [ ] `JAVA-02` `java-environment-setup.md`
-- [ ] `JAVA-03` `java-program-structure.md`
-- [ ] `JAVA-04` `variables-and-types.md`
-- [ ] `JAVA-05` `operators-and-control-flow.md`
-- [ ] `JAVA-06` `methods.md`
-- [ ] `JAVA-07` `arrays-and-strings.md`
-- [ ] `JAVA-08` `classes-and-objects.md`
-- [ ] `JAVA-09` `encapsulation.md`
-- [ ] `JAVA-10` `inheritance.md` — visual: `assets/java/inheritance-diagram.svg`
-- [ ] `JAVA-11` `polymorphism.md`
-- [ ] `JAVA-12` `abstraction.md`
-- [ ] `JAVA-13` `interfaces-and-abstract-classes.md`
-- [ ] `JAVA-14` `exceptions.md`
-- [ ] `JAVA-15` `collections-framework.md`
-- [ ] `JAVA-16` `generics.md`
-- [ ] `JAVA-17` `file-handling.md`
-- [ ] `JAVA-18` `lambdas-and-streams.md`
-- [ ] `JAVA-19` `functional-programming.md`
-- [ ] `JAVA-20` `concurrency.md`
-- [ ] `JAVA-21` `jvm-and-memory.md`
-- [ ] `JAVA-22` `build-tools.md`
-- [ ] `JAVA-23` `exercises/` + solutions (all examples compile with `javac --release 21`)
+- [x] `JAVA-01` `README.md`
+- [x] `JAVA-02` `java-environment-setup.md`
+- [x] `JAVA-03` `java-program-structure.md`
+- [x] `JAVA-04` `variables-and-types.md`
+- [x] `JAVA-05` `operators-and-control-flow.md`
+- [x] `JAVA-06` `methods.md`
+- [x] `JAVA-07` `arrays-and-strings.md`
+- [x] `JAVA-08` `classes-and-objects.md`
+- [x] `JAVA-09` `encapsulation.md`
+- [x] `JAVA-10` `inheritance.md` — visual: `assets/java/inheritance-diagram.svg`
+- [x] `JAVA-11` `polymorphism.md`
+- [x] `JAVA-12` `abstraction.md`
+- [x] `JAVA-13` `interfaces-and-abstract-classes.md`
+- [x] `JAVA-14` `exceptions.md`
+- [x] `JAVA-15` `collections-framework.md`
+- [x] `JAVA-16` `generics.md`
+- [x] `JAVA-17` `file-handling.md`
+- [x] `JAVA-18` `lambdas-and-streams.md`
+- [x] `JAVA-19` `functional-programming.md`
+- [x] `JAVA-20` `concurrency.md`
+- [x] `JAVA-21` `jvm-and-memory.md`
+- [x] `JAVA-22` `build-tools.md`
+- [x] `JAVA-23` `exercises/` + solutions (all examples compile with `javac --release 21`)
 
 **05-DATA-STRUCTURES-AND-ALGORITHMS** (prereq: 04)
 - [ ] `DSA-01` `README.md`
@@ -511,18 +511,23 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-18 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
-  02-PROGRAMMING-FUNDAMENTALS, and 03-DEVELOPER-TOOLS complete — TOOL-01…12 all done)
-- **Next batch:** Batch 6 — `04-JAVA-PROGRAMMING` (`JAVA-02` … `JAVA-23`: environment setup through
-  build tools; every example must compile with `javac --release 21` — JDK 25.0.4.1 and Maven 3.9.16
-  are installed on the writing machine, so the executed-transcript standard applies)
+- **Last updated:** 2026-10-20 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, and 04-JAVA-PROGRAMMING complete —
+  TOOL-01…12 and JAVA-01…23 all done)
+- **Next batch:** Batch 7 — `05-DATA-STRUCTURES-AND-ALGORITHMS` (`DSA-01` … `DSA-19`; prereq 04,
+  so `MyArrayList<E>`-style exercises should reuse the executed `javac --release 21` toolchain —
+  JDK 25.0.4.1 and Maven 3.9.16 are installed on the writing machine, so the executed-transcript
+  standard applies)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
-  official docs and labelled illustrations rather than executed transcripts. `gh` is installed but
+  official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
+  shows the `gradle: command not found` probe as honest absence). `gh` is installed but
   unauthenticated (401), so 03's GitHub web-UI and Actions blocks are labelled illustrations and
   GitHub issues stay in this register (QA-09 pending). Real-Linux commands in 03 are labelled
   where Git Bash could not execute them honestly — the ineffective `chmod` is shown as the seam,
   not hidden.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 57 subject files, 109 image
-  refs); `check-links.py` exit 0 (105 files, 0 broken, 37 planned targets); 13/13 Mermaid blocks
-  in 03 parse VALID via the JSDOM harness; both new `assets/tools/*.svg` parse as XML; fence
-  parity clean across all 22 files of 03. `--strict` turns planned targets into failures in Phase K.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 78 subject files, 153 image
+  refs); `check-links.py` exit 0 (149 files, 0 broken, 31 planned targets; 04 scope: 45 files,
+  0 broken, 0 planned); 21/21 Mermaid blocks in 04 parse VALID via the JSDOM harness (5 fixed in
+  this batch: escaped-quote and unquoted-edge-label parse errors); `assets/java/inheritance-diagram.svg`
+  parses as XML; fence parity clean across all 04 lessons + 23 exercise files. `--strict` turns
+  planned targets into failures in Phase K.
