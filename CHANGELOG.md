@@ -9,6 +9,21 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 05 — Data Structures and Algorithms** — eighteen lessons (algorithm analysis
+  through graph algorithms) with every transcript **executed** on the authoring machine
+  (JDK 25.0.4.1, `javac --release 21`): counted and instrumented implementations throughout —
+  dynamic-array growth ladders and copy counters, hash-chain visit counts, BST shape batteries
+  across ascending/descending/shuffled inserts, heap sift-op counters (Floyd heapify vs n adds),
+  comparison/move counters for six sorts × five input shapes, naive-vs-memoized call counts,
+  N-queens attempts/checks/solutions at n = 4 and n = 8 (92), greedy-vs-DP coin tables diverging
+  at t = 6, Dijkstra distances hand-verified (`0 7 9 20 20 11`) beside an executed negative-edge
+  failure (`A→D = 2` reported where the true optimum is `−7`), and Kahn topological sort with an
+  executed cycle case (`emitted 3 of 6, detected=true`); one Mermaid flowchart per lesson
+  (17 blocks, all parse-validated); and `problem-solving/` — eighteen mixed practice sets
+  spanning adjacent lessons (trace-by-hand, implement-from-scratch, prove-or-disprove a
+  complexity claim with counters, and one stated-without-steps problem each), eighteen
+  separated solution files stating complexity and worst case, and a three-rung hint ladder
+  per set.
 - **Subject 04 — Java Programming** — twenty-one lessons (environment setup through build tools)
   with every transcript **executed** on the authoring machine (JDK 25.0.4.1 with
   `javac --release 21`, Maven 3.9.16): the compile/run cycle with `javap` major-version proof,
@@ -18,7 +33,8 @@ milestone completed, PATCH = corrections and clarity fixes).
   a full Maven build end-to-end (cold 17.5 s vs warm 7.3 s, `BUILD SUCCESS`, jar run output),
   one original SVG diagram (`assets/java/inheritance-diagram.svg`), twenty-one exercise sets
   and twenty-one separated solution files. Gradle is absent from the writing machine and is
-  labelled as such rather than simulated. — ten lessons (terminal fundamentals, Windows environment,
+  labelled as such rather than simulated.
+- **Subject 03 — Developer Tools** — ten lessons (terminal fundamentals, Windows environment,
   Linux fundamentals, editors and IDEs, package managers, environment variables, Git fundamentals,
   branching and merging, GitHub workflows, pull requests and code review) with transcripts
   executed on the authoring machine (Git Bash, Git 2.55.0; PowerShell, cmd, and `wsl --status`

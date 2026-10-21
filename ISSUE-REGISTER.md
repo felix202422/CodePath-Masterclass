@@ -188,25 +188,25 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `JAVA-23` `exercises/` + solutions (all examples compile with `javac --release 21`)
 
 **05-DATA-STRUCTURES-AND-ALGORITHMS** (prereq: 04)
-- [ ] `DSA-01` `README.md`
-- [ ] `DSA-02` `algorithm-analysis.md`
-- [ ] `DSA-03` `big-o-notation.md`
-- [ ] `DSA-04` `arrays.md`
-- [ ] `DSA-05` `linked-lists.md`
-- [ ] `DSA-06` `stacks.md`
-- [ ] `DSA-07` `queues.md`
-- [ ] `DSA-08` `hash-tables.md`
-- [ ] `DSA-09` `trees.md`
-- [ ] `DSA-10` `heaps.md`
-- [ ] `DSA-11` `graphs.md`
-- [ ] `DSA-12` `searching.md`
-- [ ] `DSA-13` `sorting.md`
-- [ ] `DSA-14` `recursion.md`
-- [ ] `DSA-15` `backtracking.md`
-- [ ] `DSA-16` `greedy-algorithms.md`
-- [ ] `DSA-17` `dynamic-programming.md`
-- [ ] `DSA-18` `graph-algorithms.md`
-- [ ] `DSA-19` `problem-solving/` practice sets, hints, solutions
+- [x] `DSA-01` `README.md`
+- [x] `DSA-02` `algorithm-analysis.md`
+- [x] `DSA-03` `big-o-notation.md`
+- [x] `DSA-04` `arrays.md`
+- [x] `DSA-05` `linked-lists.md`
+- [x] `DSA-06` `stacks.md`
+- [x] `DSA-07` `queues.md`
+- [x] `DSA-08` `hash-tables.md`
+- [x] `DSA-09` `trees.md`
+- [x] `DSA-10` `heaps.md`
+- [x] `DSA-11` `graphs.md`
+- [x] `DSA-12` `searching.md`
+- [x] `DSA-13` `sorting.md`
+- [x] `DSA-14` `recursion.md`
+- [x] `DSA-15` `backtracking.md`
+- [x] `DSA-16` `greedy-algorithms.md`
+- [x] `DSA-17` `dynamic-programming.md`
+- [x] `DSA-18` `graph-algorithms.md`
+- [x] `DSA-19` `problem-solving/` practice sets, hints, solutions
 
 ## M4 — Web and frontend (Phase E)
 
@@ -511,13 +511,14 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-20 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
-  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, and 04-JAVA-PROGRAMMING complete —
-  TOOL-01…12 and JAVA-01…23 all done)
-- **Next batch:** Batch 7 — `05-DATA-STRUCTURES-AND-ALGORITHMS` (`DSA-01` … `DSA-19`; prereq 04,
-  so `MyArrayList<E>`-style exercises should reuse the executed `javac --release 21` toolchain —
-  JDK 25.0.4.1 and Maven 3.9.16 are installed on the writing machine, so the executed-transcript
-  standard applies)
+- **Last updated:** 2026-10-21 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING, and
+  05-DATA-STRUCTURES-AND-ALGORITHMS complete — TOOL-01…12, JAVA-01…23, and DSA-01…19 all done)
+- **Next batch:** Batch 8 — `06-INTERNET-AND-WEB-FOUNDATIONS` (`WEB-01` … `WEB-11`; prereq 02,
+  so no new toolchain is needed — most transcripts can be executed with `curl` and the Git Bash
+  environment already verified in 03; TLS/HTTPS material should probe the real installed
+  tools (`openssl version`) rather than illustrate them, and browser-rendering blocks are
+  labelled illustrations unless a headless browser is actually present)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
@@ -525,9 +526,12 @@ This section is updated at the end of every batch so the next session can resume
   GitHub issues stay in this register (QA-09 pending). Real-Linux commands in 03 are labelled
   where Git Bash could not execute them honestly — the ineffective `chmod` is shown as the seam,
   not hidden.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 78 subject files, 153 image
-  refs); `check-links.py` exit 0 (149 files, 0 broken, 31 planned targets; 04 scope: 45 files,
-  0 broken, 0 planned); 21/21 Mermaid blocks in 04 parse VALID via the JSDOM harness (5 fixed in
-  this batch: escaped-quote and unquoted-edge-label parse errors); `assets/java/inheritance-diagram.svg`
-  parses as XML; fence parity clean across all 04 lessons + 23 exercise files. `--strict` turns
-  planned targets into failures in Phase K.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 95 subject files, 191 image
+  refs); `check-links.py` exit 0 (187 files, 0 broken, 31 planned targets; 05 scope: 39 files,
+  0 broken, 0 planned — 10 broken refs found and fixed in this batch: four lessons linked a
+  non-existent `13-ARTIFICIAL-INTELLIGENCE` subject, replaced with honest “unwritten in this
+  curriculum” prose, and three linked `12-SOFTWARE-ENGINEERING`, retargeted to
+  `13-SOFTWARE-ENGINEERING-AND-ARCHITECTURE`); 17/17 Mermaid blocks in 05 parse VALID via the
+  JSDOM harness (1 fixed in this batch: unquoted edge labels containing `"( [ {"` in stacks.md
+  — brackets moved into the quoted node label); fence parity clean across all 18 05-lessons +
+  README + hints + 20 solution files. `--strict` turns planned targets into failures in Phase K.
