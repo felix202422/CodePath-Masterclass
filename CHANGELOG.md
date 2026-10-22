@@ -9,6 +9,26 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 06 — Internet and Web Foundations** — nine lessons (how the internet works through
+  browsers and rendering) with every transcript **executed** on the authoring machine (curl
+  8.22.0, OpenSSL 3.5.9, Python 3.13.5, Chrome 156 headless, `nslookup` against the live ISP
+  resolver): ping TTL arithmetic beside an unchanged-TTL loopback/gateway pair, an 8-hop tracert
+  whose cap is named honestly as not reaching the destination, A/AAAA/MX/CNAME/TXT record
+  queries and an SOA `default TTL = 1800` reading where `nslookup -query=TTL` is exposed as
+  silently falling back to A, a socket lab capturing `connect`/`accept` handshake evidence
+  lines, UDP `recvfrom` sender-identity and the Windows ICMP-ghost `ConnectionResetError 10054`
+  dead-port experiment, `curl -v` request/response anatomy with POST/HEAD/404 and the
+  ETag → `200` → `304` → `200` conditional sequence, an `openssl` version-floor pair (1.3 and 1.2
+  negotiate, 1.0/1.1 refused `no protocols available`) plus certificate chain/SAN/expiry
+  inspection and the executed `expired.badssl.com` `Verify return code: 10` failure, raw
+  socket bytes proving HTTP's CRLF framing, a `netstat` listening-port inventory, and headless
+  Chrome `--dump-dom`/`--screenshot` captures showing a script-mutated DOM with the
+  layout-computed `200px` — seven Mermaid diagrams, all parse-validated; and `exercises/` —
+  nine observation-first sets (capture the output, then explain the mechanism) mirroring each
+  lesson's ladder, with a separated solutions directory: ten files quoting the reference
+  transcripts, hand computations verified against `ipaddress`, and shape-only answers for the
+  open-ended designs (migration runbook, transport policy, certificate-failure decision tree,
+  URL design test matrix, rendering-jank decision table).
 - **Subject 05 — Data Structures and Algorithms** — eighteen lessons (algorithm analysis
   through graph algorithms) with every transcript **executed** on the authoring machine
   (JDK 25.0.4.1, `javac --release 21`): counted and instrumented implementations throughout —

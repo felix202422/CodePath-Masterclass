@@ -211,17 +211,17 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M4 — Web and frontend (Phase E)
 
 **06-INTERNET-AND-WEB-FOUNDATIONS** (prereq: 02)
-- [ ] `WEB-01` `README.md`
-- [ ] `WEB-02` `how-the-internet-works.md`
-- [ ] `WEB-03` `client-server-architecture.md`
-- [ ] `WEB-04` `ip-addressing.md`
-- [ ] `WEB-05` `dns.md`
-- [ ] `WEB-06` `tcp-and-udp.md`
-- [ ] `WEB-07` `http-fundamentals.md`
-- [ ] `WEB-08` `https-and-tls.md`
-- [ ] `WEB-09` `urls-and-ports.md`
-- [ ] `WEB-10` `browsers-and-rendering.md`
-- [ ] `WEB-11` `exercises/` + solutions
+- [x] `WEB-01` `README.md`
+- [x] `WEB-02` `how-the-internet-works.md`
+- [x] `WEB-03` `client-server-architecture.md`
+- [x] `WEB-04` `ip-addressing.md`
+- [x] `WEB-05` `dns.md`
+- [x] `WEB-06` `tcp-and-udp.md`
+- [x] `WEB-07` `http-fundamentals.md`
+- [x] `WEB-08` `https-and-tls.md`
+- [x] `WEB-09` `urls-and-ports.md`
+- [x] `WEB-10` `browsers-and-rendering.md`
+- [x] `WEB-11` `exercises/` + solutions
 
 **07-HTML-AND-CSS** (prereq: 06)
 - [ ] `HTML-01` `README.md`
@@ -511,27 +511,32 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-21 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
-  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING, and
-  05-DATA-STRUCTURES-AND-ALGORITHMS complete — TOOL-01…12, JAVA-01…23, and DSA-01…19 all done)
-- **Next batch:** Batch 8 — `06-INTERNET-AND-WEB-FOUNDATIONS` (`WEB-01` … `WEB-11`; prereq 02,
-  so no new toolchain is needed — most transcripts can be executed with `curl` and the Git Bash
-  environment already verified in 03; TLS/HTTPS material should probe the real installed
-  tools (`openssl version`) rather than illustrate them, and browser-rendering blocks are
-  labelled illustrations unless a headless browser is actually present)
+- **Last updated:** 2026-10-22 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
+  05-DATA-STRUCTURES-AND-ALGORITHMS, and 06-INTERNET-AND-WEB-FOUNDATIONS complete — TOOL-01…12,
+  JAVA-01…23, DSA-01…19, and WEB-01…11 all done)
+- **Next batch:** Batch 9 — `07-HTML-AND-CSS` (`HTML-01` … `HTML-12`; prereq 06, now written —
+  Chrome 156 headless is present, so box-model/flexbox/grid transcripts can be **executed**
+  (`--dump-dom`, `--screenshot`, computed-style probes exactly as 06's rendering lesson did)
+  rather than illustrated; only one browser engine exists on the writing machine, so
+  cross-engine (Gecko/WebKit) claims stay labelled illustrations. `HTML-12` `projects/` brief
+  needs no toolchain)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
   unauthenticated (401), so 03's GitHub web-UI and Actions blocks are labelled illustrations and
   GitHub issues stay in this register (QA-09 pending). Real-Linux commands in 03 are labelled
   where Git Bash could not execute them honestly — the ineffective `chmod` is shown as the seam,
-  not hidden.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 95 subject files, 191 image
-  refs); `check-links.py` exit 0 (187 files, 0 broken, 31 planned targets; 05 scope: 39 files,
-  0 broken, 0 planned — 10 broken refs found and fixed in this batch: four lessons linked a
-  non-existent `13-ARTIFICIAL-INTELLIGENCE` subject, replaced with honest “unwritten in this
-  curriculum” prose, and three linked `12-SOFTWARE-ENGINEERING`, retargeted to
-  `13-SOFTWARE-ENGINEERING-AND-ARCHITECTURE`); 17/17 Mermaid blocks in 05 parse VALID via the
-  JSDOM harness (1 fixed in this batch: unquoted edge labels containing `"( [ {"` in stacks.md
-  — brackets moved into the quoted node label); fence parity clean across all 18 05-lessons +
-  README + hints + 20 solution files. `--strict` turns planned targets into failures in Phase K.
+  not hidden. `dig` and `nc` are absent from the writing machine, so 06 used `nslookup`
+  throughout and a Python raw-socket client in place of netcat; Windows-only tools (`tracert`,
+  `ipconfig`) are labelled with their Linux counterparts named; the headless screenshot refused
+  writes to the Temp directory (`Access is denied`) and was captured to a workspace path instead.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 104 subject files, 211 image
+  refs); `check-links.py` exit 0 (207 files, 0 broken, 33 planned targets; 06 scope: 21 files,
+  0 broken after 1 broken ref found and fixed in this batch — `client-server-architecture.md`
+  linked `../../VERSIONS.md` from a subject subdirectory and was retargeted to `../VERSIONS.md`;
+  2 new planned refs point at `21-REFERENCE-LIBRARY/http-status-codes.md`); 7/7 Mermaid blocks
+  in 06 parse VALID via the JSDOM harness (1 fixed in this batch: a `;` statement terminator
+  inside a sequenceDiagram `Note` in tcp-and-udp.md — removed, `<br/>` retained); fence parity
+  clean across all 9 06-lessons + README + exercises README + 10 solution files (21 files).
+  `--strict` turns planned targets into failures in Phase K.
