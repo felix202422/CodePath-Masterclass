@@ -52,4 +52,5 @@ build/
 # --- Logs and local scratch ---
 *.log
 scratch/
+.scratch/
 tmp/
