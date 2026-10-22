@@ -224,18 +224,18 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `WEB-11` `exercises/` + solutions
 
 **07-HTML-AND-CSS** (prereq: 06)
-- [ ] `HTML-01` `README.md`
-- [ ] `HTML-02` `html-fundamentals.md`
-- [ ] `HTML-03` `semantic-html.md`
-- [ ] `HTML-04` `forms-and-validation.md`
-- [ ] `HTML-05` `css-fundamentals.md`
-- [ ] `HTML-06` `box-model.md`
-- [ ] `HTML-07` `flexbox.md`
-- [ ] `HTML-08` `css-grid.md`
-- [ ] `HTML-09` `responsive-design.md`
-- [ ] `HTML-10` `typography-and-design-tokens.md`
-- [ ] `HTML-11` `accessibility.md`
-- [ ] `HTML-12` `projects/` brief for Project 02
+- [x] `HTML-01` `README.md`
+- [x] `HTML-02` `html-fundamentals.md`
+- [x] `HTML-03` `semantic-html.md`
+- [x] `HTML-04` `forms-and-validation.md`
+- [x] `HTML-05` `css-fundamentals.md`
+- [x] `HTML-06` `box-model.md`
+- [x] `HTML-07` `flexbox.md`
+- [x] `HTML-08` `css-grid.md`
+- [x] `HTML-09` `responsive-design.md`
+- [x] `HTML-10` `typography-and-design-tokens.md`
+- [x] `HTML-11` `accessibility.md`
+- [x] `HTML-12` `projects/` brief for Project 02
 
 **08-JAVASCRIPT-AND-TYPESCRIPT** (prereq: 07)
 - [ ] `JS-01` `README.md`
@@ -513,14 +513,16 @@ This section is updated at the end of every batch so the next session can resume
 
 - **Last updated:** 2026-10-22 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
   02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
-  05-DATA-STRUCTURES-AND-ALGORITHMS, and 06-INTERNET-AND-WEB-FOUNDATIONS complete — TOOL-01…12,
-  JAVA-01…23, DSA-01…19, and WEB-01…11 all done)
-- **Next batch:** Batch 9 — `07-HTML-AND-CSS` (`HTML-01` … `HTML-12`; prereq 06, now written —
-  Chrome 156 headless is present, so box-model/flexbox/grid transcripts can be **executed**
-  (`--dump-dom`, `--screenshot`, computed-style probes exactly as 06's rendering lesson did)
-  rather than illustrated; only one browser engine exists on the writing machine, so
-  cross-engine (Gecko/WebKit) claims stay labelled illustrations. `HTML-12` `projects/` brief
-  needs no toolchain)
+  05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS, and
+  07-HTML-AND-CSS complete — TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11, and HTML-01…12
+  all done)
+- **Next batch:** Batch 10 — `08-JAVASCRIPT-AND-TYPESCRIPT` (`JS-01` … `JS-14`; prereq 07,
+  now written — check for Node/Bun on the writing machine before planning: the language lessons
+  (fundamentals, functions, arrays/objects, promises, event loop, errors) execute in Node,
+  while `dom-and-events.md` needs headless Chrome `--dump-dom` probes exactly as 07 did; the
+  TypeScript lessons (`JS-10`…`13`) need a `tsc` install — if absent they follow 04's Gradle
+  pattern (honest `command not found` probe + labelled transcripts from official docs);
+  `JS-14` is exercises + separated solutions as in 02/04)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
@@ -531,12 +533,14 @@ This section is updated at the end of every batch so the next session can resume
   throughout and a Python raw-socket client in place of netcat; Windows-only tools (`tracert`,
   `ipconfig`) are labelled with their Linux counterparts named; the headless screenshot refused
   writes to the Temp directory (`Access is denied`) and was captured to a workspace path instead.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 104 subject files, 211 image
-  refs); `check-links.py` exit 0 (207 files, 0 broken, 33 planned targets; 06 scope: 21 files,
-  0 broken after 1 broken ref found and fixed in this batch — `client-server-architecture.md`
-  linked `../../VERSIONS.md` from a subject subdirectory and was retargeted to `../VERSIONS.md`;
-  2 new planned refs point at `21-REFERENCE-LIBRARY/http-status-codes.md`); 7/7 Mermaid blocks
-  in 06 parse VALID via the JSDOM harness (1 fixed in this batch: a `;` statement terminator
-  inside a sequenceDiagram `Note` in tcp-and-udp.md — removed, `<br/>` retained); fence parity
-  clean across all 9 06-lessons + README + exercises README + 10 solution files (21 files).
-  `--strict` turns planned targets into failures in Phase K.
+  07 executed in Chrome 156 headless only — cross-engine (Gecko/WebKit) behavior claims stay
+  labelled illustrations, and headless enforces a ~504px minimum window content width (requests
+  below clamp silently), so true-360px acceptance criteria name devtools device emulation;
+  axe-core was fetched once and served locally (`axe.min.js` beside the pages), so lessons claim
+  only the 4.10.2 rules that ran.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 114 subject files, 222 image
+  refs); `check-links.py` exit 0 (218 files, 0 broken, 34 planned targets; 07 scope: 12 files,
+  0 broken, 1 planned ref pointing at `20-PROJECT-LABORATORY/project-02-responsive-portfolio/
+  README.md`); 7/7 Mermaid blocks in 07 parse VALID via the JSDOM harness; fence parity clean
+  across all 12 files in 07 (10 lessons + README + projects/README). `--strict` turns planned
+  targets into failures in Phase K.

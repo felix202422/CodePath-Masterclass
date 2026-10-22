@@ -9,6 +9,26 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 07 — HTML and CSS** — ten lessons (HTML fundamentals through accessibility) with
+  every browser transcript **executed** on the authoring machine (Chrome 156 headless,
+  `--dump-dom`/`--screenshot`/computed-style probes, axe-core 4.10.2 in-page): the box-model
+  content-box/border-box pair measured through `clientWidth`/`offsetWidth` (250 vs 200 border
+  boxes, border-box content shrinking to 150) with collapsed-margin `offsetTop` stacking, the
+  flexbox `space-between`/`gap`/`align-items: center` row and the stretch-at-`align-items:
+  stretch` `h=60` measurement, grid track/area placement read from computed styles, the
+  cascade/specificity lab (compound-selector tie resolved by document order, `:not()`
+  contributing zero specificity), the responsive clamp resolved at three exact viewport widths
+  with the ~504px minimum-window clamp recorded as the honest machine seam (true 360px belongs
+  to devtools device emulation), a constraint-validation form probe (`checkValidity`,
+  `setCustomValidity`, `reportValidity`), an executed accessibility pair — bad page **7 axe
+  violations** (2 critical, 2 serious, 3 moderate) versus same-content corrected page **0**,
+  WCAG contrast computed for real (2.85:1 `#999` fail, 7.00:1 `#595959` AAA pass, 3.00:1 lab
+  green named honestly as an AA fail for body text), and a keyboard focus probe proving native
+  focusability (`div[onclick] false`), the positive-`tabindex` queue jump, and `disabled`/`-1`
+  exclusions; seven Mermaid diagrams, all parse-validated; and `projects/` — three progressively
+  harder build briefs (semantic article page, responsive navigation, form-heavy settings
+  screen) with reviewer-style acceptance criteria (axe 0, heading outline, 360/1440px via
+  device emulation, keyboard pass, computed contrast) feeding Project 02's promotion gate.
 - **Subject 06 — Internet and Web Foundations** — nine lessons (how the internet works through
   browsers and rendering) with every transcript **executed** on the authoring machine (curl
   8.22.0, OpenSSL 3.5.9, Python 3.13.5, Chrome 156 headless, `nslookup` against the live ISP
