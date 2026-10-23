@@ -238,20 +238,20 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `HTML-12` `projects/` brief for Project 02
 
 **08-JAVASCRIPT-AND-TYPESCRIPT** (prereq: 07)
-- [ ] `JS-01` `README.md`
-- [ ] `JS-02` `javascript-fundamentals.md`
-- [ ] `JS-03` `functions-and-scope.md`
-- [ ] `JS-04` `arrays-and-objects.md`
-- [ ] `JS-05` `dom-and-events.md`
-- [ ] `JS-06` `modules.md`
-- [ ] `JS-07` `promises-and-async-await.md`
-- [ ] `JS-08` `event-loop.md`
-- [ ] `JS-09` `error-handling.md`
-- [ ] `JS-10` `typescript-fundamentals.md`
-- [ ] `JS-11` `types-and-interfaces.md`
-- [ ] `JS-12` `generics.md`
-- [ ] `JS-13` `type-narrowing.md`
-- [ ] `JS-14` `exercises/` + solutions
+- [x] `JS-01` `README.md`
+- [x] `JS-02` `javascript-fundamentals.md`
+- [x] `JS-03` `functions-and-scope.md`
+- [x] `JS-04` `arrays-and-objects.md`
+- [x] `JS-05` `dom-and-events.md`
+- [x] `JS-06` `modules.md`
+- [x] `JS-07` `promises-and-async-await.md`
+- [x] `JS-08` `event-loop.md`
+- [x] `JS-09` `error-handling.md`
+- [x] `JS-10` `typescript-fundamentals.md`
+- [x] `JS-11` `types-and-interfaces.md`
+- [x] `JS-12` `generics.md`
+- [x] `JS-13` `type-narrowing.md`
+- [x] `JS-14` `exercises/` + solutions
 
 **09-FRONTEND-ENGINEERING** (prereq: 08)
 - [ ] `FE-01` `README.md`
@@ -511,18 +511,18 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-22 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+- **Last updated:** 2026-10-23 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
   02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
-  05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS, and
-  07-HTML-AND-CSS complete — TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11, and HTML-01…12
-  all done)
-- **Next batch:** Batch 10 — `08-JAVASCRIPT-AND-TYPESCRIPT` (`JS-01` … `JS-14`; prereq 07,
-  now written — check for Node/Bun on the writing machine before planning: the language lessons
-  (fundamentals, functions, arrays/objects, promises, event loop, errors) execute in Node,
-  while `dom-and-events.md` needs headless Chrome `--dump-dom` probes exactly as 07 did; the
-  TypeScript lessons (`JS-10`…`13`) need a `tsc` install — if absent they follow 04's Gradle
-  pattern (honest `command not found` probe + labelled transcripts from official docs);
-  `JS-14` is exercises + separated solutions as in 02/04)
+  05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS,
+  07-HTML-AND-CSS, and 08-JAVASCRIPT-AND-TYPESCRIPT complete — TOOL-01…12, JAVA-01…23,
+  DSA-01…19, WEB-01…11, HTML-01…12, and JS-01…14 all done)
+- **Next batch:** Batch 11 — `09-FRONTEND-ENGINEERING` (`FE-01` … `FE-18`; prereq 08,
+  now written — Node 24.13.1 and npm 11.8.0 are present, so React/Vite probes can be
+  **executed** rather than illustrated: install a small React + Vite scaffold in a Temp lab,
+  run rendered-component and hook behaviour through headless Chrome 156 exactly as 07/08 did,
+  and type-check component props with the same tsc 7.0.2; `npm i` needs network access, so
+  plan an offline fallback if the registry is unreachable; `FE-18` is the `projects/` brief
+  continuation; exercises + separated solutions as in 02/04/06/08)
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
@@ -537,10 +537,20 @@ This section is updated at the end of every batch so the next session can resume
   labelled illustrations, and headless enforces a ~504px minimum window content width (requests
   below clamp silently), so true-360px acceptance criteria name devtools device emulation;
   axe-core was fetched once and served locally (`axe.min.js` beside the pages), so lessons claim
-  only the 4.10.2 rules that ran.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 114 subject files, 222 image
-  refs); `check-links.py` exit 0 (218 files, 0 broken, 34 planned targets; 07 scope: 12 files,
-  0 broken, 1 planned ref pointing at `20-PROJECT-LABORATORY/project-02-responsive-portfolio/
-  README.md`); 7/7 Mermaid blocks in 07 parse VALID via the JSDOM harness; fence parity clean
-  across all 12 files in 07 (10 lessons + README + projects/README). `--strict` turns planned
-  targets into failures in Phase K.
+  only the 4.10.2 rules that ran. Batch 10 executed TypeScript against tsc 7.0.2 (the native
+  port) installed in a temporary lab directory, and found two toolchain seams now recorded in
+  the lessons: a *bare* CLI run with no tsconfig enforces `noImplicitAny` on this tsc, so loose-
+  mode comparisons must use a tsconfig with `"strict": false`; and two prose claims written from
+  commented-out expectations (`typeof` being TDZ-exempt; `first<number>(["a"])` reporting
+  `TS2345`) were corrected against re-executed runs (`ReferenceError`; `TS2322` for fresh
+  literals, `TS2345` for variable arguments). Later batches should treat a *commented* expected
+  diagnostic as unexecuted until a run says otherwise.
+- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 126 subject files, 248 image
+  refs); `check-links.py` exit 0 (244 files, 0 broken, 35 planned targets; 08 scope: 26 files,
+  0 broken after 1 broken ref found and fixed in this batch — `javascript-fundamentals.md` linked
+  `../../20-PROJECT-LABORATORY/project-02-responsive-portfolio/README.md` from a subject root,
+  one `..` too many, and was retargeted to `../20-…`, which is now the 35th planned ref);
+  12/12 Mermaid blocks in 08 parse VALID via the JSDOM harness (1 fixed in this batch: a dotted
+  edge written `-. "no guard" -->` in `type-narrowing.md` — mermaid wants `-.->|"no guard"|`);
+  fence parity clean across all 26 files in 08 (12 lessons + README + exercises/README + 12
+  solution files + solutions/README). `--strict` turns planned targets into failures in Phase K.

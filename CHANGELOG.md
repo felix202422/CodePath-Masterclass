@@ -9,6 +9,40 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 08 — JavaScript and TypeScript** — twelve lessons (JavaScript fundamentals through
+  type narrowing) with every transcript **executed** on the authoring machine (Node 24.13.1,
+  tsc 7.0.2 under `--strict`, headless Chrome 156): the nine-expression coercion ladder
+  (`'5' + 1` → `51` vs `'5' - 1` → `4`, `0 ?? 'x'` → `0`) beside a corrected TDZ trio — the
+  lesson's own myth was fixed against a re-run, since `typeof` on a TDZ binding **throws**
+  `ReferenceError` and only never-declared names get the free `undefined`; closures over five
+  loop forms (`var` → `3,3,3`, `let`/factory/`while`-block → `0,1,2`, `bind` → per-object
+  `this`), aliasing vs copying (`toSorted` leaving the source intact) with both executed
+  `Object.freeze` `TypeError`s and an unchanged-data proof, an executed DOM propagation trail
+  (capture → target → bubble, ancestry adding `out-bubble`) plus the listener-identity trio
+  (`hits=1` for a named function registered twice, `arrowHits=2` for two arrows) in headless
+  Chrome, module namespace keys and the link-time `SyntaxError` beside once-per-process
+  side-effect runs and both cycle outcomes (deferred loads, TDZ read crashes), the
+  unhandled-rejection child-process crash (exit 1, `Error: no`) against measured serial /
+  `Promise.all` / batch timings (299 / 60 / 181 ms for five 50 ms tasks), mixed-queue traces
+  (`await` finishing before every timer) and a bounded starvation table (timer delayed 1 → 9 →
+  14 ms as N grows, unbounded case stated as counterfactual only), the four `finally` probes
+  including the return that swallows a throw, `cause`/`AggregateError` root preservation, the
+  `instanceof` dispatch with the inherited-`name` pitfall, TypeScript's erased emit (`Hello,
+  Ada!` from JS with no type syntax), the executed diagnostic ladder (`TS2588` for `const`
+  reassignment — a second prose claim corrected against the run — plus `TS2322`/`TS2345`), a
+  strict-vs-loose tsconfig audit recording the tsc-7 seam that a *bare* CLI run already
+  enforces `noImplicitAny`, the four-behavior structural-typing matrix (exit 0/1/1/0 with
+  `TS2741` and `TS2353`), generics with the pinned-argument misuse re-executed and corrected
+  (`TS2322` for the fresh literal, `TS2345` only when the argument is a pre-built variable),
+  and a narrowing cluster that compiles **exit 0** and runs — printing `7.0 12 OK 8080 a, b
+  round` — beside four executed failure modes (`TS2339` un-narrowed union, `TS18046` on
+  `unknown`, `TS18047` narrowing lost to a closure, `TS2345` exhaustiveness after a variant
+  is added); twelve Mermaid diagrams, all parse-validated; and `exercises/` — twelve
+  observation-first sets mirroring each lesson's ladder with a separated solutions directory:
+  thirteen files quoting transcripts re-executed while writing them and shape-only answers for
+  the open-ended designs (focus-trapping modal, module layout, settings loader, frozen-
+  dashboard diagnosis, payments taxonomy, adoption plan with ratchet, editor type layer,
+  typed event bus, chat-event pipeline).
 - **Subject 07 — HTML and CSS** — ten lessons (HTML fundamentals through accessibility) with
   every browser transcript **executed** on the authoring machine (Chrome 156 headless,
   `--dump-dom`/`--screenshot`/computed-style probes, axe-core 4.10.2 in-page): the box-model
