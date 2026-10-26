@@ -254,24 +254,26 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `JS-14` `exercises/` + solutions
 
 **09-FRONTEND-ENGINEERING** (prereq: 08)
-- [ ] `FE-01` `README.md`
-- [ ] `FE-02` `react-fundamentals.md`
-- [ ] `FE-03` `components-and-props.md`
-- [ ] `FE-04` `state-and-hooks.md`
-- [ ] `FE-05` `component-composition.md`
-- [ ] `FE-06` `routing.md`
-- [ ] `FE-07` `forms.md`
-- [ ] `FE-08` `state-management.md`
-- [ ] `FE-09` `api-integration.md`
-- [ ] `FE-10` `frontend-authentication.md`
-- [ ] `FE-11` `error-and-loading-states.md`
-- [ ] `FE-12` `reusable-components.md`
-- [ ] `FE-13` `design-systems.md`
-- [ ] `FE-14` `performance.md`
-- [ ] `FE-15` `accessibility.md`
-- [ ] `FE-16` `frontend-testing.md`
-- [ ] `FE-17` `build-and-deployment.md`
-- [ ] `FE-18` `projects/` brief continuation
+- [x] `FE-01` `README.md`
+- [x] `FE-02` `react-fundamentals.md`
+- [x] `FE-03` `components-and-props.md`
+- [x] `FE-04` `state-and-hooks.md`
+- [x] `FE-05` `component-composition.md`
+- [x] `FE-06` `routing.md`
+- [x] `FE-07` `forms.md`
+- [x] `FE-08` `state-management.md`
+- [x] `FE-09` `api-integration.md`
+- [x] `FE-10` `frontend-authentication.md`
+- [x] `FE-11` `error-and-loading-states.md`
+- [x] `FE-12` `reusable-components.md`
+- [x] `FE-13` `design-systems.md`
+- [x] `FE-14` `performance.md`
+- [x] `FE-15` `accessibility.md`
+- [x] `FE-16` `frontend-testing.md`
+- [x] `FE-17` `build-and-deployment.md`
+- [x] `FE-18` `projects/` brief continuation (three briefs: paginated table,
+  form wizard, token-authenticated dashboard → Project 05 frontend)
+- [x] `FE-19` `exercises/` + solutions (12 sets, 13 solution files)
 
 ## M5 — Data and backend (Phase F)
 
@@ -511,18 +513,22 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-23 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+- **Last updated:** 2026-10-26 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
   02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
   05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS,
-  07-HTML-AND-CSS, and 08-JAVASCRIPT-AND-TYPESCRIPT complete — TOOL-01…12, JAVA-01…23,
-  DSA-01…19, WEB-01…11, HTML-01…12, and JS-01…14 all done)
-- **Next batch:** Batch 11 — `09-FRONTEND-ENGINEERING` (`FE-01` … `FE-18`; prereq 08,
-  now written — Node 24.13.1 and npm 11.8.0 are present, so React/Vite probes can be
-  **executed** rather than illustrated: install a small React + Vite scaffold in a Temp lab,
-  run rendered-component and hook behaviour through headless Chrome 156 exactly as 07/08 did,
-  and type-check component props with the same tsc 7.0.2; `npm i` needs network access, so
-  plan an offline fallback if the registry is unreachable; `FE-18` is the `projects/` brief
-  continuation; exercises + separated solutions as in 02/04/06/08)
+  07-HTML-AND-CSS, 08-JAVASCRIPT-AND-TYPESCRIPT, and 09-FRONTEND-ENGINEERING complete —
+  TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11, HTML-01…12, JS-01…14, and FE-01…19 all
+  done; milestone M4's subject track is finished)
+- **Next batch:** Batch 12 — `10-DATABASE-ENGINEERING` (`DB-01` … `DB-11`; prereq 02,
+  SQL lessons unlock 11). The register's own note says SQL sets are meant to run against a
+  real PostgreSQL instance (`10-DATABASE-ENGINEERING/postgresql/README.md`, a planned
+  target): check whether PostgreSQL is present on the writing machine before planning — if
+  it is absent (like Docker/Gradle), label SQL transcripts as run-elsewhere/illustrated and
+  record the absence as a seam, exactly as 04 did for Gradle; `ROADMAP.md` also lists
+  `postgresql/` and `10` exercises, so confirm whether DB exercise sets and that directory
+  are in scope for the batch or scheduled separately. Deliverables follow 06/08/09:
+  README + 11 lessons + `exercises/` with separated solutions + the `projects/`-equivalent
+  brief if the register adds one.
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
@@ -545,12 +551,17 @@ This section is updated at the end of every batch so the next session can resume
   `TS2345`) were corrected against re-executed runs (`ReferenceError`; `TS2322` for fresh
   literals, `TS2345` for variable arguments). Later batches should treat a *commented* expected
   diagnostic as unexecuted until a run says otherwise.
-- **Validation state:** `check-curriculum.py` exit 0 (22/22 subjects, 126 subject files, 248 image
-  refs); `check-links.py` exit 0 (244 files, 0 broken, 35 planned targets; 08 scope: 26 files,
-  0 broken after 1 broken ref found and fixed in this batch — `javascript-fundamentals.md` linked
-  `../../20-PROJECT-LABORATORY/project-02-responsive-portfolio/README.md` from a subject root,
-  one `..` too many, and was retargeted to `../20-…`, which is now the 35th planned ref);
-  12/12 Mermaid blocks in 08 parse VALID via the JSDOM harness (1 fixed in this batch: a dotted
-  edge written `-. "no guard" -->` in `type-narrowing.md` — mermaid wants `-.->|"no guard"|`);
-  fence parity clean across all 26 files in 08 (12 lessons + README + exercises/README + 12
-  solution files + solutions/README). `--strict` turns planned targets into failures in Phase K.
+- **Validation state (batch 11):** `check-curriculum.py` exit 0 (22/22 subjects, 142 subject
+  files, 279 image refs); `check-links.py` exit 0 (275 files, **0 broken**, 37 planned targets;
+  09 scope: 2 broken refs found and fixed in this batch — `build-and-deployment.md` linked
+  `../../20-PROJECT-LABORATORY/README.md` and `../../10-DATABASE-ENGINEERING/README.md` from a
+  subject root, one `..` too many, both retargeted to `../…`); 16/16 Mermaid blocks in 09 parse
+  VALID via the JSDOM harness (2 fixed in this batch: `component-composition.md` had `\"0\"`
+  escaped quotes inside a quoted node label and `performance.md` had a stray quote splitting a
+  label — `bug<br/">few hundred` — mermaid wants plain text or `&quot;` there); fence parity
+  clean across all 09 files (16 lessons + README + projects/README + exercises/README + 12
+  solution files + solutions/README). The mtest harness's jsdom was repaired mid-batch (an
+  unlocked `npm install` pulled jsdom 29.1.1, whose package is missing `xhr-sync-worker.js` and
+  crashes on import; pinned back to jsdom@26). Prior batches' state: 08 scope — 12 lessons,
+  12 Mermaid VALID, fence parity clean across 26 files. `--strict` turns planned targets into
+  failures in Phase K.

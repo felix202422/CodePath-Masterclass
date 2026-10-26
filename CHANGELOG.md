@@ -9,6 +9,41 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 09 — Frontend Engineering** — sixteen lessons (React fundamentals through build and
+  deployment) with transcripts **executed** in a Vite 8.3.5 + React 19.3.1 + Vitest 5.0.5 +
+  jsdom 30.1.3 lab on Node 24.13.1 (probe clusters A–N: 15 test files, 82 assertions, all green
+  in the batch's final run) plus tsc 7.0.2 and a real production build (probe O): JSX captured as
+  an element object (`type`/`props`/`children`/`key: null`) beside the index-key warning firing
+  once vs never, batching proven as one commit per tick (`two setState calls in one handler =
+  one re-render, final value 2`; render battery `3 separate-act clicks: 4 renders`,
+  `3 batched clicks: 5 renders`), the functional updater beating the stale closure
+  (`after stale-form click: 10 | after updater-form click: 21`) and StrictMode's
+  `body -> body -> effect -> cleanup -> effect` trace, `useRef` mutation proving
+  `renders 1 -> 1`, the composition gotchas (`n=0` renders `"0"`, capital-vs-lowercase alias)
+  and lifted state across siblings, `MemoryRouter` back/replace and `<Outlet>` nesting, the
+  controlled-form round trip (`typed \"Ada\" → input.value=\"Ada\"`) with derived validity
+  (`submit disabled at start: true | after blur: \"needs @\"`), context's identity costs
+  (`memoized consumer renders: 1 → 2`, `unstable provider value: consumer renders 1 → 2` vs
+  `unrelated component renders: 1 → 1`), the four-state fetch surface with abort
+  (`error state: \"network down\" | abort-on-unmount: signal aborted = true`,
+  `renders: 3 | fetches: 1`), the auth trade-offs executed rather than asserted (localStorage
+  token readable by any same-origin script `true`, memory token dying on reload, **two 401s →
+  refresh calls: 1**, guard redirect with `?next=`), the error-boundary pair (blank tree without
+  one vs logged `componentStack` + working reset), live-region and role contracts
+  (`role=button count: 2 tags: BUTTON,DIV`, `aria-label wins over placeholder`, `aria-pressed
+  false → true`, focus returned to `Delete`), variant/className/polymorphic-`as` component
+  receipts with `TS2322` captured for a bad tone literal, jsdom resolving theme tokens
+  (`light rgb(37,99,235)`, `dark rgb(96,165,250)`, `space 8px`), the query-ladder proof
+  (role query survives markup change, class query breaks) through keyboard-submit and
+  module-mock contract tests, and probe O's build contract — `16 modules transformed`,
+  `index-qny8FNsF.js 221.22 kB │ gzip: 69.26 kB` built in `735ms`, `VITE_API_URL` inlined,
+  the unprefixed `API_TOKEN` **absent from `dist/`**, `process.env.NODE_ENV` count 0, and
+  `heavy-CEsDep9u.js` split as its own chunk; sixteen Mermaid diagrams, all parse-validated
+  (2 fixed during validation); `projects/` — three briefs (paginated data table with filtering,
+  form-driven wizard, token-authenticated dashboard) written as the frontend preparation for
+  Project 05; and `exercises/` — twelve observation-first sets mirroring each lesson's ladder
+  with a separated solutions directory (thirteen files quoting the lab's probe receipts and
+  labelling shape-only answers for the open-ended designs).
 - **Subject 08 — JavaScript and TypeScript** — twelve lessons (JavaScript fundamentals through
   type narrowing) with every transcript **executed** on the authoring machine (Node 24.13.1,
   tsc 7.0.2 under `--strict`, headless Chrome 156): the nine-expression coercion ladder
