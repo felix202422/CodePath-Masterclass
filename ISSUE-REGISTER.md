@@ -283,9 +283,17 @@ runnable only on machines without the tool (label them), link rot after file ren
   18.6 cluster (see the batch-12 lab note in the unfinished-work summary)
 - [x] `DB-03` `relational-databases.md` — executed: one-to-one rejection, junction join,
   all three referential actions, composite-key rejection
-- [ ] `DB-04` `sql-fundamentals.md`
-- [ ] `DB-05` `filtering-and-aggregation.md`
-- [ ] `DB-06` `joins-and-subqueries.md`
+- [x] `DB-04` `sql-fundamentals.md` — executed: projection/DISTINCT, NULL sort placement
+  both directions, LIMIT/OFFSET pages, RETURNING, row-count tags (`UPDATE 3`, `DELETE 1`),
+  unguarded update contained by rollback (`UPDATE 8` → 0 after)
+- [x] `DB-05` `filtering-and-aggregation.md` — executed: operator ladder, three-valued
+  logic traps (`= null` → 0 rows; `not (price >= 120)` → 4), `count(*)` 8 vs `count(price)`
+  7, GROUP BY buckets with expression keys, WHERE-vs-HAVING population difference (2/2/2 vs
+  3/2/3), the "must appear in the GROUP BY clause" refusal
+- [x] `DB-06` `joins-and-subqueries.md` — executed: inner 8 rows, left-join 8 with
+  coalesced 0s, right/left equivalence 10 = 10, cross 32, full-outer 5-row reconciliation
+  via CTE, scalar/IN/EXISTS/derived-table subqueries (same 6 names), NOT IN NULL trap
+  (2 → 0 rows), ambiguous-column error
 - [ ] `DB-07` `database-design.md`
 - [ ] `DB-08` `er-diagrams.md`
 - [ ] `DB-09` `normalization.md`
