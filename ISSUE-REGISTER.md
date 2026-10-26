@@ -278,9 +278,11 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M5 — Data and backend (Phase F)
 
 **10-DATABASE-ENGINEERING** (prereq: 02; SQL lessons unlock 11)
-- [ ] `DB-01` `README.md`
-- [ ] `DB-02` `database-fundamentals.md`
-- [ ] `DB-03` `relational-databases.md`
+- [x] `DB-01` `README.md`
+- [x] `DB-02` `database-fundamentals.md` — all transcripts executed on a scratch PostgreSQL
+  18.6 cluster (see the batch-12 lab note in the unfinished-work summary)
+- [x] `DB-03` `relational-databases.md` — executed: one-to-one rejection, junction join,
+  all three referential actions, composite-key rejection
 - [ ] `DB-04` `sql-fundamentals.md`
 - [ ] `DB-05` `filtering-and-aggregation.md`
 - [ ] `DB-06` `joins-and-subqueries.md`
@@ -518,17 +520,20 @@ This section is updated at the end of every batch so the next session can resume
   05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS,
   07-HTML-AND-CSS, 08-JAVASCRIPT-AND-TYPESCRIPT, and 09-FRONTEND-ENGINEERING complete —
   TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11, HTML-01…12, JS-01…14, and FE-01…19 all
-  done; milestone M4's subject track is finished)
-- **Next batch:** Batch 12 — `10-DATABASE-ENGINEERING` (`DB-01` … `DB-11`; prereq 02,
-  SQL lessons unlock 11). The register's own note says SQL sets are meant to run against a
-  real PostgreSQL instance (`10-DATABASE-ENGINEERING/postgresql/README.md`, a planned
-  target): check whether PostgreSQL is present on the writing machine before planning — if
-  it is absent (like Docker/Gradle), label SQL transcripts as run-elsewhere/illustrated and
-  record the absence as a seam, exactly as 04 did for Gradle; `ROADMAP.md` also lists
-  `postgresql/` and `10` exercises, so confirm whether DB exercise sets and that directory
-  are in scope for the batch or scheduled separately. Deliverables follow 06/08/09:
-  README + 11 lessons + `exercises/` with separated solutions + the `projects/`-equivalent
-  brief if the register adds one.
+  done; milestone M4's subject track is finished and pushed at `79e4da1`)
+- **Batch 12 in progress:** `10-DATABASE-ENGINEERING` — `DB-01`…`DB-03` written and checked;
+  `DB-04`…`DB-11` remain, then `exercises/` + separated solutions (and the
+  `postgresql/` README + any DB exercise-set scope decision noted last). **Lab (working):**
+  the machine's system-wide PostgreSQL 18 service requires a scram password nobody had, so
+  batch 12 runs its own scratch cluster — `initdb -D %TEMP%/b12/pgdata -U lab -A trust`,
+  `pg_ctl start -o "-p 5433 -c listen_addresses=127.0.0.1"` (localhost only, system
+  service untouched), database `codepath_lab`, probes as `psql -f dbNN-probes.sql` with
+  transcripts kept beside them in `%TEMP%/b12/`. Two seams recorded for later lessons:
+  `pg_ctl start` **hangs a terminal tool call** if its pipes are inherited (postgres keeps
+  them open; the tool times out and kills the tree — the 0xC0000142 autovacuum crash), so
+  start it detached (`nohup … </dev/null >/dev/null 2>&1 &`); and Python's `jsdom` in the
+  mermaid-validation harness is pinned to **jsdom@26** (29.1.1 is missing
+  `xhr-sync-worker.js` and crashes on import).
 - **Known risks:** Docker and Gradle are absent from the writing machine, so those lessons rely on
   official docs and labelled illustrations rather than executed transcripts (04's `build-tools.md`
   shows the `gradle: command not found` probe as honest absence). `gh` is installed but
