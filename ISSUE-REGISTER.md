@@ -304,10 +304,17 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `DB-10` `constraints-and-relationships.md` — executed: check/not-null/unique rejections
   with DETAILs, defaults via RETURNING, not-valid→validate sequence, exclusion constraint
   overlap rejection (btree_gist seam), FK added via ALTER
-- [ ] `DB-11` `transactions.md`
-- [ ] `DB-12` `indexes.md`
-- [ ] `DB-13` `query-plans-and-optimization.md`
-- [ ] `DB-14` `concurrency-and-isolation.md`
+- [x] `DB-11` `transactions.md` — executed: rollback/commit pair, atomicity under a mid-block
+  failure (successful update discarded), aborted-state guard, savepoint escape, autocommit
+  contrast
+- [x] `DB-12` `indexes.md` — executed: 13.164 ms seq scan (99980 rows removed, 637 buffers) →
+  0.700 ms bitmap/index scan (22 buffers), planner decline on 12% predicate, size 776/5096 kB
+- [x] `DB-13` `query-plans-and-optimization.md` — executed: filter plan with buffers/rows-removed,
+  LIMIT top-N 57.862 ms vs external-merge 223.199 ms spill, hash-join plan, estimate gaps closed
+  by ANALYZE
+- [x] `DB-14` `concurrency-and-isolation.md` — executed two-session: uncommitted invisible,
+  non-repeatable read (100→200), repeatable-read snapshot (100→100), 40001 write conflict,
+  application-level lost update (150 clobbered 200)
 - [ ] `DB-15` `migrations.md`
 - [ ] `DB-16` `backups-and-recovery.md`
 - [ ] `DB-17` `database-security.md`
