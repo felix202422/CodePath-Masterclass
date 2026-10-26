@@ -294,10 +294,16 @@ runnable only on machines without the tool (label them), link rot after file ren
   coalesced 0s, right/left equivalence 10 = 10, cross 32, full-outer 5-row reconciliation
   via CTE, scalar/IN/EXISTS/derived-table subqueries (same 6 names), NOT IN NULL trap
   (2 → 0 rows), ambiguous-column error
-- [ ] `DB-07` `database-design.md`
-- [ ] `DB-08` `er-diagrams.md`
-- [ ] `DB-09` `normalization.md`
-- [ ] `DB-10` `constraints-and-relationships.md`
+- [x] `DB-07` `database-design.md` — executed: the five-table `shop` schema, four design
+  rejections (SKU, orphan customer, duplicate line, status check), money query
+- [x] `DB-08` `er-diagrams.md` — executed: catalog-derived ER (entities, 4 FKs, optionality
+  from attnotnull), mermaid erDiagram validated
+- [x] `DB-09` `normalization.md` — executed: all three anomalies on a flat table (truths=2,
+  not-null insert refusal, customer deleted with row), lossless repair (view=3 rows),
+  anomaly re-runs disappearing
+- [x] `DB-10` `constraints-and-relationships.md` — executed: check/not-null/unique rejections
+  with DETAILs, defaults via RETURNING, not-valid→validate sequence, exclusion constraint
+  overlap rejection (btree_gist seam), FK added via ALTER
 - [ ] `DB-11` `transactions.md`
 - [ ] `DB-12` `indexes.md`
 - [ ] `DB-13` `query-plans-and-optimization.md`
