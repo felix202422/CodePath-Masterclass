@@ -343,8 +343,14 @@ runnable only on machines without the tool (label them), link rot after file ren
   lessons; every quoted capture traceable to a lesson probe, `q1`…`q7`, or `verify.sh`)
 
 **11-BACKEND-ENGINEERING** (prereq: 04, 06, 10)
-- [ ] `BACK-01` `README.md`
-- [ ] `BACK-02` `backend-fundamentals.md`
+- [x] `BACK-01` `README.md` — subject overview written and committed in an earlier batch;
+  verified in batch 13 (all sections, lesson list matches the BACK-02…21 names)
+- [x] `BACK-02` `backend-fundamentals.md` — executed: JDK `HttpServer` probe on
+  `127.0.0.1:8788` (no framework) with curl 8.22 — `curl -v` request/response lines vs the
+  server's `RECV`/`SEND` log for the same event; status battery `200`+`Location`-less health,
+  `201 Created`+`Location: /orders/1`, `405`+`Allow: POST` (GET and DELETE paths), `400` and
+  `404` in one error envelope; bind-restart seam recorded (old listener must die before the
+  new context set binds)
 - [ ] `BACK-03` `http-and-rest-apis.md`
 - [ ] `BACK-04` `api-design.md`
 - [ ] `BACK-05` `java-backend-development.md`
@@ -569,7 +575,15 @@ This section is updated at the end of every batch so the next session can resume
   expected/`verify.sh`), a consistent `shop` sample schema, and `exercises/` — 12 sets with
   13 separated solution files. Root `LABS.md` now maps every lab environment (PostgreSQL,
   Java, browser, JS/TS, React, validation tooling) to the lessons it served; subject-10's
-  README lesson list and coverage bullets extended to all 17 lessons. **Lab (working):**
+  README lesson list and coverage bullets extended to all 17 lessons. Pushed at `f7245ed`.
+- **Batch 13 started:** `11-BACKEND-ENGINEERING` — `BACK-01` verified, `BACK-02` written with
+  an executed JDK `HttpServer` + curl probe (lab: `%TEMP%/b13/`, `Probe.java`, port 8788,
+  transcript `transcript.txt` A1–A7). Next: `BACK-03` `http-and-rest-apis.md` (extend the probe
+  with `GET/PUT/DELETE /orders/{id}` + `HEAD` for method semantics), then `BACK-04`…
+  **Lab constraints carried forward:** no Docker (Testcontainers lessons in `BACK-21` need
+  labelled illustrations or a local alternative), Maven 3.9.16 available, Gradle absent; Spring
+  Boot 4.1.x downloads need network — run a `mvn` smoke early before promising executed Spring
+  transcripts. **Lab (working):**
   the machine's system-wide PostgreSQL 18 service requires a scram password nobody had, so
   batch 12 runs its own scratch cluster — `initdb -D %TEMP%/b12/pgdata -U lab -A trust`,
   `pg_ctl start -o "-p 5433 -c listen_addresses=127.0.0.1"` (localhost only, system
