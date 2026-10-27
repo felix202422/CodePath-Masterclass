@@ -97,6 +97,7 @@ The curriculum moves in one direction: **nothing is taught before the thing it d
 - [CURRICULUM-MAP.md](CURRICULUM-MAP.md) — every competency mapped to its lessons, exercises, and projects
 - [PROGRESS-TRACKER.md](PROGRESS-TRACKER.md) — your manual progress log across eight skill dimensions
 - [VERSIONS.md](VERSIONS.md) — the exact tool versions every example is written against
+- [LABS.md](LABS.md) — the lab environment behind every "executed" transcript, and how to rebuild it
 - [ISSUE-REGISTER.md](ISSUE-REGISTER.md) — what is written, what is not, and what comes next
 - [templates/](templates/lesson-template.md) — the structure every lesson follows
 - [scripts/](scripts/README.md) — validation tooling that checks structure and links

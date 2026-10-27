@@ -315,12 +315,32 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `DB-14` `concurrency-and-isolation.md` — executed two-session: uncommitted invisible,
   non-repeatable read (100→200), repeatable-read snapshot (100→100), 40001 write conflict,
   application-level lost update (150 clobbered 200)
-- [ ] `DB-15` `migrations.md`
-- [ ] `DB-16` `backups-and-recovery.md`
-- [ ] `DB-17` `database-security.md`
-- [ ] `DB-18` `nosql-fundamentals.md`
-- [ ] `DB-19` `postgresql/` administration, scripts, sample data, expected results
-- [ ] `DB-20` Running sample schema: consistent `shop` database across all SQL lessons
+- [x] `DB-15` `migrations.md` — executed: `schema_migrations` ledger holding exactly
+  `0001_init`, `0002_email_unique`, `0003_fixed` with `applied_at` timestamps three seconds
+  apart; re-run prints `skip` ×3 + `migrations up to date: 3`, exit 0; failed `0003`
+  `FAILED … not recorded` exit 1 then the fixed file applies on re-run; data-fix-before-
+  unique-index ordering; psql without `-1` left 1 of 2 inserts, with `-1` rolled the file whole
+- [x] `DB-16` `backups-and-recovery.md` — executed: three dumps (2,969,654 B plain /
+  1,039,646 B custom / 9,896 B `-n shop`), `drop schema shop cascade` → 0 tables → restore
+  → products=4 customers=2 lines=3; `pg_restore -d restore_test` with the 100,000-row
+  `idx.big_order` intact; `pg_restore -l` five SCHEMA entries; `setval 3 2 3 4 5` on every restore
+- [x] `DB-17` `database-security.md` — executed: `analyst`/`reader` all `f` for
+  `rolsuper`/`rolcreatedb`/`rolbypassrls`; `has_table_privilege` `f f` → `grant select` → `t`;
+  `permission denied for table note`, `permission denied for sequence note_id_seq`,
+  column-level denial; revoke re-denies; RLS `reader` sees 1 of 5 rows vs superuser's 5
+- [x] `DB-18` `nosql-fundamentals.md` — executed: `->` jsonb `12` vs `->>` text `12`,
+  `jsonb_typeof` explicit-null `null` vs missing-key, duplicate keys collapse to last;
+  `@>` selected 12,501 of 50,004 rows at 13.549 ms seq scan (37,503 removed); explode 1 row → 3
+- [x] `DB-19` `postgresql/` administration, scripts, sample data, expected results —
+  `shop.sql` (one-file schema+seed), `01-schema.sql`/`02-seed.sql` (pg_dump 18.6), `q1`…`q7`
+  with byte-exact `expected/` (LF), `README.md`, and `verify.sh` — **7 passed, 0 failed** end to
+  end (CRLF stripped in-script so Windows captures diff clean against Linux/macOS)
+- [x] `DB-20` Running sample schema: consistent `shop` database across all SQL lessons —
+  `database-design.md`'s inline DDL matches `shop.sql` column-for-column; its Example 2 money
+  query re-executed against the shipped seed (3 rows, `240.00/39.00/310.00`) with the output
+  block corrected to exact psql padding
+- [x] `DB-21` `exercises/` + solutions (12 sets, 13 files — sets 10–12 carry multiple
+  lessons; every quoted capture traceable to a lesson probe, `q1`…`q7`, or `verify.sh`)
 
 **11-BACKEND-ENGINEERING** (prereq: 04, 06, 10)
 - [ ] `BACK-01` `README.md`
@@ -536,15 +556,20 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-26 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
+- **Last updated:** 2026-10-27 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
   02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
   05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS,
-  07-HTML-AND-CSS, 08-JAVASCRIPT-AND-TYPESCRIPT, and 09-FRONTEND-ENGINEERING complete —
-  TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11, HTML-01…12, JS-01…14, and FE-01…19 all
-  done; milestone M4's subject track is finished and pushed at `79e4da1`)
-- **Batch 12 in progress:** `10-DATABASE-ENGINEERING` — `DB-01`…`DB-03` written and checked;
-  `DB-04`…`DB-11` remain, then `exercises/` + separated solutions (and the
-  `postgresql/` README + any DB exercise-set scope decision noted last). **Lab (working):**
+  07-HTML-AND-CSS, 08-JAVASCRIPT-AND-TYPESCRIPT, 09-FRONTEND-ENGINEERING, and
+  10-DATABASE-ENGINEERING complete — TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11,
+  HTML-01…12, JS-01…14, FE-01…19, and DB-01…21 all done; milestone M4's subject track is
+  finished and pushed at `79e4da1`; batch 12 (subject 10) closes Milestone 6's database
+  half — 11-BACKEND-ENGINEERING is the next batch)
+- **Batch 12 complete:** `10-DATABASE-ENGINEERING` — `DB-01`…`DB-21` all written and
+  checked: 17 lessons + `README.md`, the shipped `postgresql/` lab (schema/seed/queries/
+  expected/`verify.sh`), a consistent `shop` sample schema, and `exercises/` — 12 sets with
+  13 separated solution files. Root `LABS.md` now maps every lab environment (PostgreSQL,
+  Java, browser, JS/TS, React, validation tooling) to the lessons it served; subject-10's
+  README lesson list and coverage bullets extended to all 17 lessons. **Lab (working):**
   the machine's system-wide PostgreSQL 18 service requires a scram password nobody had, so
   batch 12 runs its own scratch cluster — `initdb -D %TEMP%/b12/pgdata -U lab -A trust`,
   `pg_ctl start -o "-p 5433 -c listen_addresses=127.0.0.1"` (localhost only, system
@@ -589,5 +614,13 @@ This section is updated at the end of every batch so the next session can resume
   solution files + solutions/README). The mtest harness's jsdom was repaired mid-batch (an
   unlocked `npm install` pulled jsdom 29.1.1, whose package is missing `xhr-sync-worker.js` and
   crashes on import; pinned back to jsdom@26). Prior batches' state: 08 scope — 12 lessons,
-  12 Mermaid VALID, fence parity clean across 26 files. `--strict` turns planned targets into
-  failures in Phase K.
+  12 Mermaid VALID, fence parity clean across 26 files.  `--strict` turns planned targets into failures in Phase K.
+- **Validation state (batch 12):** `check-curriculum.py` exit 0 (22/22 subjects, 159 subject
+  files, 312 image refs, 0 structural problems); `check-links.py` exit 0 (308 files, **0
+  broken**, 36 planned targets); fence parity clean across all new files (LABS.md,
+  postgresql/README, exercises README + solutions README + 12 set files, the four new
+  lessons); the one new Mermaid block (`set-7-solutions.md` erDiagram) parses VALID via the
+  JSDOM/mermaid harness (its `node_modules` had lost `symbol-tree` to a temp cleanup —
+  repaired with `npm install`, jsdom still pinned at 26); and the lab's own gate
+  `bash verify.sh` → **7 passed, 0 failed** (first run failed 7/7 purely on Windows psql's
+  CRLF vs the LF `expected/` files — fixed by stripping `\r` in-script, not by re-capturing).

@@ -1,0 +1,7 @@
+  category   | revenue 
+-------------+---------
+ displays    |  310.00
+ peripherals |  240.00
+ furniture   |   39.00
+(3 rows)
+

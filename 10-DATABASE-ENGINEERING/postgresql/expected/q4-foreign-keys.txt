@@ -1,0 +1,8 @@
+   child_table   | column_name | parent_table  | on_delete 
+-----------------+-------------+---------------+-----------
+ shop."order"    | customer_id | shop.customer | a
+ shop.order_line | order_id    | shop."order"  | c
+ shop.order_line | product_id  | shop.product  | a
+ shop.product    | category_id | shop.category | a
+(4 rows)
+

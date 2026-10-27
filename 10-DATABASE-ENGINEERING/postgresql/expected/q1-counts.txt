@@ -1,0 +1,9 @@
+ table_name | count 
+------------+-------
+ category   |     3
+ customer   |     2
+ order      |     2
+ order_line |     3
+ product    |     4
+(5 rows)
+

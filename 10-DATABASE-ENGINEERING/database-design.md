@@ -194,11 +194,12 @@ select c.full_name, p.sku, ol.qty, ol.qty * ol.unit_price as line_total
 ```
 
 ```
-  full_name   |  sku   | qty | line_total
---------------+--------+-----+-----------
- Ada Lovelace | KBD-001|   2 |     240.00
- Ada Lovelace | STN-001|   1 |      39.00
- Grace Hopper | MON-271|   1 |     310.00
+  full_name   |   sku   | qty | line_total 
+--------------+---------+-----+------------
+ Ada Lovelace | KBD-001 |   2 |     240.00
+ Ada Lovelace | STN-001 |   1 |      39.00
+ Grace Hopper | MON-271 |   1 |     310.00
+(3 rows)
 ```
 
 Three facts the design made derivable: who ordered (customer→order), what (join through

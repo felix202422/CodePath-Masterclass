@@ -1,0 +1,8 @@
+           conname           |                                      expression                                       
+-----------------------------+---------------------------------------------------------------------------------------
+ order_line_qty_check        | (qty > 0)
+ order_line_unit_price_check | (unit_price >= (0)::numeric)
+ order_status_check          | (status = ANY (ARRAY['new'::text, 'paid'::text, 'shipped'::text, 'cancelled'::text]))
+ product_price_check         | (price >= (0)::numeric)
+(4 rows)
+

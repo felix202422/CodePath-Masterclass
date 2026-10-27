@@ -1,0 +1,7 @@
+ id |   sku   |                attrs                 
+----+---------+--------------------------------------
+  1 | KBD-001 | {"layout": "tkl", "switch": "brown"}
+  2 | MON-271 | {"hz": 75, "panel": "ips"}
+  3 | STN-001 | {"material": "aluminium"}
+(3 rows)
+

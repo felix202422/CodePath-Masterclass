@@ -9,6 +9,50 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 10 — Database Engineering** — seventeen lessons (fundamentals through NoSQL) with
+  transcripts **executed** against PostgreSQL 18.6 / psql 18.6 on the batch's scratch cluster
+  and the shipped lab: the three guard rejections verbatim (`invalid input syntax for type
+  numeric`, `duplicate key … customers_pkey`, `violates foreign key … orders_customer_id_fkey`),
+  NULL arithmetic (`credit | plus_one` empty, `rows_total 3 | rows_with_credit 2`), all three
+  referential actions (default refusal with DETAIL, cascade child `1 → 0`, `set null`), the
+  money query's three rows (`240.00 / 39.00 / 310.00`), three-valued traps (`= null` → 0 rows;
+  `not (price >= 120)` → 4; `count(*) 8` vs `count(price) 7`; `WHERE`-vs`HAVING` populations
+  `2/2/2` vs `3/2/3`), the join ladder (inner 8, left 8 with coalesced 0s, right/left `10 = 10`,
+  cross 32, full-outer 5-row CTE reconciliation, `NOT IN` NULL trap `2 → 0`), the five-table
+  `shop` schema with four design rejections (SKU, orphan customer, duplicate line, status
+  CHECK), a catalog-derived ER diagram (four FKs, optionality from `attnotnull`: three
+  `mandatory (1)` + one `optional (0..1)`) whose mermaid parses VALID, all three normalization
+  anomalies on a flat table (`truths = 2`, not-null insert refusal, deletion cascade) with a
+  lossless 3NF repair (`view = 3 rows`) and the anomaly re-runs disappearing, the constraint
+  battery incl. `not-valid`→`validate` and an exclusion-constraint overlap rejection, the
+  transaction ladder (rollback/commit pair, mid-block atomicity, `current transaction is
+  aborted…` guard, savepoint escape), **two-session isolation** (`100 → 200` non-repeatable,
+  `100 → 100` snapshot, `40001` serialization failure, application lost update `150`
+  clobbering `200`), index measurement (`13.164 ms` seq scan, 99,980 rows removed, 637 buffers →
+  `0.700 ms` bitmap scan, 22 buffers; `776 kB` index over `5,096 kB` table; planner decline at
+  a 12% predicate), plan reading (top-N `57.862 ms` vs external-merge spill `223.199 ms`,
+  estimate gaps closed by `ANALYZE`), a migration runner with a real `schema_migrations` ledger
+  (skip ×3, failed file not recorded, `psql -1` atomicity), backup drills (three dumps
+  `2,969,654 / 1,039,646 / 9,896 B`, `drop schema` → restore → counts back, `setval 3 2 3 4 5`),
+  security probes (role flags `f f`, grants `f f → t`, `permission denied` for table/sequence/
+  column, revoke re-denies, RLS reader sees 1 of 5 rows), and `jsonb` semantics (`->` 12 vs `->>`
+  `'12'`, explicit-null vs missing key, `@>` matching 12,501 of 50,004 rows at 13.549 ms, 37,503
+  rows filtered pre-GIN).
+- **Shipped PostgreSQL lab — `10-DATABASE-ENGINEERING/postgresql/`** — one-file `shop.sql`
+  schema+seed, split `01-schema.sql`/`02-seed.sql` (pg_dump 18.6), seven check queries `q1`…`q7`
+  with byte-exact `expected/` captures, a README, and `verify.sh`, which rebuilds a scratch
+  database and diffs every result: **7 passed, 0 failed** (Windows CRLF stripped in-script so
+  the captures diff clean on any platform).
+- **Exercises — Subject 10** — `exercises/README.md` with 12 sets mapped to all 17 lessons
+  (introductory → intermediate → independent, every exercise with observable criteria) and
+  `exercises/solutions/` — 12 separated solution files behind the attempt-first warning, quoting
+  only real captures.
+- **`LABS.md`** — a root guide mapping every lab environment this repository's transcripts came
+  from (shipped PostgreSQL lab, Java, browser, JS/TS, React/Vitest, Python validation tooling) to
+  the subjects each serves, with bootstrap commands and the reproduce-a-transcript method; linked
+  from the README table of contents. Subject 10's README lesson list and coverage bullets
+  extended to all seventeen lessons.
+
 - **Subject 09 — Frontend Engineering** — sixteen lessons (React fundamentals through build and
   deployment) with transcripts **executed** in a Vite 8.3.5 + React 19.3.1 + Vitest 5.0.5 +
   jsdom 30.1.3 lab on Node 24.13.1 (probe clusters A–N: 15 test files, 82 assertions, all green

@@ -28,6 +28,12 @@ is in executed queries and their honest outputs, not in syntax shown on a slide.
 - Transactions: ACID, `BEGIN`/`COMMIT`/`ROLLBACK`, isolation levels, and the concurrency
   anomalies each level permits.
 - Indexes, query plans, and the practical performance surface a backend developer must read.
+- Migrations, backups, and recovery: versioned schema change, logical dump/restore drills,
+  and the honest line between what a dump covers and what it does not.
+- Security: roles, grants down to column and sequence level, and row-level policies —
+  each denial captured.
+- NoSQL fundamentals: document semantics executed against `jsonb`, and the access-shape
+  argument for when relational is and is not the right engine.
 
 ## Why it matters
 
@@ -55,6 +61,9 @@ on the authoring machine, with the machine's seams recorded honestly in each les
 - `filtering-and-aggregation.md` · `joins-and-subqueries.md`
 - `database-design.md` · `er-diagrams.md` · `normalization.md`
 - `constraints-and-relationships.md` · `transactions.md`
+- `indexes.md` · `query-plans-and-optimization.md` · `concurrency-and-isolation.md`
+- `migrations.md` · `backups-and-recovery.md` · `database-security.md` ·
+  `nosql-fundamentals.md`
 
 ## Exercises and practice
 
