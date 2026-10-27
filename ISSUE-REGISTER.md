@@ -351,7 +351,13 @@ runnable only on machines without the tool (label them), link rot after file ren
   `201 Created`+`Location: /orders/1`, `405`+`Allow: POST` (GET and DELETE paths), `400` and
   `404` in one error envelope; bind-restart seam recorded (old listener must die before the
   new context set binds)
-- [ ] `BACK-03` `http-and-rest-apis.md`
+- [x] `BACK-03` `http-and-rest-apis.md` — executed: probe v2 method battery, eleven
+  requests — `201`+`Location: /orders/1`, `200` representation, `PUT` twice with
+  **B5≡B7 diff IDENTICAL** (idempotency proven as bytes), `204` on delete with `0 body
+  bytes`, `404` on repeat delete (state converged), `405`+`Allow: GET, PUT, DELETE` for
+  `PATCH`, `HEAD /health` advertising `Content-length: 15` with no body (JDK HEAD warning
+  handled manually — recorded seam), `Accept: application/xml` answered JSON (the
+  negotiation seam, labelled not hidden)
 - [ ] `BACK-04` `api-design.md`
 - [ ] `BACK-05` `java-backend-development.md`
 - [ ] `BACK-06` `spring-fundamentals.md`
@@ -576,10 +582,11 @@ This section is updated at the end of every batch so the next session can resume
   13 separated solution files. Root `LABS.md` now maps every lab environment (PostgreSQL,
   Java, browser, JS/TS, React, validation tooling) to the lessons it served; subject-10's
   README lesson list and coverage bullets extended to all 17 lessons. Pushed at `f7245ed`.
-- **Batch 13 started:** `11-BACKEND-ENGINEERING` — `BACK-01` verified, `BACK-02` written with
-  an executed JDK `HttpServer` + curl probe (lab: `%TEMP%/b13/`, `Probe.java`, port 8788,
-  transcript `transcript.txt` A1–A7). Next: `BACK-03` `http-and-rest-apis.md` (extend the probe
-  with `GET/PUT/DELETE /orders/{id}` + `HEAD` for method semantics), then `BACK-04`…
+- **Batch 13 started:** `11-BACKEND-ENGINEERING` — `BACK-01` verified; `BACK-02` and
+  `BACK-03` written with executed probes (lab: `%TEMP%/b13/`, `Probe.java` v2, port 8788,
+  transcripts `transcript.txt` A1–A7 and `transcript2.txt` B1–B13 — 12 logged requests, no
+  warnings). Next: `BACK-04` `api-design.md` (pagination/filtering/idempotency-key probes
+  against the same store), then `BACK-05`…
   **Lab constraints carried forward:** no Docker (Testcontainers lessons in `BACK-21` need
   labelled illustrations or a local alternative), Maven 3.9.16 available, Gradle absent; Spring
   Boot 4.1.x downloads need network — run a `mvn` smoke early before promising executed Spring
