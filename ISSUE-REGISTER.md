@@ -365,7 +365,10 @@ runnable only on machines without the tool (label them), link rot after file ren
   policy (`colour=red` → 200 + `IGNORED` log line), and the full idempotency-key table:
   STORE `201 Location /orders/8` → REPLAY identical `201` → CONFLICT `409` on body
   mismatch, with `totalItems` held at **8** (7+1, no duplicate) across all three
-- [ ] `BACK-05` `java-backend-development.md`
+- [x] `BACK-05` `java-backend-development.md` — executed: `Layered.java` probe (plain JDK)
+  with four requests traced layer-by-layer (`CONTROLLER/SVC/REPO` prefixes) — rule refusal
+  caused in the service, `400` produced in the controller, `qty null→0` translation shown;
+  Maven standard layout quoted from the smoke lab (`main/test/resources`, jar in `target/`)
 - [ ] `BACK-06` `spring-fundamentals.md`
 - [ ] `BACK-07` `spring-boot.md`
 - [ ] `BACK-08` `dependency-injection.md`
