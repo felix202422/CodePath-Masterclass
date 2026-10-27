@@ -587,10 +587,19 @@ This section is updated at the end of every batch so the next session can resume
   transcripts `transcript.txt` A1–A7 and `transcript2.txt` B1–B13 — 12 logged requests, no
   warnings). Next: `BACK-04` `api-design.md` (pagination/filtering/idempotency-key probes
   against the same store), then `BACK-05`…
-  **Lab constraints carried forward:** no Docker (Testcontainers lessons in `BACK-21` need
-  labelled illustrations or a local alternative), Maven 3.9.16 available, Gradle absent; Spring
-  Boot 4.1.x downloads need network — run a `mvn` smoke early before promising executed Spring
-  transcripts. **Lab (working):**
+  **Lab smoke — executed 2026-10-27 (verdict: Spring Boot transcripts ARE possible):**
+  `%TEMP%/b13/spring-smoke` (Spring Boot **4.1.1** parent, `starter-web`, `java.version=21`)
+  — `mvn -B -DskipTests package` → **BUILD SUCCESS, 12.420 s, zero downloads** (the local
+  repo was already populated with 4.1.1 artifacts); `java -jar target/…jar` → `Tomcat
+  started on port 8790`, `Started SmokeApplication in 5.886 seconds`, and `GET /hello` →
+  `200` with `{"message":"spring boot is alive"}` (19,904,500 B jar); `mvn -B test` →
+  `@SpringBootTest` context load `Tests run: 1, Failures: 0, Errors: 0` (8.209 s) — the
+  test path BACK-21 depends on works too. Maven Central reachable (`200` in 0.98 s), so
+  not-yet-cached deps (JPA, Flyway, Testcontainers jars) can resolve; captured seam: a
+  method-level `@SpringBootTest` fails compilation with `annotation interface not
+  applicable to this kind of declaration` — class-level only. Still true: no Docker
+  (BACK-21 Testcontainers needs labelled illustrations or a local alternative), Gradle
+  absent. **Lab (working):**
   the machine's system-wide PostgreSQL 18 service requires a scram password nobody had, so
   batch 12 runs its own scratch cluster — `initdb -D %TEMP%/b12/pgdata -U lab -A trust`,
   `pg_ctl start -o "-p 5433 -c listen_addresses=127.0.0.1"` (localhost only, system
