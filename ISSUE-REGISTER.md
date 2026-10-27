@@ -358,7 +358,13 @@ runnable only on machines without the tool (label them), link rot after file ren
   `PATCH`, `HEAD /health` advertising `Content-length: 15` with no body (JDK HEAD warning
   handled manually — recorded seam), `Accept: application/xml` answered JSON (the
   negotiation seam, labelled not hidden)
-- [ ] `BACK-04` `api-design.md`
+- [x] `BACK-04` `api-design.md` — executed: probe v3 pagination battery (seeded 7 —
+  default page metadata, first/last page, `page=9` → **200 + `items:[]`**, `size=abc` →
+  400 `invalid_parameter`), filter+sort (`qtyMin=3&sort=qty.desc` → 5 rows qty-desc with
+  id tiebreak, `sort=evil` → 200 default order = allowlist fallback), unknown-param
+  policy (`colour=red` → 200 + `IGNORED` log line), and the full idempotency-key table:
+  STORE `201 Location /orders/8` → REPLAY identical `201` → CONFLICT `409` on body
+  mismatch, with `totalItems` held at **8** (7+1, no duplicate) across all three
 - [ ] `BACK-05` `java-backend-development.md`
 - [ ] `BACK-06` `spring-fundamentals.md`
 - [ ] `BACK-07` `spring-boot.md`
@@ -584,9 +590,9 @@ This section is updated at the end of every batch so the next session can resume
   README lesson list and coverage bullets extended to all 17 lessons. Pushed at `f7245ed`.
 - **Batch 13 started:** `11-BACKEND-ENGINEERING` — `BACK-01` verified; `BACK-02` and
   `BACK-03` written with executed probes (lab: `%TEMP%/b13/`, `Probe.java` v2, port 8788,
-  transcripts `transcript.txt` A1–A7 and `transcript2.txt` B1–B13 — 12 logged requests, no
-  warnings). Next: `BACK-04` `api-design.md` (pagination/filtering/idempotency-key probes
-  against the same store), then `BACK-05`…
+  transcripts `transcript.txt` A1–A7, `transcript2.txt` B1–B13, `transcript3.txt` C1–C12 —
+  all batteries logged, no warnings; Maven/Spring Boot smoke verdict recorded above).
+  Next: `BACK-05` `java-backend-development.md`, then `BACK-06` `spring-fundamentals.md`…
   **Lab smoke — executed 2026-10-27 (verdict: Spring Boot transcripts ARE possible):**
   `%TEMP%/b13/spring-smoke` (Spring Boot **4.1.1** parent, `starter-web`, `java.version=21`)
   — `mvn -B -DskipTests package` → **BUILD SUCCESS, 12.420 s, zero downloads** (the local
