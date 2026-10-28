@@ -423,10 +423,28 @@ runnable only on machines without the tool (label them), link rot after file ren
   `DONE attempts:1`, retry trace `attempts:2` → `FAILED attempts:3 gave up after 3`,
   duplicate key → `200 duplicate:true` same id (`totalJobs` stable), unknown id `404`;
   in-memory durability seam documented + restart exercise
-- [ ] `BACK-19` `api-documentation.md`
-- [ ] `BACK-20` `logging.md`
-- [ ] `BACK-21` `backend-testing.md`
-- [ ] `BACK-22` `projects/` brief for Projects 04 and 05
+- [x] `BACK-19` `api-documentation.md` — executed: OpenAPI document validated **4/4
+  green** (structure, references, schemas, examples) + a recorded contract-vs-runtime
+  diff (documented single-violation 400 vs actual sorted multi-violation; documented
+  404 envelope vs actual empty body — doc fixed to match the IDOR rule)
+- [x] `BACK-20` `logging.md` — executed: runs A/B/C — correlation id across all three
+  request lines (`req`/`login rejected`/`res` same rid), DEBUG adds decision lines,
+  WARN-only run keeps just the WARN, `grep -c 'correct horse'` and token prefix → **0**
+  across all three logs; seam recorded: the WARN override also suppresses the
+  `Started …` banner (its logger is in the overridden package), so readiness was
+  probed with a framework logger instead
+- [x] `BACK-21` `backend-testing.md` — executed: `mvn test` **15 tests, 0 failures,
+  BUILD SUCCESS** across `OrderServiceTest` (0.017 s), `AuthServiceTest` (0.901 s),
+  `ApiContractTest` MockMvc (15.15 s), `SmokeApplicationTests` (1.9 s); deliberate-break
+  drill red-captured (enumeration leak → `AssertionFailedError` printing both 401
+  bodies) then green on revert; Spring Boot 4 seam recorded: `@AutoConfigureMockMvc`
+  lives in `spring-boot-webmvc-test`, **not** in `starter-test` — added as a test
+  dependency; `JsonPath.read` generics make bare `assertEquals` ambiguous (cast first)
+- [x] `BACK-22` `projects/` briefs for Projects 04 and 05, plus `exercises/` — 12 sets
+  with observable criteria (rollback proof, privilege-escalation red drill, N+1 query
+  counting named as criteria) and 12 separated solution files behind the attempt-first
+  warning; subject-11 README verified against all twenty lesson files; root `LABS.md`
+  gains the **Spring Boot lab** row + section; CHANGELOG gains the Subject 11 entry.
 
 ## M6 — Mobile (Phase G)
 

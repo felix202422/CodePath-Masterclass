@@ -15,6 +15,7 @@ and the exact text is yours to capture.
 | Browser lab | 06, 07 | Chrome (or any DevTools-capable browser) | Bootstrap below |
 | JavaScript/TypeScript lab | 08 | Node 24, `tsc` | Bootstrap below |
 | React lab | 09 | Vite + React + Vitest | Setup block in [09 exercises](09-FRONTEND-ENGINEERING/exercises/README.md) |
+| Spring Boot lab | 11 | JDK 21+, Maven, PostgreSQL 18 | Setup block in [11 exercises](11-BACKEND-ENGINEERING/exercises/README.md) |
 | Validation tooling | all | Python 3.9+, no packages | **Yes** — [`scripts/`](scripts/README.md) |
 
 ## PostgreSQL lab (subject 10)
@@ -91,6 +92,19 @@ the two `package.json` scripts) is a ready-to-paste block in
 it is the exact shape every lesson's probes ran in. Two rules from that page carry into
 every set: predictions on paper before running, and an assertion wherever the criterion
 says "assert" (a `console.log` proves it ran; an assertion proves it holds).
+
+## Spring Boot lab (subject 11)
+
+The full bootstrap (Spring Initializr with Web, Validation, Data JPA, Security Crypto,
+Actuator, Test; a disposable `backend_lab` database; and the Spring Boot 4 module note —
+`spring-boot-webmvc-test` is **not** in `spring-boot-starter-test`, so without it
+`@AutoConfigureMockMvc` will not compile) is a ready-to-paste block in
+[11 exercises](11-BACKEND-ENGINEERING/exercises/README.md) under *The lab you need* — it is
+the same `spring-smoke`-shaped app every lesson's probes ran in (Spring Boot 4.1.1,
+PostgreSQL 18.6, Maven). One rule from that page carries into every set: predictions on
+paper before running, and an assertion wherever the criterion says "assert" — a `curl`
+you eyeballed proves it ran once; an assertion in `mvn test` proves it holds at the next
+commit.
 
 ## Validation tooling (all subjects)
 

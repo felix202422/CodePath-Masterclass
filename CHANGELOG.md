@@ -9,6 +9,38 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 11 — Backend Engineering** — twenty lessons (backend fundamentals through
+  backend testing) with transcripts **executed** in a Spring Boot 4.1.1 + Java 21 +
+  PostgreSQL 18.6 lab (`spring-smoke` shape): the plain-Java layered probe's full
+  request trace (controller → service → repository → SQL → 201, no framework in
+  between), the HTTP method battery (GET/PUT/DELETE/HEAD, idempotency classifications,
+  `204` zero-byte body), pagination with an overlap demonstrated by inserting between
+  page fetches, idempotency-key dedup (`k-abc` replay → 200 + `Idempotent-Replay`,
+  different-body reuse → 409), Spring container probes (the two-beans failure message,
+  profile default vs `dev`, fail-fast on a refused port, circular-dependency startup
+  crash) with actuator `env` showing secrets masked `******`, the validation battery
+  (three violations reported at once, `fieldErrors` sorted, malformed-body vs field
+  `type` split), rollback proven by `count(*)` before/after, **the N+1 fix — 6 selects
+  vs 1** with `LazyInitializationException` by name and two fixes, bcrypt with uniform
+  login failures (**byte-identical 401 bodies** for unknown user vs wrong password), the
+  session lifecycle (register → login → authenticated → logout → replay 401 with cookie
+  flags quoted), JWT anatomy + signature verification + expired-token 401, a complete
+  **OIDC code+PKCE flow** (state verified, code exchanged, claim checklist filled) with
+  all three attacks rejected and code replay refused, the IDOR rule proved both ways
+  (foreign 404 ≡ missing 404 byte-for-byte; a deliberately divergent pair caught by
+  test), the upload gate (`.exe` → 400, wrong content-type → 415, oversize → 413,
+  server-generated stored names), cache provenance (`db` → `cache` → invalidated on
+  write), the job lifecycle (`202` + `Location`, dedup by key, retry → success), an
+  OpenAPI document **validated 4/4 green** with a recorded contract-vs-runtime diff,
+  logging runs A/B/C (correlation ids across request lines, level overrides, WARN-only
+  run) with `grep -c password` → **0** across all three logs, and the full test suite —
+  **`mvn test`: 15 tests, 0 failures** across unit (`0.017 s`), auth (`0.9 s`), and
+  MockMvc contract (`15.15 s`) layers — proven to have teeth by an injected
+  enumeration leak (red capture with both bodies, then green on revert). Includes
+  `projects/` briefs for Project 04 (REST API) and Project 05 (full-stack), twelve
+  exercise sets with completion criteria, and twelve solution files behind the
+  attempt-first warning. Also adds a **Spring Boot lab** row and section to LABS.md.
+
 - **Subject 10 — Database Engineering** — seventeen lessons (fundamentals through NoSQL) with
   transcripts **executed** against PostgreSQL 18.6 / psql 18.6 on the batch's scratch cluster
   and the shipped lab: the three guard rejections verbatim (`invalid input syntax for type
