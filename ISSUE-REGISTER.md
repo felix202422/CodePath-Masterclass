@@ -369,9 +369,19 @@ runnable only on machines without the tool (label them), link rot after file ren
   with four requests traced layer-by-layer (`CONTROLLER/SVC/REPO` prefixes) — rule refusal
   caused in the service, `400` produced in the controller, `qty null→0` translation shown;
   Maven standard layout quoted from the smoke lab (`main/test/resources`, jar in `target/`)
-- [ ] `BACK-06` `spring-fundamentals.md`
-- [ ] `BACK-07` `spring-boot.md`
-- [ ] `BACK-08` `dependency-injection.md`
+- [x] `BACK-06` `spring-fundamentals.md` — executed: `ContainerLab` (no `new Greeter` in
+  `main` yet ctor runs), lifecycle order ctor→afterPropertiesSet→destroy-on-close,
+  singleton `a == b: true`, `lab`/`prod` → `lab-mode`/`prod-mode`, missing bean →
+  `NoSuchBeanDefinitionException: interface java.lang.Runnable`
+- [x] `BACK-07` `spring-boot.md` — executed: fat-jar smoke on Boot 4.1.1 — banner
+  `Tomcat started on port 8790` + `Started SmokeApplication in 6.458 seconds` from a
+  two-class app; `/hello`, `/config` binding, actuator `health` UP / `info {}`,
+  `env` values all `******` (masking), dev profile → `1 profile is active: "dev"` and
+  `spring-smoke-dev` override with `owner` layering through
+- [x] `BACK-08` `dependency-injection.md` — executed: `DiLab` four-section probe —
+  null repo refused at construction vs setter service NPE at use, container-wired
+  singleton, hostile fake test (`fake rows [700, 800]`, service `imports Spring?
+  false`), plus the cycle refusal (`BeanCurrentlyInCreationException` from `CircularLab`)
 - [ ] `BACK-09` `controllers-services-repositories.md`
 - [ ] `BACK-10` `validation-and-error-handling.md`
 - [ ] `BACK-11` `jpa-and-hibernate.md`
