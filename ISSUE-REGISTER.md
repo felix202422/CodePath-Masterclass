@@ -395,10 +395,23 @@ runnable only on machines without the tool (label them), link rot after file ren
   join = **1 select** (identical payloads, unsorted order noted), `LazyInitializationException:
   Cannot lazily initialize collection ... (no session)` → 500 default shape, derived-query
   parse seam (`findAllWithPurchases` → explicit `@Query`)
-- [ ] `BACK-12` `authentication.md`
-- [ ] `BACK-13` `authorization.md`
-- [ ] `BACK-14` `sessions-and-tokens.md`
-- [ ] `BACK-15` `oauth2-and-openid-connect.md`
+- [x] `BACK-12` `authentication.md` — executed: `AuthProbe` (two bcrypt hashes of one
+  password `equal? false`, `$2a$10$` format, malformed hash WARN+fail-closed, **121 ms
+  vs 1.12 µs** bcrypt-vs-SHA256) + A1..A7 login battery — wrong-password vs unknown-user
+  bodies diff **IDENTICAL**, matched timings 0.159/0.160 s via dummy-hash burn; A6 seam
+  (short password → default 500) closed to `400 invalid-parameter` (A6r)
+- [x] `BACK-13` `authorization.md` — executed: B1..B8 battery on header stand-in —
+  owner 200, foreign **404 bytes=0 identical to nonexistent id (diff IDENTICAL)**, role
+  USER → `403 forbidden`, ADMIN → `200`, no identity → `401 auth-required`, stock rule
+  still `409`; role gate placed in the service (controller deliberately unchecked)
+- [x] `BACK-14` `sessions-and-tokens.md` — executed: S1..S6 session battery (HttpOnly
+  cookie set, authenticated, miss≡guess 401, **logout `revoked:true` then same cookie
+  401**) + `JwtProbe` (hand-built HS256 — clean `true`, tampered `false`, wrong key
+  `false`, stale `true`+`expired=true`, `alg=none` `false`, `MessageDigest.isEqual`)
+- [x] `BACK-15` `oauth2-and-openid-connect.md` — executed `OidcLab`: real loopback
+  provider — 302 `code`+`state` echo pass, `/token` 200 with RS256 `id_token`,
+  `ACCEPT (sig, iss, aud, exp, nonce)`, attacks `REJECT: nonce/signature/not-three-parts`,
+  **code replay → 400 invalid_grant**
 - [ ] `BACK-16` `file-uploads.md`
 - [ ] `BACK-17` `caching.md`
 - [ ] `BACK-18` `background-jobs.md`
