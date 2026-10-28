@@ -412,9 +412,17 @@ runnable only on machines without the tool (label them), link rot after file ren
   provider — 302 `code`+`state` echo pass, `/token` 200 with RS256 `id_token`,
   `ACCEPT (sig, iss, aud, exp, nonce)`, attacks `REJECT: nonce/signature/not-three-parts`,
   **code replay → 400 invalid_grant**
-- [ ] `BACK-16` `file-uploads.md`
-- [ ] `BACK-17` `caching.md`
-- [ ] `BACK-18` `background-jobs.md`
+- [x] `BACK-16` `file-uploads.md` — executed: U1..U5 — `201`+server sha256 for a good
+  file, `.exe` → `400 unsupported type`, 1.5 MB → `413 payload-too-large` (container
+  limit, controller never runs), `filename=../../evil.txt` stored as a UUID (store
+  listing shows exactly the two UUID names), empty → `400`
+- [x] `BACK-17` `caching.md` — executed: C1..C7 — miss 0.492 s `source:db`
+  `computeMillis:307` → hit 0.014 s `source:cache` `0`, stats `hits:1 misses:1`,
+  invalidate `evicted:true` then miss again, `ETag "d61dee47"` → `304 bytes=0`
+- [x] `BACK-18` `background-jobs.md` — executed: J1..J7 — `202`+`Location` accept,
+  `DONE attempts:1`, retry trace `attempts:2` → `FAILED attempts:3 gave up after 3`,
+  duplicate key → `200 duplicate:true` same id (`totalJobs` stable), unknown id `404`;
+  in-memory durability seam documented + restart exercise
 - [ ] `BACK-19` `api-documentation.md`
 - [ ] `BACK-20` `logging.md`
 - [ ] `BACK-21` `backend-testing.md`
