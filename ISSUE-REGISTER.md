@@ -382,9 +382,19 @@ runnable only on machines without the tool (label them), link rot after file ren
   null repo refused at construction vs setter service NPE at use, container-wired
   singleton, hostile fake test (`fake rows [700, 800]`, service `imports Spring?
   false`), plus the cycle refusal (`BeanCurrentlyInCreationException` from `CircularLab`)
-- [ ] `BACK-09` `controllers-services-repositories.md`
-- [ ] `BACK-10` `validation-and-error-handling.md`
-- [ ] `BACK-11` `jpa-and-hibernate.md`
+- [x] `BACK-09` `controllers-services-repositories.md` — executed: nine-request battery on
+  the three-class Spring app — `201`+`Location`, service-rule `409` with domain message,
+  `400` fieldErrors from `@Valid` at the edge, empty `404` (`bytes=0`) by `Optional`,
+  framework `405`+`Allow: POST`
+- [x] `BACK-10` `validation-and-error-handling.md` — executed: twelve-request battery incl.
+  the fall-through seam — `V1/V5` sorted fieldErrors, `V2/V3/V4` returned Boot's default
+  `timestamp/status/error` shape **before** two handlers added, `V2r/V3r/V4r` uniform
+  envelope after; `V6` unknown `admin:true` ignored → `201`
+- [x] `BACK-11` `jpa-and-hibernate.md` — executed on PostgreSQL 18: Hibernate DDL
+  (`customer`/`purchase`, identity PKs, FK), seed `5×4`, N+1 = **6 selects** vs fetch
+  join = **1 select** (identical payloads, unsorted order noted), `LazyInitializationException:
+  Cannot lazily initialize collection ... (no session)` → 500 default shape, derived-query
+  parse seam (`findAllWithPurchases` → explicit `@Query`)
 - [ ] `BACK-12` `authentication.md`
 - [ ] `BACK-13` `authorization.md`
 - [ ] `BACK-14` `sessions-and-tokens.md`
