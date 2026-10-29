@@ -513,9 +513,17 @@ runnable only on machines without the tool (label them), link rot after file ren
   stayed green (print≠assert, captured), then with assertions
   `Found 0 widgets with text "Enter an email"` → `Some tests failed` exit 1 →
   revert → 25 green
-- [ ] `MOB-18` `android-release.md`
-- [ ] `MOB-19` `ios-release.md`
-- [ ] `MOB-20` `projects/` brief for Project 06
+- [x] `MOB-18` `android-release.md` — executed: `flutter build apk --debug` →
+  `√ Built app-debug.apk` 154,535,224 B in 881.7 s (cold Gradle 9.3.1);
+  `flutter build appbundle --release` → `√ Built app-release.aab (43.0MB)`
+  689.7 s, `MaterialIcons-Regular.otf 1645184 → 1368 bytes (99.9%)`;
+  keystore/Play-Console steps **labelled reference**
+- [x] `MOB-19` `ios-release.md` — **labelled reference** (Windows machine, no
+  Xcode): signing chain, Info.plist contracts, ATS, privacy labels, review loop —
+  all steps assigned to macOS in the exercises; no transcript pretends execution
+- [x] `MOB-20` `projects/` brief for Project 06 — offline-first capstone brief:
+  six milestones mapped to the executed batteries W1–W14 + build pair,
+  required exercises, grading rubric, release-readiness gate
 
 ## M7 — Engineering practices (Phase H)
 
