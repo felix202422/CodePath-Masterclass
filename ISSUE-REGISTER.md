@@ -484,9 +484,18 @@ runnable only on machines without the tool (label them), link rot after file ren
   submit errors painted + `callback=not called` on bad values, valid submit
   `email=ada@example.com password=correct horse errors-gone=true`; battery
   `+4: All tests passed!`
-- [ ] `MOB-11` `api-integration.md`
-- [ ] `MOB-12` `local-storage.md`
-- [ ] `MOB-13` `secure-storage.md`
+- [x] `MOB-11` `api-integration.md` — executed: W9 real HTTP vs local server —
+  `status=200 items=3`, 404 envelope `type=…/not-found detail="no such order"`,
+  `caught=FormatException "Unexpected character"`, `caught=TimeoutException
+  "0:00:00.150000"`; W9b state walk `loading → error → loading (attempt 2) →
+  items=1`; `HttpOverrides.global=null` documented (test binding stubs HttpClient)
+- [x] `MOB-12` `local-storage.md` — executed: W10 — prefs `theme=dark launches=7`
+  → fresh handle `launches=8 missing-key=null`, file store `wrote=2 read=2`,
+  corruption `recovered=[] file-repaired=true`
+- [x] `MOB-13` `secure-storage.md` — executed: W11 plaintext token
+  `contains-token=true bytes=27` + redacted log `{"token":"***"}`; platform
+  vault paths (Keychain/Keystore) **labelled reference** — no device on this
+  machine, exercises run them on-device; battery `+8: All tests passed!`
 - [ ] `MOB-14` `camera-and-qr-codes.md`
 - [ ] `MOB-15` `permissions-and-notifications.md`
 - [ ] `MOB-16` `offline-functionality.md`
