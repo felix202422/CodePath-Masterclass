@@ -496,10 +496,23 @@ runnable only on machines without the tool (label them), link rot after file ren
   `contains-token=true bytes=27` + redacted log `{"token":"***"}`; platform
   vault paths (Keychain/Keystore) **labelled reference** — no device on this
   machine, exercises run them on-device; battery `+8: All tests passed!`
-- [ ] `MOB-14` `camera-and-qr-codes.md`
-- [ ] `MOB-15` `permissions-and-notifications.md`
-- [ ] `MOB-16` `offline-functionality.md`
-- [ ] `MOB-17` `mobile-testing.md`
+- [x] `MOB-14` `camera-and-qr-codes.md` — executed: W12 — QR matrix
+  `size=25x25 dark=332/625`, typed parses `WebLink host=example.com` /
+  `WifiNetwork ssid=CafeNet auth=WPA` / `UnknownPayload` (wifi-prefix bug caught
+  by capture); camera HAL + on-device scan **labelled** (no device here)
+- [x] `MOB-15` `permissions-and-notifications.md` — executed: W13 — permission
+  walk `unknown → denied → permanentlyDenied (settings hint) → granted /
+  camera unlocked`, payload routes `order → /confirm?id=7`, `message →
+  /messages/c-9`, `mystery → /`; system dialogs/channels labelled reference
+- [x] `MOB-16` `offline-functionality.md` — executed: W14 — reads
+  `source=network stale=false` → `source=cache(stale) stale=true` → no-cache
+  `SocketException` rethrow; queue `sent=[PUT 1, PUT 2] dedup-skipped=1
+  kept-pending=1`; conflict versions → remote/local wins/NoOp
+- [x] `MOB-17` `mobile-testing.md` — executed: full suite `+25: All tests
+  passed!` (~13s) + deliberate-break drill — first round printed the bug and
+  stayed green (print≠assert, captured), then with assertions
+  `Found 0 widgets with text "Enter an email"` → `Some tests failed` exit 1 →
+  revert → 25 green
 - [ ] `MOB-18` `android-release.md`
 - [ ] `MOB-19` `ios-release.md`
 - [ ] `MOB-20` `projects/` brief for Project 06
