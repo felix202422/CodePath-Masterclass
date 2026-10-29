@@ -474,9 +474,16 @@ runnable only on machines without the tool (label them), link rot after file ren
   `layout: narrow w=390` → `layout: wide w=1280` on viewport resize; W5 stack
   coordinates `badge topLeft=(50.0, 40.0) size=(60.0, 30.0)` asserted with
   `getTopLeft`/`getSize`
-- [ ] `MOB-08` `navigation.md`
-- [ ] `MOB-09` `state-management.md`
-- [ ] `MOB-10` `forms-and-validation.md`
+- [x] `MOB-08` `navigation.md` — executed: W6 battery — `pushed: detail="detail"
+  home-gone=true` → `popped: home detail-gone=true`, argument `confirm order 7`
+  read at destination, awaited `result: confirmed` after mounted-check
+- [x] `MOB-09` `state-management.md` — executed: W7 — InheritedNotifier rebuild
+  counts `mount: dependent=1 bystander=1` → `after inc: dependent=2 bystander=1`,
+  Provider split-state `theme-consumer-builds=1 (was 1)` after inc → `2` after flip
+- [x] `MOB-10` `forms-and-validation.md` — executed: W8 three rounds — empty
+  submit errors painted + `callback=not called` on bad values, valid submit
+  `email=ada@example.com password=correct horse errors-gone=true`; battery
+  `+4: All tests passed!`
 - [ ] `MOB-11` `api-integration.md`
 - [ ] `MOB-12` `local-storage.md`
 - [ ] `MOB-13` `secure-storage.md`
