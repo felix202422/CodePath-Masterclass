@@ -6,6 +6,8 @@
 > first and update it deliberately.
 
 **Verified:** 2026-10-17 against the official sources linked in each row.
+**Re-verified 2026-10-29:** the Node.js row — Node 26 became Active LTS on 2026-10-28, so its
+status changed (see deliberate choice 2 below).
 Numbers marked **UNVERIFIED** are the newest the researcher could confirm from an official page —
 they are a floor, not a guarantee that no newer patch exists.
 
@@ -19,7 +21,7 @@ they are a floor, not a guarantee that no newer patch exists.
 | Hibernate ORM | Managed by Spring Boot — **never pinned by hand** | 7.4.x line | [Hibernate releases](https://hibernate.org/orm/releases/) |
 | Apache Maven | **3.9+ / 3.10** | 3.10.0 (Maven 4 still preview) | [Maven downloads](https://maven.apache.org/download.cgi) |
 | PostgreSQL | **18.x** | 18.6 (19 is only at RC1) | [PostgreSQL versioning](https://www.postgresql.org/support/versioning/) |
-| Node.js | **24.x LTS** | 24.x Active LTS; 26.x becomes Active LTS 2026-10-28 | [Node release schedule](https://github.com/nodejs/Release) |
+| Node.js | **24.x LTS** | Re-verified 2026-10-29: 26.x became Active LTS 2026-10-28; 24.x moved to Maintenance LTS (supported until Apr 2027) | [Node release schedule](https://github.com/nodejs/Release) |
 | npm | 11.x (ships with Node 24) | 11.x | [npm docs](https://docs.npmjs.com/) |
 | TypeScript | **5.x syntax taught; verify installed major before writing a lesson** | 7.0 reported as latest on the download page (**UNVERIFIED** beyond that page) | [TypeScript download](https://www.typescriptlang.org/download/) |
 | React | **19.x** | 19.3 | [React 19.3](https://react.dev/blog/2026/09/09/react-19-3) |
@@ -40,9 +42,13 @@ they are a floor, not a guarantee that no newer patch exists.
    so 21 is fully supported. Local examples are compiled with `javac --release 21` on the JDK 25
    toolchain installed on the author's machine, which validates both that the code is correct and
    that it does not accidentally use post-21 language features.
-2. **Node 24, not 26 (for now).** Node 24 is Active LTS on the verification date; Node 26 only
-   becomes Active LTS on 2026-10-28. Lessons say "Node 24 LTS (Active LTS until Oct 2026)" and
-   this row must be revisited after that date.
+2. **Node 24, not 26 — the promised revisit, done 2026-10-29.** Node 26 became Active LTS on
+   2026-10-28 as forecast, and Node 24 moved to Maintenance LTS (still supported, until April
+   2027). The baseline deliberately stays **24.x**: every executed transcript in subjects 03,
+   08, and 09 ran on the authoring machine's Node 24.13.1, and Maintenance LTS is still a
+   supported LTS — the exact reasons the original note gave still hold. Move the baseline to
+   26.x only together with re-executed probes; teaching a version the lessons never ran is the
+   silent-mixing this file exists to prevent.
 3. **Hibernate is never pinned by hand** in Spring Boot lessons. Spring Boot curates the version.
    Naming a different Hibernate version than the one Boot manages is a classic source of
    "works in the tutorial, breaks in my project" bugs.
