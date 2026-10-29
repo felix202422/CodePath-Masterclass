@@ -531,9 +531,23 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [ ] `ARCH-01` `README.md`
 - [x] `ARCH-02` `the-complete-development-process.md` — 26-stage idea-to-maintenance guide; executed worked example: the `orderdesk` mini-repo (Java 25) — 9-commit trace `stage 1-4`…`stage 20-22`, validation catch `18.70 → 21.40`, deliberate break RED `unknown-region-no-tax: got 10.0 want 5.0` exit 1 → green exit 0, NFR1 `326us < 50000us`; mermaid validated
 - [x] `ARCH-03` `software-development-life-cycle.md` — executed: iteration 2 of the same repo runs the full compressed cycle in five commits (FR3 ACC3 → RED `got 21.4 want 19.27` → stage-6 catch `19.27 → 19.26` → `GREEN_EXIT=0` → release), tags `v0.1.0`/`v0.2.0`, plus the **kept-in false-green incident** (two commits made while red — `git commit` doesn't run tests) as the CI-gate argument; mermaid validated
-- [ ] `ARCH-04` `requirements-engineering.md`
-- [ ] `ARCH-05` `functional-and-nonfunctional-requirements.md`
-- [ ] `ARCH-06` `use-cases-and-uml.md`
+- [x] `ARCH-04` `requirements-engineering.md` — executed: `ReqLab` P1 — both ACs
+  parsed out of `REQUIREMENTS.md` and run (`acc-eu-2lines 21.4`,
+  `acc-eu-discount10 19.26`, summary `2 criteria … 2 passed`), P2 ambiguity probe
+  (FR1 "tax by region" read buyer vs shop: `21.4` vs `20.0` `DELTA=1.4`),
+  P3 traceability `5/5 … uncovered: []`, `REQ-LAB ALL PASS` exit 0; mermaid validated
+- [x] `ARCH-05` `functional-and-nonfunctional-requirements.md` — executed:
+  `BudgetProbe` both outcomes on identical code — budget 50000us `NFR1 PASS: 480us`
+  exit 0, budget 100us `NFR1 FAIL: 463us exceeds budget 100us` exit 1 (the *faster*
+  run fails), methodology gap `1424us` cold vs `463us` warm same workload, NFR2
+  determinism `10000 reruns, distinct results = 1`, FR2 absence test
+  `IllegalArgumentException: bad code`; mermaid validated
+- [x] `ARCH-06` `use-cases-and-uml.md` — executed: `ScenarioLab` — UC0 lifecycle
+  `DRAFT -> SUBMITTED -> PAID -> SHIPPED` + `alt-cancel-submitted` + 2 rejected
+  transitions (`ship on DRAFT`, `pay on CANCELLED` both leave state), UC1 3 flows,
+  UC2 main + bad-code rejection, `SCENARIO-LAB ALL PASS` exit 0; state/sequence/class
+  mermaid validated, use case view kept as text (mermaid 12 has no usecase renderer —
+  parse failure captured and worked around honestly)
 - [ ] `ARCH-07` `clean-code.md`
 - [ ] `ARCH-08` `solid-principles.md`
 - [ ] `ARCH-09` `separation-of-concerns.md`
