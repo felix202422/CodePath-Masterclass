@@ -295,5 +295,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [Requirements Engineering](requirements-engineering.md) — stage 5–6 in
   depth: where the cycle's inputs actually come from.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 07](../../20-PROJECT-LABORATORY/README.md) — its
+- Where it is applied: [Project 07](../20-PROJECT-LABORATORY/README.md) — its
   milestones are iterations; this lesson defines their closing evidence.

@@ -360,5 +360,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [Software Development Life Cycle](software-development-life-cycle.md) —
   how real teams schedule these stages iteratively.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 07](../../20-PROJECT-LABORATORY/README.md) — run its
+- Where it is applied: [Project 07](../20-PROJECT-LABORATORY/README.md) — run its
   capstone through the 26 stages with this lesson's evidence discipline.
