@@ -464,8 +464,16 @@ runnable only on machines without the tool (label them), link rot after file ren
   `sequential=188ms parallel=96ms`, typed `on TimeoutException` catch, ticks+broadcast
   listeners, `one-run=97ms two-isolates=129ms checksum==`; d5b `Bad state: Stream has
   already been listened to` + `broadcast` fix
-- [ ] `MOB-06` `flutter-fundamentals.md`
-- [ ] `MOB-07` `widgets-and-layouts.md`
+- [x] `MOB-06` `flutter-fundamentals.md` — executed: W1/W2 widget-test battery —
+  mount `pageBuilds=1 constChildBuilds=1` → after tap `pageBuilds=2
+  constChildBuilds=1` (const child skipped), element tree dump 77 lines with
+  `Scaffold(dependencies: [...])`, `RenderParagraph size=114x20`; full battery
+  `+5: All tests passed!`, `flutter analyze` → `No issues found! (ran in 64.0s)`
+- [x] `MOB-07` `widgets-and-layouts.md` — executed: W3 `FlutterError: A RenderFlex
+  overflowed by 740 pixels on the right.` via `takeException`; W4 responsive branch
+  `layout: narrow w=390` → `layout: wide w=1280` on viewport resize; W5 stack
+  coordinates `badge topLeft=(50.0, 40.0) size=(60.0, 30.0)` asserted with
+  `getTopLeft`/`getSize`
 - [ ] `MOB-08` `navigation.md`
 - [ ] `MOB-09` `state-management.md`
 - [ ] `MOB-10` `forms-and-validation.md`
