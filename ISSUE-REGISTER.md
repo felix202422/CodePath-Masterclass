@@ -529,8 +529,8 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 **13-SOFTWARE-ENGINEERING-AND-ARCHITECTURE** (prereq: 04, 11)
 - [ ] `ARCH-01` `README.md`
-- [ ] `ARCH-02` `the-complete-development-process.md` — 26-stage idea-to-maintenance guide with worked example
-- [ ] `ARCH-03` `software-development-life-cycle.md`
+- [x] `ARCH-02` `the-complete-development-process.md` — 26-stage idea-to-maintenance guide; executed worked example: the `orderdesk` mini-repo (Java 25) — 9-commit trace `stage 1-4`…`stage 20-22`, validation catch `18.70 → 21.40`, deliberate break RED `unknown-region-no-tax: got 10.0 want 5.0` exit 1 → green exit 0, NFR1 `326us < 50000us`; mermaid validated
+- [x] `ARCH-03` `software-development-life-cycle.md` — executed: iteration 2 of the same repo runs the full compressed cycle in five commits (FR3 ACC3 → RED `got 21.4 want 19.27` → stage-6 catch `19.27 → 19.26` → `GREEN_EXIT=0` → release), tags `v0.1.0`/`v0.2.0`, plus the **kept-in false-green incident** (two commits made while red — `git commit` doesn't run tests) as the CI-gate argument; mermaid validated
 - [ ] `ARCH-04` `requirements-engineering.md`
 - [ ] `ARCH-05` `functional-and-nonfunctional-requirements.md`
 - [ ] `ARCH-06` `use-cases-and-uml.md`
