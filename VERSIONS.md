@@ -25,8 +25,8 @@ they are a floor, not a guarantee that no newer patch exists.
 | React | **19.x** | 19.3 | [React 19.3](https://react.dev/blog/2026/09/09/react-19-3) |
 | Vite | **8.x** (`--template react-ts`) | 8.1 (newer minor **UNVERIFIED**) | [Vite 8.1](https://vite.dev/blog/announcing-vite8-1) |
 | Testing (frontend) | **Vitest + React Testing Library** | Vitest 5.0 | [Vitest vs Jest](https://vitest.dev/guide/comparisons), [RTL intro](https://testing-library.com/docs/react-testing-library/intro/) |
-| Dart | **3.13.x** | 3.13.x (local SDK 3.13.1) | [Dart 3.13](https://dart.dev/blog/announcing-dart-3-13) |
-| Flutter | **stable channel, 3.47.x** | 3.47.x (exact patch **UNVERIFIED**) | [Flutter release notes](https://docs.flutter.dev/release/release-notes) |
+| Dart | **3.13.x** | 3.13.5 (verified `dart --version`) | [Dart 3.13](https://dart.dev/blog/announcing-dart-3-13) |
+| Flutter | **stable channel, 3.47.x** | 3.47.7 (verified `flutter --version`, stable channel) | [Flutter release notes](https://docs.flutter.dev/release/release-notes) |
 | Docker | Engine **29.x**, Desktop **4.95.x** | Engine 29.9.1 / Desktop 4.95.0 | [Engine 29 release notes](https://docs.docker.com/engine/release-notes/29/) |
 | GitHub Actions | `ubuntu-24.04` runner, `actions/checkout@v7`, `actions/setup-java@v6` | ubuntu-latest = Ubuntu 24.04 image; move to 26.04 announced for Nov 2026 | [runner-images](https://github.com/actions/runner-images/blob/main/README.md) |
 | Terraform | **1.16.x** | 1.16.6 (1.17 is RC) | [HashiCorp releases](https://releases.hashicorp.com/terraform/) |
@@ -60,7 +60,8 @@ they are a floor, not a guarantee that no newer patch exists.
 | Gradle | **not installed** — Gradle lessons are documented but not executed locally |
 | Docker | **not installed** — container lessons use verified official docs and labelled transcripts |
 | PostgreSQL client | psql 18.6 |
-| Dart SDK | 3.13.1 (stable) |
+| Dart SDK | 3.13.5 (stable) |
+| Flutter | 3.47.7 (stable channel) — Android SDK 36.1.0 installed |
 | Node.js | 24.13.1 |
 | npm | 11.8.0 |
 | Python | 3.13.5 (used for validation scripts in `scripts/`) |

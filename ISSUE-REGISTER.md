@@ -449,11 +449,21 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M6 — Mobile (Phase G)
 
 **12-MOBILE-DEVELOPMENT** (prereq: 02, 11 for API integration)
-- [ ] `MOB-01` `README.md`
-- [ ] `MOB-02` `mobile-development-fundamentals.md`
-- [ ] `MOB-03` `dart-fundamentals.md`
-- [ ] `MOB-04` `null-safety.md`
-- [ ] `MOB-05` `asynchronous-dart.md`
+- [x] `MOB-01` `README.md`
+- [x] `MOB-02` `mobile-development-fundamentals.md` — executed: `flutter create`
+  scaffold (shared `lib/`+`test/` vs six platform folders, `AndroidManifest.xml` /
+  `Info.plist` on each side), `flutter analyze` → `No issues found! (ran in 94.7s)`,
+  `flutter test` → `+1: All tests passed!`, `Platform.isWindows=true` branch line
+- [x] `MOB-03` `dart-fundamentals.md` — executed: d1 battery (`int 4.5 double`,
+  spread/`if`/`for` collections, merged `{a: 2, ...}`, records, switch expr) + d2
+  battery (cascade, const constructor `0:00:30.000000`, mixin+ext, shapes sum)
+- [x] `MOB-04` `null-safety.md` — executed: d3 `2 issues found` (analyzer **and**
+  `dart run` compile errors), d4a `Null check operator used on a null value` + `#0`
+  trace, d4b `LateInitializationError: Field 'user'`, d4c flow narrowing `narrowed: 8`
+- [x] `MOB-05` `asynchronous-dart.md` — executed: d5 ordering (sync→microtask→timer),
+  `sequential=188ms parallel=96ms`, typed `on TimeoutException` catch, ticks+broadcast
+  listeners, `one-run=97ms two-isolates=129ms checksum==`; d5b `Bad state: Stream has
+  already been listened to` + `broadcast` fix
 - [ ] `MOB-06` `flutter-fundamentals.md`
 - [ ] `MOB-07` `widgets-and-layouts.md`
 - [ ] `MOB-08` `navigation.md`
