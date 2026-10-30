@@ -575,8 +575,20 @@ runnable only on machines without the tool (label them), link rot after file ren
   `MODIFIED existing file -> OrderServiceTight.java` vs `OrderServiceLoose hash
   unchanged`, decorator `8 classes for 3 options` vs `4 classes for 8 combinations`,
   repository `OrderService.java hash unchanged` + `sql imports 0`; mermaid validated
-- [ ] `ARCH-11` `layered-architecture.md`
-- [ ] `ARCH-12` `modular-monoliths.md`
+- [x] `ARCH-11` `layered-architecture.md` — executed: `layered-probes.sh` P1–P3 — lint
+  counts tangled `rule 1 violations=1` / `rule 2 violations=1` vs layered `0`/`0`
+  (both designs compile — Java does not enforce layers), currency change
+  `1 file edited (OrderController.java); service and repository hash unchanged` vs
+  tangled `files edited=1 but concerns disturbed=3 markers`, testability
+  `service test ran with zero infrastructure imports = 42.00` vs tangled
+  `NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)"
+  because "<parameter2>" is null`; mermaid validated
+- [x] `ARCH-12` `modular-monoliths.md` — executed: `modular-probes.sh` P1–P3 — public
+  API call compiles (`P1a`), package-private reach-in rejected
+  `error: InvoiceCalculator is not public in billing; cannot be accessed from outside
+  package` (`P1b`), internal tax change leaves `shop/OrderApi.java hash unchanged` /
+  `0 files outside billing modified`, shared-module anti-pattern
+  `Common is in 2 feature dependency cones … count=2`; mermaid validated
 - [ ] `ARCH-13` `clean-architecture.md`
 - [ ] `ARCH-14` `domain-driven-design.md`
 - [ ] `ARCH-15` `event-driven-architecture.md`
