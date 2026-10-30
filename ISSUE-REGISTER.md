@@ -612,10 +612,32 @@ runnable only on machines without the tool (label them), link rot after file ren
   `final: balance=130.0 duplicates rejected=2 out-of-order rejected=1` + `guard check:
   e-4 wanted seq 2 after seq 3 was applied -> dropped, balance untouched`, isolation
   `handlers ran: [mailer ok, failed: mailer down, warehouse ok]`; mermaid validated
-- [ ] `ARCH-16` `distributed-systems.md`
-- [ ] `ARCH-17` `microservices.md`
-- [ ] `ARCH-18` `scalability-and-reliability.md`
-- [ ] `ARCH-19` `technical-debt.md`
+- [x] `ARCH-16` `distributed-systems.md` — executed: `dist-probes.sh` P1–P3 — stale
+  replica `after commit, replica still says 100 (primary=150)` → `after replication,
+  replica says 150`, partition split-brain `side-AB's acknowledged write x=1 is GONE` vs
+  quorum `side AB has 2/3 votes -> write accepted` + `side C has 1/3 votes -> write
+  rejected with unavailable`, timeout ambiguity `caller gave up after 100ms while the
+  server was still working` → `server executed 'charge' 2 times for 1 logical request`;
+  mermaid validated
+- [x] `ARCH-17` `microservices.md` — executed: `micro-probes.sh` P1–P3 — saga
+  `order=true payment=false stock=true -> inconsistent` vs compensation `order=false
+  payment=false stock=false -> consistent, just failed`, fan-out `sequential=151ms
+  parallel=62ms (3 x 50ms calls)`, and a real javac contract experiment: shared type
+  renamed → untouched consumer `InvoiceService.java:1: error: cannot find symbol /
+  symbol: variable total` vs consumer-owned contract `compiles clean, consumer redeploy
+  count = 0`; mermaid validated
+- [x] `ARCH-18` `scalability-and-reliability.md` — executed: `scale-probes.sh` P1–P3 with
+  fixed seeds — cache `hit ratio = 56.5%, avg latency = 500.0ms -> 223.2ms` for hot-set
+  traffic vs `5.2%` uniform on the same LRU(50), retry policy `same 120 attempts, but only
+  90 land during the outage vs 120 for immediate retries` with backoff reaching past
+  `recovers at t=500ms`, redundancy `96.89% -> 99.74%` (100k ticks, 2-of-3 majority);
+  mermaid validated
+- [x] `ARCH-19` `technical-debt.md` — executed: `debt-probes.sh` P1–P3 — metrics `messy:
+  lines=17 decisionPoints=10 duplicatedTaxLadders=2` vs `clean: lines=10 decisionPoints=2
+  duplicatedTaxLadders=1`, injected 0.07→0.08 bug `messy: tax(100) = 8.0 with 0 tests
+  running -> bug escaped` vs `clean suite: RED tax(100) = 8.0 want 7.0 -> caught`,
+  12-release curve `repay-now=160.0, repay-at-6=192.1, never=542.1` (25%/release growth
+  labeled an assumption); mermaid validated
 
 **14-TESTING-AND-QUALITY** (prereq: 04, 09, 11)
 - [ ] `TEST-01` `README.md`
