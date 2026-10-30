@@ -568,7 +568,13 @@ runnable only on machines without the tool (label them), link rot after file ren
   vs centralized `1 file(s)` → `files edited: EmailPolicy.java`, tangling
   `reasons to change in OrderPage.java: 4` with `java.sql. java.util. javax.mail.`
   foreign imports, plus P5 `retest scope 4 → 1`; mermaid validated
-- [ ] `ARCH-10` `design-patterns.md`
+- [x] `ARCH-10` `design-patterns.md` — executed: `patterns-probes.sh` P1–P5 — strategy
+  `decision points = 6` → `0` with all six behavior checks equal (`P1 both designs agree`),
+  factory `channel.equals decisions = 5 across 2 files` → `0 … lives in 1 file:
+  NotifierFactory.java` + new channel `callers edited … 0`, observer
+  `MODIFIED existing file -> OrderServiceTight.java` vs `OrderServiceLoose hash
+  unchanged`, decorator `8 classes for 3 options` vs `4 classes for 8 combinations`,
+  repository `OrderService.java hash unchanged` + `sql imports 0`; mermaid validated
 - [ ] `ARCH-11` `layered-architecture.md`
 - [ ] `ARCH-12` `modular-monoliths.md`
 - [ ] `ARCH-13` `clean-architecture.md`
