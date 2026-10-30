@@ -548,9 +548,26 @@ runnable only on machines without the tool (label them), link rot after file ren
   UC2 main + bad-code rejection, `SCENARIO-LAB ALL PASS` exit 0; state/sequence/class
   mermaid validated, use case view kept as text (mermaid 12 has no usecase renderer —
   parse failure captured and worked around honestly)
-- [ ] `ARCH-07` `clean-code.md`
-- [ ] `ARCH-08` `solid-principles.md`
-- [ ] `ARCH-09` `separation-of-concerns.md`
+- [x] `ARCH-07` `clean-code.md` — executed: `CleanLab` (Java 25) — behavior preservation
+  across 6 fixtures (`ok fixture-EU-2lines before=21.4 after=21.4` … all six equal),
+  readability metrics over the exact quoted sources (`before: lines=12 maxDepth=1
+  shortIdentifiers=8` → `after: lines=7 maxDepth=0 shortIdentifiers=0`), lying-comment
+  AC `got 20.0 want 19.9 -> AC RED` → `got 19.9 want 19.9 -> AC GREEN`,
+  `CLEAN-LAB ALL PASS`; mermaid validated
+- [x] `ARCH-08` `solid-principles.md` — executed: `solid-probes.sh` P1–P5 with sha256
+  evidence — OCP `MODIFIED existing file -> Calculator.java` vs `0 existing files
+  modified; new files: WholesalePricing.java FeatureWholesaleB.java` (both regression
+  suites green), DIP `second-run exit=1 … out.log missing` vs `ServiceB.java hash
+  unchanged`, SRP `retest scope: 4 concerns` → `1 concern`; `Sondes.java` LSP
+  `Rectangle: 50.0 units2 billed, Square: 100.0 units2 billed` from identical client
+  code + `BrokenShape threw UnsupportedOperationException`, ISP
+  `UnsupportedOperationException: not supported` / `Console untouched`; mermaid validated
+- [x] `ARCH-09` `separation-of-concerns.md` — executed: `soc-probes.sh` P1–P3 — scattering
+  `copies of the validation rule: 4 files, 4 occurrences` → same change request
+  `files edited: CliSignup.java NightlyImport.java SupportTool.java WebSignup.java`
+  vs centralized `1 file(s)` → `files edited: EmailPolicy.java`, tangling
+  `reasons to change in OrderPage.java: 4` with `java.sql. java.util. javax.mail.`
+  foreign imports, plus P5 `retest scope 4 → 1`; mermaid validated
 - [ ] `ARCH-10` `design-patterns.md`
 - [ ] `ARCH-11` `layered-architecture.md`
 - [ ] `ARCH-12` `modular-monoliths.md`
