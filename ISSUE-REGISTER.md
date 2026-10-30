@@ -589,9 +589,29 @@ runnable only on machines without the tool (label them), link rot after file ren
   package` (`P1b`), internal tax change leaves `shop/OrderApi.java hash unchanged` /
   `0 files outside billing modified`, shared-module anti-pattern
   `Common is in 2 feature dependency cones … count=2`; mermaid validated
-- [ ] `ARCH-13` `clean-architecture.md`
-- [ ] `ARCH-14` `domain-driven-design.md`
-- [ ] `ARCH-15` `event-driven-architecture.md`
+- [x] `ARCH-13` `clean-architecture.md` — executed: `cleanarch-probes.sh` P1–P3 —
+  dependency rule stated by the compiler (`P1a: domain entity depends on jakarta ->
+  Order.java:1: error: package jakarta.validation.constraints does not exist`) vs clean
+  rings (`P1b: inner rings compile`, `lint: inner-ring outward mentions = 0`), outer-ring
+  swap (`http adapter: HTTP 200 {"total":90.0}` + `cli adapter: cli: order A-1 total
+  90.0` from one use case → `0 inner-ring files modified (hashes unchanged)`), and a
+  deliberate-break drill on the lint (`0` → planted `java.sql`/`HttpDelivery` → `2` →
+  revert → `0`); mermaid validated
+- [x] `ARCH-14` `domain-driven-design.md` — executed: `ddd-probes.sh` P1–P2 — vocabulary
+  audit `fields both contexts must agree on = 6 -> [id, status, total, shopStatus,
+  warehouseStatus, weightKg] (real overlap=1, accidental coupling=5)` vs two bounded
+  contexts with an ACL (`boundary: CatalogOrder[...state=PAID...] -> FulfillmentOrder[...,
+  warehouseStatus=QUEUED, weightKg=0.4]`, `boundary rule enforced: not shippable yet:
+  DRAFT`), value objects `two equal amounts are equal objects: true`, `illegal state
+  rejected: negative money: -1`, `cross-currency add rejected: currency mismatch: EUR vs
+  USD`, `sum = Money[cents=9500, currency=EUR]`; mermaid validated
+- [x] `ARCH-15` `event-driven-architecture.md` — executed: `evt-probes.sh` P1–P4 —
+  fan-out `two subscribers ran: [mail sent] [audit row]` + `third subscriber added without
+  touching the producer`, naive consumer drift `after duplicate: balance=200.0 (should be
+  150.0)` → `naive: wrong balance by 60.0`, guarded consumer on the identical stream
+  `final: balance=130.0 duplicates rejected=2 out-of-order rejected=1` + `guard check:
+  e-4 wanted seq 2 after seq 3 was applied -> dropped, balance untouched`, isolation
+  `handlers ran: [mailer ok, failed: mailer down, warehouse ok]`; mermaid validated
 - [ ] `ARCH-16` `distributed-systems.md`
 - [ ] `ARCH-17` `microservices.md`
 - [ ] `ARCH-18` `scalability-and-reliability.md`
