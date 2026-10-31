@@ -645,10 +645,21 @@ runnable only on machines without the tool (label them), link rot after file ren
   `balance=130.0 duplicates rejected=2`, `120 → 90`, `repay-now=160.0 / never=542.1`)
 
 **14-TESTING-AND-QUALITY** (prereq: 04, 09, 11)
-- [ ] `TEST-01` `README.md`
-- [ ] `TEST-02` `testing-fundamentals.md`
-- [ ] `TEST-03` `unit-testing.md`
-- [ ] `TEST-04` `integration-testing.md`
+- [x] `TEST-01` `README.md` — subject index: lesson list, pyramid→security→CI positioning, "coverage never tells you what was asserted" blocker
+- [x] `TEST-02` `testing-fundamentals.md` — executed: `PrintTrapTest` green-while-wrong
+  (`PRINT-TRAP: expected=19.9 actual=19.8 MISMATCH` inside `Tests run: 22 … BUILD
+  SUCCESS`), order-dependence probe green-together (`ISOLATION: … value=seeded-by-first-test`)
+  / red-alone (`AssertionFailedError … was: <null>`, exit 1) / fix-line green-alone,
+  pyramid priced from surefire (`16 tests 0.216s` vs `3 tests 12.60s`)
+- [x] `TEST-03` `unit-testing.md` — executed: 16-test boundary/guard battery green
+  (`shipping(net=99.99)=5.00` … `lineTotal 21.40`, message assertions), rename drill —
+  `rate → taxRate` turns exactly `implementationTest` red (`NoSuchFieldException: rate`,
+  15/16 others green) → revert → `Tests run: 22 … BUILD SUCCESS`
+- [x] `TEST-04` `integration-testing.md` — executed: `@SpringBootTest` on real JPA+H2 —
+  `CTX-LOAD: beans wired`, round-trip `PERSIST: id=2 rows 0 -> 1`, rollback probe
+  `ROLLBACK: before=0 after=0 -> exception propagated AND the row is gone`, and the
+  never-ran incident: `OrderServiceIT` outside surefire's `*Test` include (absent from a
+  green 22-test run) → renamed → `3 tests 12.60s` present
 - [ ] `TEST-05` `end-to-end-testing.md`
 - [ ] `TEST-06` `mocking-and-test-doubles.md`
 - [ ] `TEST-07` `test-driven-development.md`
