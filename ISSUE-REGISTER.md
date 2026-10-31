@@ -638,6 +638,11 @@ runnable only on machines without the tool (label them), link rot after file ren
   running -> bug escaped` vs `clean suite: RED tax(100) = 8.0 want 7.0 -> caught`,
   12-release curve `repay-now=160.0, repay-at-6=192.1, never=542.1` (25%/release growth
   labeled an assumption); mermaid validated
+- [x] `ARCH-20` `exercises/` + solutions (12 sets, 13 files — sets 1 and 9–12 carry
+  multiple lessons; every quoted capture traceable to a lesson probe, including
+  `GREEN_EXIT=0` false-green pair, `DELTA=1.4`, `463us exceeds budget 100us`,
+  `rule 1 violations=1 → 0`, `inner-ring outward mentions 0 → 2 → 0`,
+  `balance=130.0 duplicates rejected=2`, `120 → 90`, `repay-now=160.0 / never=542.1`)
 
 **14-TESTING-AND-QUALITY** (prereq: 04, 09, 11)
 - [ ] `TEST-01` `README.md`
