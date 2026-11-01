@@ -677,8 +677,23 @@ runnable only on machines without the tool (label them), link rot after file ren
   socket — 201 + `Location=/api/orders/1`, 400 blank customer / negative net with pinned
   `detail`, 401 no token + wrong token (identical bodies pinned against future leak),
   200 → 404 `no order with id 999999`
-- [ ] `TEST-09` `performance-testing.md`
-- [ ] `TEST-10` `security-testing.md`
+- [x] `TEST-09` `performance-testing.md` — executed: `PerformanceBatteryTest` — P1
+  percentile budget after warmup `p50=100ns p95=100ns max=16300ns budget=50000ns`,
+  P2 injected tail `avg=0.073ms PASS vs budget 5.0ms | p99=5.65ms -> tail caught`
+  (and the harness bug captured honestly: pause outside the window → first run
+  `p99=0.01ms -> tail missed`), P3 gate discriminates `naive=944ms (budget 50ms) ->
+  OVER | indexed=0ms -> PASS` (first run's front-of-list workload captured as
+  `naive=24ms -> PASS`), deliberate break `p95 100ns exceeds budget 10ns` →
+  `BUILD FAILURE` → revert → 3/3 green; JMH/k6/JMeter labelled reference
+- [x] `TEST-10` `security-testing.md` — executed: `SecurityBatteryTest` 5 probes —
+  first run red on two real gaps (`401 must include a WWW-Authenticate challenge`,
+  `X-Content-Type-Options: nosniff must be set ==> expected: <nosniff> but was:
+  <<absent>>`), fixed in production code (`WWW-Authenticate: Bearer realm="lab"` +
+  `SecurityHeadersFilter` at HIGHEST_PRECEDENCE), then `Tests run: 5, Failures: 0`
+  with `challenge=Bearer realm="lab"` / `nosniff`+`DENY` present; P2 injection
+  round-trip `get-after-insert=200 table-alive=yes`, P3 traversal `both shapes ->
+  non-200`, P4 mass assignment `/api/orders/999999 -> 404`; secrets scan 0 matches
+  (code-only scope stated); dependency-check/ZAP labelled reference
 - [ ] `TEST-11` `test-coverage.md`
 - [ ] `TEST-12` `quality-gates.md`
 
