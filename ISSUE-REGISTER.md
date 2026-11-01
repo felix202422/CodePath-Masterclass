@@ -665,10 +665,11 @@ runnable only on machines without the tool (label them), link rot after file ren
   seat driven live (page POST → rendered `Order #N placed for ada`, negative path →
   `400: net must not be negative`); Playwright/Cypress shape labelled reference
 - [x] `TEST-06` `mocking-and-test-doubles.md` — executed: divergence pair — mock accepts
-  `quote(-5.00,1)=-5.35` (green) while real collaborator throws `IllegalArgumentException`
-  (`Tests run: 3, Failures: 1`); guard installed → mock test dies (run 2) → rewritten to
-  `verify(never())` → run 3 green; stub/spy/fake trio (`SPY: real result 21.40 AND call
-  verified`, `FAKE: … no mocking framework`)
+  `quote(-5.00,1)=-5.35` while real collaborator throws `IllegalArgumentException`;
+  run 1 all green (`Tests run: 3, Failures: 0`) across contradictory worlds; guard
+  installed → mock test dies (run 2 `Errors: 1`) → rewritten to `verify(never())` →
+  run 3 green; stub/spy/fake trio (`SPY: real result 21.40 AND call verified`,
+  `FAKE: … no mocking framework`)
 - [x] `TEST-07` `test-driven-development.md` — executed full cycle: RED `expected: <95.0>
   but was: <100.0>` (assertion-failure red against the stub) → GREEN minimal rule (`BUILD
   SUCCESS`) → REFACTOR constant extraction → green again; wrong-red drill classified

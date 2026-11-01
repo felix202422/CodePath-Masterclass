@@ -81,14 +81,14 @@ Test (the prediction):
 
 ```java
 assertEquals(95.00, eu.discountedTotal(100.00), 0.0001, "orders at/above 100.00 get 5% off");
-assertEquals(100.00, eu.discountedTotal(99.99), 0.0001, "below the threshold, no discount");
+assertEquals(99.99, eu.discountedTotal(99.99), 0.0001, "below the threshold, no discount");
 ```
 
 Production at this point is a stub — `discountedTotal(net) { return net; }` — so the
 test compiles and fails on the *assertion*:
 
 ```
-[ERROR]   TddCycleTest.loyaltyDiscount:15 expected: <95.0> but was: <100.0>
+[ERROR]   TddCycleTest.loyaltyDiscount:20 orders at/above 100.00 get 5% off ==> expected: <95.0> but was: <100.0>
 [ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
 [INFO] BUILD FAILURE
 ```
@@ -98,13 +98,13 @@ This is the right red: wrong value, right reason, zero ambiguity about what's mi
 **Step 2 — GREEN, minimum behavior** (executed)
 
 ```java
-public static final double LOYALTY_RATE = 0.05;
-
 public double discountedTotal(double net) {
     if (net < 0) throw new IllegalArgumentException("net must not be negative: " + net);
-    return net >= FREE_SHIPPING_AT ? round2(net * (1 - LOYALTY_RATE)) : net;
+    return net >= FREE_SHIPPING_AT ? round2(net * (1 - 0.05)) : net;
 }
 ```
+
+(The literal `0.05` is deliberate — the named constant arrives in step 3.)
 
 ```
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
@@ -117,8 +117,18 @@ are untouched: full suite afterwards `Tests run: … BUILD SUCCESS`.
 
 **Step 3 — REFACTOR, behavior held** (executed)
 
-Extracted the magic number to the named constant (`LOYALTY_RATE`), tidied the
-threshold reference; rerun:
+Extracted the magic number to a named constant — the lab's final state:
+
+```java
+public static final double LOYALTY_RATE = 0.05;
+
+public double discountedTotal(double net) {
+    if (net < 0) throw new IllegalArgumentException("net must not be negative: " + net);
+    return net >= FREE_SHIPPING_AT ? round2(net * (1 - LOYALTY_RATE)) : net;
+}
+```
+
+rerun:
 
 ```
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0

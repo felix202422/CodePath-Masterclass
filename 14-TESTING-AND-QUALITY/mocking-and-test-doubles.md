@@ -87,19 +87,20 @@ verify(calc).lineTotal(10.00, 2);
 MOCK: stubbed quote=21.40, verify(lineTotal) passed
 ```
 
-**Example 2 — the divergence, executed both ways** (run 1: mock green, real red)
+**Example 2 — the divergence, executed both ways** (run 1: both green, in contradictory worlds)
 
 ```java
 // mock side — impossible world accepted
 when(calc.lineTotal(-5.00, 1)).thenReturn(-5.35);
 assertEquals(-5.35, svc.quote(-5.00, 1), 0.0001);     // GREEN
 // real side — same call, real collaborator
-assertThrows(IllegalArgumentException.class, () -> svc.quote(-5.00, 1));  // RED→passes
+assertThrows(IllegalArgumentException.class, () -> svc.quote(-5.00, 1));  // GREEN too: reality rejects
 ```
 
 Run 1 output: `MOCK: quote(-5.00, 1) = -5.35 -> green, but see the twin`,
 `REAL: quote(-5.00, 1) threw IllegalArgumentException`, and surefire reported
-`Tests run: 3, Failures: 1` / `BUILD FAILURE` — **one of the three tests sees reality**.
+`Tests run: 3, Failures: 0` / `BUILD SUCCESS` — **every test passed while the two
+worlds contradict each other**. Nothing in a green run compares them.
 
 **Example 3 — the fix, and the mock test's honest rewrite** (runs 2 and 3)
 
@@ -109,10 +110,10 @@ The service gets the guard *before* the collaborator:
 if (unitPrice < 0) throw new IllegalArgumentException("unitPrice must not be negative: " + unitPrice);
 ```
 
-Run 2: the real test goes green, and the *mock* test now fails — the service throws
-before consulting the stub, so its impossible assertion is dead (`Tests run: 3,
-Failures: 1`, failing in `mockAcceptsImpossibleWorld`). The rewritten test asserts the
-guard and that the collaborator was never consulted:
+Run 2: the real test stays green, and the *mock* test dies with an **error** — the
+service throws before consulting the stub, so its impossible assertion never runs
+(`Tests run: 3, Failures: 0, Errors: 1`, error in `mockAcceptsImpossibleWorld`). The
+rewritten test asserts the guard and that the collaborator was never consulted:
 
 ```java
 assertThrows(IllegalArgumentException.class, () -> svc.quote(-5.00, 1));
