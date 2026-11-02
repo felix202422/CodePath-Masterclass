@@ -727,10 +727,31 @@ runnable only on machines without the tool (label them), link rot after file ren
   real-storage traversal labelled reference)
 
 **15-APPLICATION-SECURITY** (prereq: 06, 11, 14)
-- [ ] `SEC-01` `README.md`
-- [ ] `SEC-02` `security-fundamentals.md`
-- [ ] `SEC-03` `threat-modeling.md`
-- [ ] `SEC-04` `password-security.md`
+- [x] `SEC-01` `README.md` — subject index and prereq chain (06, 11, 14) named;
+  `SECURITY.md` safe-use pointer present; next-subject pointer to
+  `16-DEVOPS-AND-INFRASTRUCTURE` resolves under `check-links`
+- [x] `SEC-02` `security-fundamentals.md` — 16 sections; every quoted capture
+  traceable to a `seclab-A` probe: base64 recovered in one line
+  (`DECOD : password=username:summer2026!`), defense-in-depth ladder
+  `L1 off   : concat query returned 3 row(s)` vs `parameterised query returned
+  0 row(s)` vs `L1/L2 off, L3 ON : WRITE BLOCKED: attempt to write a readonly
+  database` with `rows still readable through the L3 handle: 3`; scanning/audit
+  tooling not run — labelled reference
+- [x] `SEC-03` `threat-modeling.md` — 16 sections; STRIDE matrix built over an
+  executed 5-route walk of the `seclab-A` notes server: `GET  /notes -> 200`
+  returning bob's row to an anonymous caller, `POST /notes -> 201` with
+  `"owner": "anonymous"`, `GET  /debug/config -> 200` serving
+  `jwt_secret`/`db_url`/`admin_api_key` (body truncated at 120 chars by the
+  probe), injection probe `GET  /notes?id=1'--      -> 404`; DAST/IAM/cloud
+  inventory not run — labelled reference
+- [x] `SEC-04` `password-security.md` — 16 sections; four executed probes:
+  unsalted `identical hashes: True` vs salted `False` (`verify alice: True`),
+  crack `summer2026! in 0.0176 ms` vs PBKDF2-600k `tried 20 candidates in
+  16.12 s` / `per-attempt cost: 806 ms` -> `attacker slowdown vs the unsalted
+  store: 915776x` (still `CRACKED:` — dictionary hit, argued in text), timing
+  ladder `1.02 / 12.61 / 128.29 / 796.54 ms`, policy-vs-strength
+  `Password1! ... PASS FAIL` vs `correct horse battery staple ... FAIL PASS`;
+  Argon2/bcrypt/breach-list API not run — labelled reference
 - [ ] `SEC-05` `session-security.md`
 - [ ] `SEC-06` `access-control.md`
 - [ ] `SEC-07` `injection-vulnerabilities.md`
