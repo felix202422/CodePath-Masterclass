@@ -694,8 +694,26 @@ runnable only on machines without the tool (label them), link rot after file ren
   round-trip `get-after-insert=200 table-alive=yes`, P3 traversal `both shapes ->
   non-200`, P4 mass assignment `/api/orders/999999 -> 404`; secrets scan 0 matches
   (code-only scope stated); dependency-check/ZAP labelled reference
-- [ ] `TEST-11` `test-coverage.md`
-- [ ] `TEST-12` `quality-gates.md`
+- [x] `TEST-11` `test-coverage.md` — executed: JaCoCo baseline over 46 green tests —
+  `TOTAL instruction 93.2% (358/384)` with line drill-down naming four dead
+  failure paths (`getRate()` never called, `net < 0` guards never threw,
+  `quantity <= 0`, the filter's non-`/api/` false arm) → round 1 → `98.7%`
+  (379/384) branch `79.4 → 100%` → round 2 (reachable-branch split: controller
+  `req == null` structurally unreachable over HTTP, direct-call test) → final
+  `54 tests, 0 failures`, only `LabApplication.main()` left (5 instructions);
+  honesty drill inside the green run: `PRINT-TRAP: expected=19.9 actual=19.8
+  MISMATCH` + `EXIT=0`; stale-class incident (`IsolationDependentTest` fails at
+  52 tests, gone from sources, `clean` restores green); PIT labelled reference
+- [x] `TEST-12` `quality-gates.md` — executed three-run drill of a real
+  three-stage gate (`structure → references → mvn clean verify + jacoco floor
+  0.90`): baseline `GATE: PASS` exit 0, `tests=54`, bundle `379/384 = 0.987`;
+  planted `AuditLogger.java` (production code, no tests) → stages 1–2 green,
+  stage 3 red despite `total=54 failures=0 errors=0` — `Coverage checks have
+  not been met` → `GATE: FAIL at stage 3`, exit 1, bundle `379/506 = 0.749`
+  (`AuditLogger 0/122`); fix = four `AuditLoggerTest` tests, never config →
+  `GATE: PASS` exit 0, `tests=58`, bundle `501/506 = 0.9901`; PASS run still
+  carries `PRINT-TRAP … MISMATCH` as the gate's honest limit; hosted-CI YAML
+  labelled reference
 
 **15-APPLICATION-SECURITY** (prereq: 06, 11, 14)
 - [ ] `SEC-01` `README.md`

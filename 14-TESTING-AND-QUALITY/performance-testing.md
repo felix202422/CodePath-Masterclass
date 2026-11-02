@@ -363,4 +363,4 @@ Observable evidence that you have understood this lesson:
   failure classes a green functional suite never looks for
 - Practice: [exercise set](exercises/README.md)
 - Where it is applied: performance budgets return in
-  [16-CICD-AND-DEPLOYMENT](../../16-CICD-AND-DEPLOYMENT/README.md) as pipeline gates
+  [16-DEVOPS-AND-INFRASTRUCTURE](../16-DEVOPS-AND-INFRASTRUCTURE/README.md) as pipeline gates
