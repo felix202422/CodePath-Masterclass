@@ -752,10 +752,33 @@ runnable only on machines without the tool (label them), link rot after file ren
   ladder `1.02 / 12.61 / 128.29 / 796.54 ms`, policy-vs-strength
   `Password1! ... PASS FAIL` vs `correct horse battery staple ... FAIL PASS`;
   Argon2/bcrypt/breach-list API not run — labelled reference
-- [ ] `SEC-05` `session-security.md`
-- [ ] `SEC-06` `access-control.md`
-- [ ] `SEC-07` `injection-vulnerabilities.md`
-- [ ] `SEC-08` `cross-site-scripting.md`
+- [x] `SEC-05` `session-security.md` — 16 sections; five executed `seclab-B` phases:
+  fixation `same sid before and after login  : True` vs rotation `replay old sid -> 401`
+  `{"error": "no such session"}`, cookie flags `{'HttpOnly': False, 'Secure': False,
+  'SameSite': 'absent'}` vs `{'HttpOnly': True, 'Secure': True, 'SameSite': 'Strict'}`,
+  `GET /notes with an expired sid -> 401: {"error": "session expired"}` and
+  `GET /notes after  logout -> 401: {"error": "session revoked"}`; browser DevTools cookie
+  inspection, real TLS deployment, session-store load tests not run — labelled reference
+- [x] `SEC-06` `access-control.md` — 16 sections; four executed `seclab-B` phases: IDOR
+  `bob GET /notes/1 (alice's) -> 200` vs check on `-> 403` (own note still `200`, admin
+  still `200`), forced browsing `checks off: alice GET /admin/metrics -> 200` vs
+  `checks on : alice ... -> 403`, mass assignment `checks off: bob POST /profile -> 200`
+  `{"user": "bob", "role": "admin"}` + `checks off: bob GET /admin/metrics -> 200` vs
+  fixed `checks on : bob POST /profile -> 200` `{"user": "bob", "role": "user"}`;
+  SAST authorization linters, real IAM audits, gateway policy tests not run — labelled
+  reference
+- [x] `SEC-07` `injection-vulnerabilities.md` — 16 sections; executed `seclab-B` probes:
+  SQLi tautology `payload "' OR '1'='1" -> 4 row(s)` and `UNION ... -> 1 row(s): [(99,
+  'pwned', 'admin')]` vs parameterised `executed SQL: SELECT * FROM users WHERE name = ?`
+  returning `0 row(s)` for both payloads, shell injection `output lines : ['greeting x',
+  'PWNED-BY-ARGUMENT']` / `injected second command ran: True` vs list argv
+  `['greeting x & echo PWNED-BY-ARGUMENT']` / `False`; sqlmap, DAST scanners,
+  NoSQL/LDAP/template injection not run — labelled reference
+- [x] `SEC-08` `cross-site-scripting.md` — 16 sections; executed `seclab-B` probes:
+  reflected XSS `script elements parsed   : ['window.__pwned=1']` vs escaped `[]`,
+  stored XSS same pair, `javascript:` URL surviving escaping
+  `still a script-capable scheme: True` then scheme allowlist `-> #blocked`; in-browser
+  script execution, CSP reporting, extension testing not run — labelled reference
 - [ ] `SEC-09` `csrf.md`
 - [ ] `SEC-10` `ssrf.md`
 - [ ] `SEC-11` `secure-api-design.md`
