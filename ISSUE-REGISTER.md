@@ -712,8 +712,19 @@ runnable only on machines without the tool (label them), link rot after file ren
   not been met` → `GATE: FAIL at stage 3`, exit 1, bundle `379/506 = 0.749`
   (`AuditLogger 0/122`); fix = four `AuditLoggerTest` tests, never config →
   `GATE: PASS` exit 0, `tests=58`, bundle `501/506 = 0.9901`; PASS run still
-  carries `PRINT-TRAP … MISMATCH` as the gate's honest limit; hosted-CI YAML
+  carries  `PRINT-TRAP … MISMATCH` as the gate's honest limit; hosted-CI YAML
   labelled reference
+- [x] `TEST-13` `exercises/` + solutions (12 sets, 13 files — set 12 covers the
+  subject README's regression/frontend/mobile promise; every quoted capture
+  traceable to a lesson transcript: `PRINT-TRAP … MISMATCH` inside
+  `BUILD SUCCESS`, `value=seeded-by-first-test` → `was: <null>`,
+  `16 tests 0.216s` vs `3 tests 12.60s`, `NoSuchFieldException: rate` 15/16
+  green, `ROLLBACK: before=0 after=0`, `quote(-5.00,1) = -5.35` vs real throw,
+  `expected: <95.0> but was: <100.0>`, `p99=5.65ms -> tail caught`,
+  `401 must include a WWW-Authenticate challenge`, `93.2% (358/384)` →
+  `98.7%`, gate triple `0.987 PASS` / `0.749 exit 1 with 54 green tests` /
+  `0.9901 PASS with 58`; Playwright grid, hosted CI, staging perf runs and
+  real-storage traversal labelled reference)
 
 **15-APPLICATION-SECURITY** (prereq: 06, 11, 14)
 - [ ] `SEC-01` `README.md`
