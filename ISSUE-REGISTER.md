@@ -779,14 +779,74 @@ runnable only on machines without the tool (label them), link rot after file ren
   stored XSS same pair, `javascript:` URL surviving escaping
   `still a script-capable scheme: True` then scheme allowlist `-> #blocked`; in-browser
   script execution, CSP reporting, extension testing not run — labelled reference
-- [ ] `SEC-09` `csrf.md`
-- [ ] `SEC-10` `ssrf.md`
-- [ ] `SEC-11` `secure-api-design.md`
-- [ ] `SEC-12` `secrets-management.md`
-- [ ] `SEC-13` `dependency-security.md`
-- [ ] `SEC-14` `tls-and-certificates.md`
-- [ ] `SEC-15` `secure-file-uploads.md`
-- [ ] `SEC-16` `security-testing-labs/` local, authorized-only labs
+- [x] `SEC-09` `csrf.md` — 16 sections; executed `seclab-C` probe: forged
+  cross-site POST without defenses `-> 200: {"user": "alice", "email":
+  "attacker@evil.example"}` changing alice's email (`alice's email after :
+  new@example.com`) vs Origin check `-> 403: {"error": "cross-origin request
+  rejected"}` and session-bound token `no token -> 403: {"error": "missing csrf
+  token"}` / `attacker's own token -> 403: {"error": "csrf token mismatch"}` while
+  alice's real token `-> 200`; browser-driven delivery (form/iframe/fetch),
+  SameSite cookie interaction, and cross-framework header parsing not run —
+  labelled reference
+- [x] `SEC-10` `ssrf.md` — 16 sections; executed `seclab-C` probe: policy off
+  reads the metadata stand-in `{'fetched': '{"AccessKeyId":
+  "AKIA-LOOPBACK-STANDIN-0001"...` and `file://` -> `LAB-ONLY-LOCAL-FILE-SECRET`;
+  strict policy `{'error': 'blocked: 127.0.0.1 resolves to private address
+  127.0.0.1'}` and `blocked: scheme 'file' not allowed`; naive allowlist escapes
+  through the open redirect `allowlisted CDN redirect -> {'fetched': '{"AccessKeyId":
+  "AKIA-LOOPBACK-STANDIN-0001"...}` vs `strict, same redirect -> 'RuntimeError:
+  redirect hop 1: blocked...'`; real cloud metadata endpoints, DNS rebinding, and
+  multi-hop redirect chains not run — labelled reference
+- [x] `SEC-11` `secure-api-design.md` — 16 sections; executed `seclab-C` probe:
+  rate ladder `status codes: [200, 200, 200, 200, 200, 429, 429, 429]` with
+  `9th request -> 429 ... Retry-After: 9` while `other client unaffected -> 200`;
+  error hygiene leaky `500: {"error": "login failed against
+  postgres://api_app:DevPass99@10.0.4.11:5432/prod", "debug": true}` and a
+  `stack: "File app.py line 42..."` vs fixed `500: {"error": "internal error",
+  "code": "AUTH_UPSTREAM", "request_id": "req_lab_0001"}` (`req_lab_0002` for the
+  admin route); distributed multi-node counters, real load tests, and gateway/WAF
+  layers not run — labelled reference
+- [x] `SEC-12` `secrets-management.md` — 16 sections; executed `seclab-C` probes:
+  pattern scan `findings: 4` over the fake repo (`app.py:3 [generic api key
+  assignment] API_KEY = "sk_live_EXAMPLE_FIXTURE"`, `app.py:4 [database
+  url with password] postgres://app:DevPass99@10.0.4.11`, `deploy.sh:2 [AWS access
+  key id] AKIAIOSFODNN7EXAMPLE`, plus a private-key block); env-based config
+  `literal in source: False` / `app_env.py scan findings: 0` / `LAB_API_KEY
+  loaded, length 23`; masking `masked log : login with api_key=sk_l...RE` with
+  `masked contains full key : False`; hosted secret-scanning services, KMS/HSM
+  vaults, and live rotation not run — labelled reference
+- [x] `SEC-13` `dependency-security.md` — 16 sections; executed `seclab-C` probes:
+  pinning hygiene `flask -> UNPINNED - resolves to whatever is newest` (and
+  `django>=4,<5`, `unpinned entries: 2`); offline advisory snapshot (LAB FIXTURE)
+  `requests==2.31.0 vs GHSA-LAB-0001 < 2.32.0 -> VULNERABLE` vs `django>=4,<5 ->
+  UNKNOWN (not pinned; cannot compare)`; after upgrading `still-flagged pinned
+  entries: 0` with `flask remains UNPINNED`; hash-pin detection `version-pinned:
+  True, hash-pinned: True`; live pip-audit / OSV / npm audit not run — labelled
+  reference (the probe prints this itself)
+- [x] `SEC-14` `tls-and-certificates.md` — 16 sections; executed `seclab-C` probe
+  (Python OpenSSL 3.0.16, CLI 3.5.9): default store fails `certificate verify
+  failed: unable to get local issuer certificate` vs lab CA trusted `negotiated :
+  TLSv1.3 / TLS_AES_256_GCM_SHA384` returning `hello over TLS`; `openssl x509`
+  inspection `subject=CN=localhost` / `issuer=CN=Lab Root CA` with SAN
+  `DNS:localhost, IP Address:127.0.0.1` and `checkend 0 : exit 0 -> Certificate
+  will not expire`; version floor refuses `tlsv1 alert protocol version`; public-CA
+  issuance/ACME renewal, browser warning UX, HSTS/CT, and revocation not run —
+  labelled reference
+- [x] `SEC-15` `secure-file-uploads.md` — 16 sections; executed `seclab-C` probe:
+  traversal `naive resolves outside uploads dir : True` vs `safe : stored as
+  uploads-lab/2edafaa21107.png (name kept inside: True)`; sniffing rejects both
+  `avatar.png` and `shell.php.png` -> `rejected: content is php but extension says
+  .png`; null byte -> `rejected: extension '.php' not allowed`; streaming limit
+  `reader stopped at 65537 bytes (limit 65536)` / `rejected: size 65537 > 65536
+  bytes`; image re-encoding, antivirus scanning, browser serving-header behavior,
+  and storage-bucket policies not run — labelled reference
+- [x] `SEC-16` `security-testing-labs/` local, authorized-only labs — README index
+  of all 16 labs with the four-beat loop (exploit -> failing test -> fix -> proof),
+  authorization ground rules (loopback-only targets, fixture-only data, safe-use
+  pointer to `SECURITY.md`), the lesson->probe table for `seclab-A|B|C` verified
+  against each probe's own header comment, run instructions (stdlib + `openssl`,
+  no network deps) and the loopback port table (8095, 8096/8097/8100, 8101,
+  8443/8444); no third-party targets or scanners exercised — labelled reference
 
 ## M8 — Operations and production (Phase I)
 
