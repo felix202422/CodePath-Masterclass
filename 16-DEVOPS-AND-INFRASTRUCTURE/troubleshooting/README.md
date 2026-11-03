@@ -21,11 +21,11 @@ After this lesson you will be able to:
 
 ## 2. Prerequisites
 
-- [Networking for DevOps](networking-for-devops.md) — ports, connection states and DNS
-- [Linux Administration](linux-administration.md) — processes, permissions and log locations
-- [Monitoring and Logging](monitoring-and-logging.md) — the signals that start an investigation
-- [Deployment Strategies](deployment-strategies.md) — the change that is often the cause
-- [Backups and Recovery](backups-and-recovery.md) — the last resort when data is damaged
+- [Networking for DevOps](../networking-for-devops.md) — ports, connection states and DNS
+- [Linux Administration](../linux-administration.md) — processes, permissions and log locations
+- [Monitoring and Logging](../monitoring-and-logging.md) — the signals that start an investigation
+- [Deployment Strategies](../deployment-strategies.md) — the change that is often the cause
+- [Backups and Recovery](../backups-and-recovery.md) — the last resort when data is damaged
 
 ## 3. Introduction
 
