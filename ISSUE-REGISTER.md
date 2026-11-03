@@ -996,10 +996,40 @@ runnable only on machines without the tool (label them), link rot after file ren
   `deps-fc67850c`; concurrency cancels the older run (`run 41 -> cancelled`); an
   undefined context raises `KeyError`. Runner images, marketplace actions and OIDC
   are labelled reference
-- [ ] `OPS-18` `deployment-strategies.md`
-- [ ] `OPS-19` `monitoring-and-logging.md`
-- [ ] `OPS-20` `backups-and-recovery.md`
-- [ ] `OPS-21` `troubleshooting/` playbooks
+- [x] `OPS-18` `deployment-strategies.md` — 16 sections; `deploy_probe.py` models three
+  instances at 6 requests/tick against 9 capacity and measures every strategy against the
+  same traffic: recreate fails 18 requests with peak unavailable 3; rolling with one
+  instance out fails 0 at peak 1; rolling with two out fails 9; blue-green fails 0 and
+  finishes at tick 7 while doubling capacity, and a release failing its health check
+  aborts at tick 7 with the old pool still serving; the canary records `canary saw 4
+  failures of 24 requests (16.7%)` and `budget burned: canary removed, stable untouched`
+  at tick 9. Kubernetes manifests and cloud load-balancer consoles are labelled reference
+- [x] `OPS-19` `monitoring-and-logging.md` — 16 sections; `observe_probe.py` serves 240 real
+  loopback requests and measures them: `requests: 240, statuses: {200: 235, 500: 5},
+  errors: 5 (2.1%)`; p99 far above p50 with the mean between them; `30 days = 43200
+  minutes, budget = 43.2 minutes` and `at 2000000 requests/month, 2000 failures exhausts
+  it`; `observed 2.08% is 20.8x the 0.1% budget`; logs parse into eight fields with
+  `unparsed 0`; a rule over consecutive windows concludes `1 window(s) -> no page`;
+  `paths ['/fail', '/fast', '/slow'] x statuses [200, 500] = 6 series` is cardinality;
+  `10% sample: 24 lines, 1 error(s) (4.2% versus 2.1% overall)` is sampling error.
+  Prometheus, Grafana and hosted APM are labelled reference
+- [x] `OPS-20` `backups-and-recovery.md` — 16 sections; `backup_probe.py` writes real
+  `tar.gz` archives with SHA-256 manifests: a 41-file full (`archive bytes: 1101`) and a
+  4-file incremental (`archive bytes: 213`); the drill applies `archives applied: 2, files
+  written: 45` and reports `verified 42 of 42 files, mismatched: []` with `restore identical
+  to source: True`; one flipped byte is not rejected by the archive tool (`corrupt restore
+  raised: nothing`) but hashes catch it (`38 of 42` match), and falling back to the full
+  loses `3 changed file(s)`; a naive copy during a write is torn while the quiesced copy
+  parses; GFS keeps `17` of `720` snapshots. restic, borg, pgBackRest and object-storage
+  lifecycle rules are labelled reference
+- [x] `OPS-21` `troubleshooting/README.md` — 16 sections; `troubleshoot_probe.py` injects six
+  real failures and narrows each by the cheapest check: `OSError 10048` from a second bind
+  with a successful connect proves a port conflict; `status 500` after a connect separates
+  the listener from its dependency; `gaierror 11001` proves no packet left the machine;
+  `PermissionError 13` on an existing path separates permissions from space; a client
+  timeout is `not a refusal`; and a lock naming an exited child is `already exited ->
+  False` per the process table. `ss`, `ps` and container-runtime inspections are labelled
+  reference
 
 **17-CLOUD-AND-PRODUCTION** (prereq: 16)
 - [ ] `CLD-01` `README.md`

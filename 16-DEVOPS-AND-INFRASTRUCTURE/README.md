@@ -60,13 +60,16 @@ Terraform 1.16.x, Ansible core 2.21.x, NGINX stable 1.30.x — all pinned in
 - `monitoring-and-logging.md` · `backups-and-recovery.md`
 - `troubleshooting/` — operational failure playbooks with diagnosis procedures
 
-The first four lessons are written and ship with executed probes in the batch-18
-`ops-lab-A` scratch lab: `pipeline_probe.py` (gates, reproducible artifact, blast
-radius), `admin_probe.py` (permissions, log triage, rotation, disk), and `net_probe.py`
-(ports, refused vs timeout, DNS, health checks). Every transcript quoted in
-`devops-fundamentals.md`, `linux-administration.md`, and `networking-for-devops.md` is
-that lab's output on Windows 11 with Python 3.13.5 and Git Bash; Linux-only behaviour
-(`systemd`, stored file modes) is labelled reference in the lessons.
+The lessons ship with executed probes in two batch-18 scratch labs. `ops-lab-A` covers the
+first four: `pipeline_probe.py` (gates, reproducible artifact, blast radius), `admin_probe.py`
+(permissions, log triage, rotation, disk) and `net_probe.py` (ports, refused vs timeout, DNS,
+health checks). `ops-lab-B` covers the rest: `docker_probe.py`, `image_probe.py`,
+`netlab_probe.py`, `vol_probe.py`, `compose_probe.py`, `proxy_probe.py`, `tls_probe.py`,
+`iac_probe.py`, `tf_probe.py`, `ansible_probe.py`, `ci_probe.py`, `actions_probe.py`,
+`deploy_probe.py`, `observe_probe.py`, `backup_probe.py` and `troubleshoot_probe.py`. Every
+transcript quoted in these lessons is that lab's output on Windows 11 with Python 3.13.5 and
+Git Bash; behaviour that needs Linux, Docker, Terraform, Ansible or a cluster is labelled
+reference in the lessons.
 
 ## Exercises and practice
 
