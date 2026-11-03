@@ -851,10 +851,36 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M8 — Operations and production (Phase I)
 
 **16-DEVOPS-AND-INFRASTRUCTURE** (prereq: 03, 11)
-- [ ] `OPS-01` `README.md`
-- [ ] `OPS-02` `devops-fundamentals.md`
-- [ ] `OPS-03` `linux-administration.md`
-- [ ] `OPS-04` `networking-for-devops.md`
+- [x] `OPS-01` `README.md` — subject index and prereq chain (03, 11, 15) named;
+  next-subject pointer to `17-CLOUD-AND-PRODUCTION` resolves; `ops-lab-A` probe
+  pointer added for the first four lessons; `check-links` passes
+- [x] `OPS-02` `devops-fundamentals.md` — 16 sections; every quoted capture
+  traceable to `ops-lab-A/pipeline_probe.py`: gate held at `gate: test failed ->
+  build, deploy never runs` (test exit 1, `FAIL ten percent off 100: expected 90,
+  got -900`), reproducible artifact `build 1 sha256 c14ac46096ab4a28` / `build 2
+  sha256 c14ac46096ab4a28` / `identical bytes: True`, blast-radius table `big-bang
+  15s 250 45s`, `rolling 15s 50 30s`, `blue-green 15s 100 15s`, `canary 30s 35
+  45s`; GitHub Actions workflow shown as an illustration and marked not executed;
+  hosted runners unavailable — labelled reference
+- [x] `OPS-03` `linux-administration.md` — 16 sections; `admin_probe.py` capture:
+  `this shell starts with umask 0022` with `0666 & ~077 = 600` arithmetic against
+  `file created by this Python process: stat reports 644`; chmod matrix `requested
+  600 -> stored 644` .. `requested 400 -> stored 444` .. `chmod +x on a shebang
+  script -> 755`; `secret.env others-readable after chmod 600: True (644)`; triage
+  `failed=5 accepted=2 sessions=1 oom=1`, `3 198.51.100.23 failed attempts`,
+  `2 invalid user admin`; rotation `auth.log 1212 bytes -> auth.log.1.gz 507 bytes
+  (58% smaller)` with `12 of 12` still readable; disk `95% used -> ALERT: above
+  90%`; `systemctl` absent (`exit 127`), so unit files, `journalctl` and ext4
+  stored modes are labelled reference
+- [x] `OPS-04` `networking-for-devops.md` — 16 sections; `net_probe.py` capture:
+  listener `127.0.0.1:8105` vs client `127.0.0.1:61445`, `round trip: pong:ping`;
+  `ConnectionRefusedError after 2.02 s` against `TimeoutError after 1.51 s` on
+  `192.0.2.1:80`; DNS `localhost -> 127.0.0.1`, `example.com -> 104.20.23.154,
+  172.66.147.243`, `gaierror 11001`, resolver `OpenWrt` `192.168.0.1`; health check
+  `failure 1 of 2, still in pool` then `EVICTED after 2 consecutive failures` then
+  `re-admitted after a good check`; `OSError 10048 (WSAEADDRINUSE)`; operator
+  commands shown as illustration; no real load balancer, firewall, or DNS zone
+  configured — labelled reference
 - [ ] `OPS-05` `shell-scripting.md`
 - [ ] `OPS-06` `docker-fundamentals.md`
 - [ ] `OPS-07` `docker-images-and-containers.md`

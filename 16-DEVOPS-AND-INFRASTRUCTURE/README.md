@@ -60,6 +60,14 @@ Terraform 1.16.x, Ansible core 2.21.x, NGINX stable 1.30.x — all pinned in
 - `monitoring-and-logging.md` · `backups-and-recovery.md`
 - `troubleshooting/` — operational failure playbooks with diagnosis procedures
 
+The first four lessons are written and ship with executed probes in the batch-18
+`ops-lab-A` scratch lab: `pipeline_probe.py` (gates, reproducible artifact, blast
+radius), `admin_probe.py` (permissions, log triage, rotation, disk), and `net_probe.py`
+(ports, refused vs timeout, DNS, health checks). Every transcript quoted in
+`devops-fundamentals.md`, `linux-administration.md`, and `networking-for-devops.md` is
+that lab's output on Windows 11 with Python 3.13.5 and Git Bash; Linux-only behaviour
+(`systemd`, stored file modes) is labelled reference in the lessons.
+
 ## Exercises and practice
 
 Everything here is hands-on: containerize the subject 11 API; build a Compose stack with app,
