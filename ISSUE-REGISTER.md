@@ -881,10 +881,40 @@ runnable only on machines without the tool (label them), link rot after file ren
   `re-admitted after a good check`; `OSError 10048 (WSAEADDRINUSE)`; operator
   commands shown as illustration; no real load balancer, firewall, or DNS zone
   configured — labelled reference
-- [ ] `OPS-05` `shell-scripting.md`
-- [ ] `OPS-06` `docker-fundamentals.md`
-- [ ] `OPS-07` `docker-images-and-containers.md`
-- [ ] `OPS-08` `container-networking.md`
+- [x] `OPS-05` `shell-scripting.md` — 16 sections; `script_probe.py` drives real bash
+  runs (GNU bash 5.3.15): `cat missing | wc -l` with `set -e` prints `STILL RUNNING`
+  and `exit=0`, with `pipefail` `exit=1`; `set -u` gives `DEPLOY_ENV: unbound
+  variable` / `exit=127`; unquoted split yields `[my]` `[report.txt]` against
+  `"$@"` `[my report.txt]`; trap fires on the failure path (`cleanup removed
+  /tmp/tmp.…`, `exit=1`, no leftovers); missing `--env` value exits `1` with no
+  message while an unknown flag exits `2`; idempotence proved by two identical
+  tree digests `7ee1a121bff85b40…`
+- [x] `OPS-06` `docker-fundamentals.md` — 16 sections; `docker_probe.py` builds real
+  gzipped tar layers: `base 180 KB`, `deps 147 KB`, `app 237 B`, `cleanup 187 B`,
+  `total 328 KB`, rebuild gives the same digest `True`; whiteout
+  `srv/app/.wh.config.json` removes `config.json` (`True`); deleting in a layer
+  keeps `328 KB`; two images share `327 KB` so `328 KB` stored instead of `655 KB`
+  (`saves 49%`); copy-on-write leaves the digest `d8e4d1251ce3` unchanged while the
+  writable layer holds `49` bytes; argv assembly in exec and shell form; manifest
+  digest `b10021fdd6b6` -> `787f3278066e` (CMD) -> `17d2228516f5` (base). Docker
+  Engine absent, so `docker build/run/inspect` and the overlay driver are labelled
+  reference
+- [x] `OPS-07` `docker-images-and-containers.md` — 16 sections; `image_probe.py`
+  models the build cache: build 1 `0 cached, 6 new`, build 2 `6 cached, 0 new`,
+  source change `4 cached, 2 new`, base retag `0 cached, 6 new`; ordering contrast
+  `1 of 6` cached with `COPY` first against `4 of 6` in the conventional order;
+  multi-stage `builder 1904 KB` -> `final 88 KB` (`95% smaller`) with `runs as
+  root: False`; `COPY .env` puts the secret in `1` layer (`102 B`) and removing the
+  line leaves `0`. No daemon on this machine, so BuildKit cache mounts, `--cache-
+  from`, and registry pushes are labelled reference
+- [x] `OPS-08` `container-networking.md` — 16 sections; `netlab_probe.py` over real
+  sockets: direct `127.0.0.1:8110 -> HTTP/1.0 200 OK` while `192.168.0.50:8110 ->
+  TimeoutError after 2.02 s`; forwarder on `8111` returns `200 OK` and the backend
+  records `peer=127.0.0.1` with `X-Forwarded-For=127.0.0.1:53896`; name `api`
+  resolves, `cache` gives a name error; second bind `OSError 10048`; egress to
+  `192.0.2.1:80` times out after `2.00 s`; round robin `2 ok, 2 failed`, then
+  `health check 8113 -> failed, evicted` and `pool now holds 1 of 2`. Bridge
+  networks, iptables DNAT, and embedded DNS are labelled reference
 - [ ] `OPS-09` `volumes-and-persistence.md`
 - [ ] `OPS-10` `docker-compose.md`
 - [ ] `OPS-11` `nginx-and-reverse-proxies.md`
