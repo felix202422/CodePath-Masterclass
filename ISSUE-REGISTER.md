@@ -950,11 +950,52 @@ runnable only on machines without the tool (label them), link rot after file ren
   alerts at 30 but not 14; `example.com` resolves to 2 addresses and an invalid
   name raises `gaierror 11001` before any handshake. OCSP, CRL, and public
   issuance are labelled reference
-- [ ] `OPS-13` `infrastructure-as-code.md`
-- [ ] `OPS-14` `terraform.md`
-- [ ] `OPS-15` `ansible.md`
-- [ ] `OPS-16` `ci-cd-fundamentals.md`
-- [ ] `OPS-17` `github-actions.md`
+- [x] `OPS-13` `infrastructure-as-code.md` — 16 sections; `iac_probe.py` is a
+  plan/apply engine over a real state file: first plan `plan: 3 to add, 0 to change,
+  0 to destroy`, apply writes state serial 1, and a re-plan says `No changes.
+  Infrastructure is up to date.`; a hand edit produces `update   server.web     size
+  changes`; `image` forces `replace  server.web     image forces replacement`;
+  removing two resources destroys `destroy order: ['server.web', 'subnet.a']`; a
+  second operator is `refused, lock held by alice@laptop`; a ghost in state is
+  destroyed while an unmanaged bucket is invisible (`plan destroys it only if it is
+  in state: False`). Terraform/OpenTofu/Pulumi CLIs and their providers are labelled
+  reference
+- [x] `OPS-14` `terraform.md` — 16 sections; `tf_probe.py` models evaluation and
+  planning: addresses `count instances:   ['web[0]', 'web[1]', 'web[2]']` against
+  `worker["mailer"]`; `detailed exit code: 2` then `0`; removing a middle count
+  element plans `replace  web[1]  (name forces replacement)` plus `destroy  web[2]`,
+  while a for_each removal plans only `destroy  worker["indexer"]`;
+  `prevent_destroy` blocks the plan with `Error: worker["mailer"]: Instance cannot
+  be destroyed (prevent_destroy is set)`; precedence resolves `effective image:
+  app:1.2`; `db_password  = (sensitive value)` while `state contains the value:
+  True`. The terraform binary, providers and remote backends are labelled reference
+- [x] `OPS-15` `ansible.md` — 16 sections; `ansible_probe.py` runs a play against two
+  hosts: `first run: ok=2 changed=13` then `second run: ok=14 changed=0`; `when`
+  skips the nginx task on the RedHat host; the handler is deduplicated (`restart app
+  (4 notification(s), deduplicated to one run per host)`); drift is repaired in
+  `third run: ok=13 changed=2`; check mode reports `check mode: ok=12 changed=2` with
+  `file unchanged by check mode: True`; a broken module stops the play at `failed=1`
+  and `ignore_errors` continues at `failed=2`; `run_once` writes the canary only on
+  `web1`. The ansible CLI, roles and collections are labelled reference
+- [x] `OPS-16` `ci-cd-fundamentals.md` — 16 sections; `ci_probe.py` is a pipeline
+  runner executing real jobs: graph order `order: ['install', 'lint', 'unit',
+  'integration', 'build', 'deploy']`; cache `cache=miss key=ea395108aba1` at 0.36s
+  then `cache=hit` at 0.00s, invalidated to `key=10d5964191e7` by a lockfile edit; a
+  failing unit job leaves lint green while integration, build and deploy are
+  `SKIPPED`; `e2e TIMED_OUT 1.04s`; `publish` succeeds after `attempts=2`;
+  `deploy_allowed=False` on a feature branch; artifact `sha256:
+  c6a38316a242653c` with `digest matches the build: True`; the token logs as `***`.
+  Hosted runners are labelled reference
+- [x] `OPS-17` `github-actions.md` — 16 sections; `actions_probe.py` implements
+  workflow semantics: a docs-only push is refused (`no changed file matches
+  on.push.paths ['app/**']`), a feature branch is refused by `branches`, a pull
+  request starts the run; the matrix expands `combinations: 3 of 4` with names such
+  as `test (python=3.13, os=windows)`; deploy is skipped on a pull request by its
+  `if:` while `notify` runs under `always()`; a failing matrix leaves deploy skipped
+  and notify successful; `hashFiles` moves the key `deps-9de1b09c` to
+  `deps-fc67850c`; concurrency cancels the older run (`run 41 -> cancelled`); an
+  undefined context raises `KeyError`. Runner images, marketplace actions and OIDC
+  are labelled reference
 - [ ] `OPS-18` `deployment-strategies.md`
 - [ ] `OPS-19` `monitoring-and-logging.md`
 - [ ] `OPS-20` `backups-and-recovery.md`
