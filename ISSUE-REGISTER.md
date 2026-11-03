@@ -915,10 +915,41 @@ runnable only on machines without the tool (label them), link rot after file ren
   `192.0.2.1:80` times out after `2.00 s`; round robin `2 ok, 2 failed`, then
   `health check 8113 -> failed, evicted` and `pool now holds 1 of 2`. Bridge
   networks, iptables DNAT, and embedded DNS are labelled reference
-- [ ] `OPS-09` `volumes-and-persistence.md`
-- [ ] `OPS-10` `docker-compose.md`
-- [ ] `OPS-11` `nginx-and-reverse-proxies.md`
-- [ ] `OPS-12` `dns-and-tls-operations.md`
+- [x] `OPS-09` `volumes-and-persistence.md` — 16 sections; `vol_probe.py` moves real
+  files through a mount table: the writable layer dies (`state file exists: False`)
+  while the volume keeps `PG_VERSION=17`; the bind is the host directory (both sides
+  see the write immediately); mounting over `/srv/app/data` turns `['seed.json']`
+  into `['PG_VERSION']`; the drill tars the volume, destroys it, restores it and
+  matches both files by SHA-256 (`identical: True`); 3 volumes on disk, 1
+  referenced, 2 orphans needing an explicit prune. Docker volume drivers and the
+  overlay filesystem are labelled reference
+- [x] `OPS-10` `docker-compose.md` — 16 sections; `compose_probe.py` parses and
+  validates the file itself: services `api/db/web`; interpolation yields `app:1.0`
+  and `postgres:17-alpine`, and a missing required value stops resolution with
+  `KeyError 'DB_PASSWORD: set DB_PASSWORD'`; `$$` survives as `cost=$5`; published
+  ports `8000` and `8080->80`; a broken fixture produces `problems found: 2`
+  (duplicate host port, unknown dependency); order `['db', 'api', 'web']`; a cycle
+  raises `ValueError dependency cycle: a -> b -> a`; `TAG=2.3.1` retags the image
+  to `app:2.3.1`. The `docker compose` CLI and its merge rules are labelled
+  reference
+- [x] `OPS-11` `nginx-and-reverse-proxies.md` — 16 sections; `proxy_probe.py` runs a
+  real reverse proxy over TCP: prefix routing (`/api`, `/slow`, `/`) returns 200
+  per upstream; failover returns 200 although the first upstream is a closed port;
+  a 3.0 s upstream yields `504 upstream timeout after 1.02 s` and then
+  `upstream finished afterwards anyway: 1 request(s)`; a 4000 B POST is refused
+  `413` against a 1024 B limit while 200 B reaches the backend; the deny list
+  answers `/metrics` with `404` and no backend sees it; the access log records 9
+  requests, 6 successful. NGINX itself is absent, so every directive in the
+  reference configuration is labelled
+- [x] `OPS-12` `dns-and-tls-operations.md` — 16 sections; `tls_probe.py` issues a
+  private CA and leaf with OpenSSL 3.5.9 (SANs `DNS:localhost, IP:127.0.0.1`),
+  verifies `OK`, rejects the leaf as its own CA (`error 20`), matches key and
+  certificate by modulus, refuses the untrusted chain (`code 20`), then negotiates
+  `TLSv1.3 TLS_AES_256_GCM_SHA384` with the CA trusted; a trusted certificate for
+  the wrong name still fails (`code 62`); expiry `2026-11-23` is 19 days out and
+  alerts at 30 but not 14; `example.com` resolves to 2 addresses and an invalid
+  name raises `gaierror 11001` before any handshake. OCSP, CRL, and public
+  issuance are labelled reference
 - [ ] `OPS-13` `infrastructure-as-code.md`
 - [ ] `OPS-14` `terraform.md`
 - [ ] `OPS-15` `ansible.md`
