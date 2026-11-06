@@ -1141,17 +1141,94 @@ runnable only on machines without the tool (label them), link rot after file ren
   setting budgets and purchasing reserved capacity are labelled reference
 
 **18-ADVANCED-ENGINEERING** (prereq: 13, 16, 17)
-- [ ] `ADV-01` `README.md`
-- [ ] `ADV-02` `concurrency-and-parallelism.md`
-- [ ] `ADV-03` `message-queues.md`
-- [ ] `ADV-04` `event-streaming.md`
-- [ ] `ADV-05` `database-scaling.md`
-- [ ] `ADV-06` `distributed-systems-patterns.md`
-- [ ] `ADV-07` `system-design.md`
-- [ ] `ADV-08` `performance-profiling.md`
-- [ ] `ADV-09` `reliability-engineering.md`
-- [ ] `ADV-10` `large-codebase-maintenance.md`
-- [ ] `ADV-11` `architecture-decision-records.md`
+- [x] `ADV-01` `README.md` — subject index for the ten lessons, each linked with the failure it
+  answers; states the executed-probe policy (one standard-library probe per lesson with its capture
+  quoted beneath it, counts and declared prices instead of stopwatches) and marks absent
+  infrastructure (broker, streaming platform, production database, orchestration cluster) as
+  labelled reference; prerequisites point at subjects 13, 16, 17 and `big-o-notation.md`
+- [x] `ADV-02` `concurrency-and-parallelism.md` — 16 sections; `concurrency_probe.py` runs four
+  threads against one counter (`expected increments : 800`, `lost updates observed : True`) and
+  fixes it with a mutex (`actual increments : 800`), builds a circular wait (`circular wait
+  observed : True` with both threads still waiting), shows process isolation (`length each child
+  returned : [2, 2]` while `parent list after : [1]`), prints the cooperative order (`A0 -> B0 ->
+  A1 -> B1`), and prices four mechanisms (`10k x 5 ms wait ... one thread 50.00` to `50 threads
+  1.07` = `46.73x`, against `10k x 1 ms CPU ... 50 threads 10.07` = `0.993x` and `8 processes
+  1.49` = `6.71x`); the timing table is labelled a cost model, not a benchmark
+- [x] `ADV-03` `message-queues.md` — 16 sections; `message_queues_probe.py` drives a
+  simulated-clock broker: a crash after processing produces `deliveries for one logical message
+  : 2` with `acks=1`, an idempotency key makes the repeat harmless (`deliveries 4, side effects 3,
+  duplicates suppressed 1`), the retry schedule is `[200, 400, 800, 1600, 3200]` ms totalling
+  `6.2 s`, a poison message is dead-lettered after five attempts (`dead letters : [('bad-1', 5)]`,
+  `followers waited behind it : 6.2 s`), two consumers reorder completion (`['b', 'd', 'a', 'c']`
+  against publish order), and drain arithmetic shows `20 consumers: 800 msg/s, backlog never
+  shrinks` versus `24 ... clears 5000 in 31.2 s`. Installing a real broker is labelled reference
+- [x] `ADV-04` `event-streaming.md` — 16 sections; `event_streaming_probe.py` builds a
+  three-partition log (`partition sizes : [3, 4, 4]`, `every key stayed in one partition: True`),
+  replays one record after a crash before commit (`total processing runs : 12` for 11 records,
+  `records processed more than once : 1`), contrasts sinks (`naive sink side effects : 12` against
+  `idempotent sink side effects : 5`), compacts `12` writes to `3` records with `tombstoned keys :
+  ['order-4']`, prices retention (`7-day retention, 3 replicas: 21.5 GB`), and computes lag
+  (`lag after 60 s : 60,000 records`, `time to clear the backlog : 20 s`, `a 13th consumer receives
+  : 0 partitions, so it idles`). Running a streaming platform is labelled reference
+- [x] `ADV-05` `database-scaling.md` — 16 sections; `database_scaling_probe.py` creates a real
+  20,000-row SQLite table and prints the planner's own words (`before index: SCAN orders` then
+  `after index : SEARCH orders USING INDEX idx_orders_customer (customer_id=?)`), quantifies it
+  (`rows customer 42 owns : 80`, `250x fewer rows read`), measures replica staleness (`stale reads
+  : 16 (53%)` and `fresh reads : 14`), shows hash spread (`rows per shard : [1029, 943, 1035, 993]`,
+  `1.03x`) and a hot tenant (`[0, 4000, 0, 0]`), the cache working-set cliff (`capacity 50 ... 25.0%`
+  against `capacity 200 ... 96.2%`), and pool ceilings (`10 connections ... 2000 queries/s` to `40
+  ... 8000`). Provisioning a managed database, replica or shard is labelled reference
+- [x] `ADV-06` `distributed-systems-patterns.md` — 16 sections; `distributed_patterns_probe.py`
+  compensates a failed saga (`business effect left behind : none (2 steps undone)`, `steps that
+  never ran : ['send confirmation']`), prices two-phase commit (`participants holding locks : 4`),
+  tabulates outbox crash moments (`crash after commit, before relay` loses one; `crash during
+  relay, after publish` duplicates one), runs a breaker (`calls that reached the dependency: 11`,
+  `calls rejected locally : 3`, final state `closed`), measures a bulkhead (`worst healthy latency
+  : 2020 ms` with `4` over 100 ms, against `100 ms` and `0` isolated), and shows retry damage
+  (`charges without a key : 3` against `charges with an idempotency key: 1`). A real transaction
+  coordinator, broker and service mesh are labelled reference
+- [x] `ADV-07` `system-design.md` — 16 sections; `system_design_probe.py` derives a design from four
+  assumptions (`16,000,000` requests per day, `average qps : 185`, `peak qps : 926`, `833 / 93`
+  reads and writes), storage (`4.49 TB` per year, `13.5 TB` at three-year retention), bandwidth
+  (`37.9 MB/s (303 Mbit/s)`, `19.7 TB` monthly egress), shard counts (`9`, `5`, `3` by node
+  capacity), a latency budget (`230 ms of 300 ms`, `headroom : 70 ms`), cache value (`185/s instead
+  of 926/s`, `6.6 GB`), burst cost (`240,000 messages`, `240 s` to drain) and the bill
+  (`$2,163.30/month`, egress dominant). Cloud pricing consoles and capacity dashboards are labelled
+  reference
+- [x] `ADV-08` `performance-profiling.md` — 16 sections; `performance_profiling_probe.py` counts work
+  rather than time (`11,998,000` comparisons against `5,000` lookups, `2,400x`, `same answer :
+  True`), applies Amdahl (`hotspot  60% of time, 10x faster: end-to-end  2.17x (ceiling  2.50x)`),
+  reads a profile table (`main` 4,000 inclusive and 20 exclusive against `insert` 1,800 and 1700 at
+  `43%`), shows the tail (`mean : 64.4 ms`, `p99 : 300 ms`, `max : 900 ms`, `14.0x`), and prices
+  the counts (`240.0 ms` against `0.2 ms`, `959.8x`). `cProfile` and sampling profilers are
+  discussed and named; the probe counts work because a millisecond is not reproducible on the shared
+  lab host
+- [x] `ADV-09` `reliability-engineering.md` — 16 sections; `reliability_probe.py` converts uptime to
+  availability (`MTBF   720 h, MTTR    1 h: 99.8613%,   59.9 min/month` against `MTTR    4 h:
+  99.4475%,  238.7 min/month`), shows the shared-dependency ceiling (`3 replicas behind a dependency
+  at 99.900%: 99.8999%` against `99.9999%` independent), spends a budget (`budget : 43.2 min`,
+  `88% of budget`, `burn rate so far : 0.88x`), prices a replica loss at load (`capacity 4 x 300/s =
+  1200/s, offered 960/s (80% utilised)`, `rejected share : 6.2%`), decides a canary (`8.00%` against
+  `0.53%`, `z : 54.54`, `roll back`), and decomposes `44 min` of incident (`diagnose 27%`, `fix
+  45%`). Paging a real rotation, a chaos platform and live SLO dashboards are labelled reference
+- [x] `ADV-10` `large-codebase-maintenance.md` — 16 sections; `large_codebase_probe.py` generates
+  `40` modules and `76` import edges, finds one cycle (`mod05 -> mod12 -> mod05`), computes impact
+  (`change mod02: 26 modules depend on it transitively (65% of the codebase)`), shows the cycle's
+  downstream cost (`modules ordered : 23 of 40`, `blocked : 17`, `of which actually in a cycle : 2`,
+  `the other 15 wait on the cycle forever`) and the fix (`40 of 40 orderable`), ranks reading order
+  (`billing/tax.py` 42 changes x 18 complexity = `756` against `legacy/reports.py` 3 x 41 = `123`),
+  and reports ownership (`modules with no owner : 21`, `share unowned : 52%`). Churn and ownership
+  are declared fixed inputs standing in for `git log` and `CODEOWNERS`; running the analysis over a
+  real monorepo is left to the exercises
+- [x] `ADV-11` `architecture-decision-records.md` — 16 sections; `adr_probe.py` parses six real
+  Markdown records (`status counts : {'superseded': 1, 'accepted': 4, 'proposed': 1}`), follows a
+  healthy chain (`ADR-001 superseded by ADR-004: replacement exists=True`), catches a dangling one
+  (`ADR-006 claims to supersede ADR-009: target exists=False`, `dangling supersession claims :
+  ['ADR-006']`), scores completeness (`average completeness : 89%`, `ADR-006` at `33%`), measures
+  coverage against changed components (`uncovered : ['events', 'auth', 'mobile']`, `57%`) and ages
+  the set (`older than 18 months : ['ADR-001', 'ADR-002', 'ADR-003', 'ADR-006']`). Generating records
+  from a real repository and running the audit in CI are exercises; no GitHub API or wiki
+  integration is used
 
 ## M9 — Professional, projects, reference (Phase J)
 
