@@ -1233,16 +1233,84 @@ runnable only on machines without the tool (label them), link rot after file ren
 ## M9 — Professional, projects, reference (Phase J)
 
 **19-PROFESSIONAL-DEVELOPMENT**
-- [ ] `PROF-01` `README.md`
-- [ ] `PROF-02` `engineering-workflows.md`
-- [ ] `PROF-03` `code-review.md`
-- [ ] `PROF-04` `technical-documentation.md`
-- [ ] `PROF-05` `open-source-contributions.md`
-- [ ] `PROF-06` `debugging-methodology.md`
-- [ ] `PROF-07` `technical-interviews.md`
-- [ ] `PROF-08` `portfolio-development.md`
-- [ ] `PROF-09` `teamwork-and-communication.md`
-- [ ] `PROF-10` `career-paths.md`
+- [x] `PROF-01` `README.md` — subject index for the nine lessons, each linked with the failure it
+  answers; states the executed-probe policy (one standard-library probe per lesson, its capture quoted
+  beneath it, counts and declared constants instead of stopwatches) and marks absent infrastructure
+  (ticket tracker, CI service, code-review platform, hiring pipeline, employer ladder document) as
+  labelled reference; prerequisites point at 03, 13, 14 and 18; exercises numbered `PROF-0N` -> `N.1`
+  to `N.5`; blockers and next point at `20-PROJECT-LABORATORY`
+- [x] `PROF-02` `engineering-workflows.md` — 16 sections; `workflows_probe.py` prices branch age
+  (`branch age  7 day(s): misses 280 changes, conflict chance  94.0%`), review batching (`900 lines
+  in 1 review of 900: 240.0 min each (capped), 240 min total, 45% detection` against `900 lines in 4
+  reviews of 225: 48.2 min each, 193 min total, 86% detection`), pipeline shape (`sharded wall time
+  : 320.0 s` with `total stage work : 710 s` and `shard capacity used : 22%`, `expected wall time
+  including reruns: 347.8 s`), gate economics (`production share of the cost     : 63% for 4% of the
+  defects`) and WIP (`review WIP 12, throughput 6/day: average wait 2.00 day(s)` down to `review WIP
+  3, throughput 6/day: average wait 0.50 day(s) (4.0 h)`); the four-hour review cap is labelled a
+  modelling assumption, not a measurement
+- [x] `PROF-03` `code-review.md` — 16 sections; `code_review_probe.py` models diff size (`100 lines:
+  18.8 min           detection  90%, 7/8 defects` against `2000 lines:  240.0 min (capped)
+  detection  22%, 2/8 defects`), extra reviewers (`2 reviewer(s): 80% detection for 60 min of review`
+  and `3 reviewer(s): 91%` with the correlated-misses caveat), comment triage (`blocking  4
+  comment(s), 15 min each:  60 min`, `comments 12, work they create 88 min`) and review latency by
+  Little's law (`median wait  26.0 h:  3.25 PRs open on average, a 3-PR stack takes  78.0 h to
+  land`); the 240-minute session cap is declared and explained
+- [x] `PROF-04` `technical-documentation.md` — 16 sections; `documentation_probe.py` scores
+  completeness (`README       4/6 sections ( 67%)` against `RUNBOOK      3/6 sections ( 50%)
+  missing: ['install', 'quick start', 'license']`), symbol drift (`drift rate 60%`), runbook
+  actionability (`steps 8, concrete commands 5 (62%)` with rollback present), reader completion
+  (`per-step clarity 99% over 12 steps: completes unaided 89%` down to `per-step clarity 90% over 12
+  steps: completes unaided 28%`) and freshness against churn (`stale pages: 3/4`); no document is
+  fetched, the sections and samples are inline
+- [x] `PROF-05` `open-source-contributions.md` — 16 sections; `open_source_probe.py` triages eight
+  issues (`issues 8, with reproduction 5 (62%), labelled 8 (100%)`, `stale (over 60 days, no
+  maintainer reply): [430, 437, 452]`), ranks a first contribution (`#412 clarity score 5` down to
+  `#452 clarity score -2`), walks the funnel (`end-to-end landing rate: 0.40% of readers`), compares
+  merge rate by size (`1-50 lines 140 opened,  129 merged:   92%` against `>1000       19 opened,
+  5 merged:   26%`, `overall: 259/340 merged (76%)`) and reports the response distribution (`median
+  first response 19.0 h, p90 240.0 h, over 48 h: 2`); no network or GitHub API call is made
+- [x] `PROF-06` `debugging-methodology.md` — 16 sections; `debugging_probe.py` bisects 64 commits
+  (`first bad commit 41, found in 6 probes` against `linear search from the oldest would have taken
+  41 probes`), eliminates hypotheses (`survivor: database index dropped after 60 min and 4
+  experiments` against `expected 3.0 fix attempts at 60 min each = 180 min`), ranks components by
+  Ochiai (`payments.py score 0.87, fails it covers 3, passes it covers 1`), splits reports by
+  reproducibility (`reports 6, reproducible 3 (50%)`) and proves the fix (`bug reintroduced in a
+  scratch branch: 1 test(s) fail again`); the bisection is written out rather than calling `git
+  bisect`
+- [x] `PROF-07` `technical-interviews.md` — 16 sections; `interviews_probe.py` applies a weighted
+  rubric (`Ana   weighted 4.40  decision hire` down to `Dev   weighted 2.70  decision no hire`), shows
+  a rank flip (`Ben: weighted 3.80, unweighted 3.60` against `Cleo: weighted 3.70, unweighted 3.80`),
+  computes Cohen's kappa (`observed agreement 75%, chance agreement 50%`, `kappa 0.50`), compares
+  formats (`work sample 72%: 36 good hires, 14 failures` against `puzzle      41%: 20 good hires, 30
+  failures`, `difference: 16 hires, $2,400,000 of replacement cost at $150,000 per failed hire`) and
+  prices the loop (`6 candidates per hire = 60 interviewer-hours per hire`); weights, validity rates
+  and costs are declared inputs
+- [x] `PROF-08` `portfolio-development.md` — 16 sections; `portfolio_probe.py` audits six projects
+  against verifiable evidence (`expense tracker       100/100  missing: []` against `weather CLI
+  35/100`), flags tutorial tells (`flagged: 2/6`, `chat app              tutorial-shaped one active
+  day, no tests`), measures depth (`expense tracker        84 commits over 41 active days (  2.0/day,
+  weeks)` against `chat app                9 commits over  1 active day (  9.0/day, days)`) and
+  budgets the reviewer scan (`budget 360 s, spent 360 s, left 0 s`); the weights and the six-minute
+  budget are declared policy
+- [x] `PROF-09` `teamwork-and-communication.md` — 16 sections; `teamwork_probe.py` scores six updates
+  against five fields (`investigated the timeout                        5/5 []` against `fixed the
+  login redirect                        1/5 ['next', 'blocker', 'ask', 'date']`, `fields filled 21/30
+  (70%)`), costs interruptions (`8 interruptions x 23 min to regain focus = 184 min` against `two
+  batches, each costing one recovery     = 46 min`, `saved 138 min (75%)`), compares decision channels
+  (`async: 3 rounds x 6 h = 18 h elapsed, 2.5 person-hours` against `sync : 45 min meeting + context
+  = 2.00 h elapsed, 5.0 person-hours`), prices vague asks (`3 vague asks x 1.5 days x 2 people = 9.0
+  person-days blocked`, `ratio of clarification to blocked time: 1:144`) and an escalation rule (`50%
+  compliance: 300 min/day lost to silent struggle across 10 developers`); recovery times are declared
+  constants
+- [x] `PROF-10` `career-paths.md` — 16 sections; `career_probe.py` prints a five-level ladder on five
+  dimensions, scores the distance between levels (`mid       -> senior    distance 6: task scope +1,
+  autonomy +2, ...` and `senior    -> staff     distance 6: ... influence +2, ...`), computes readiness
+  against two targets (`senior: 3/5 requirements evidenced (60%)`, `staff: 4/7 requirements evidenced
+  (57%)`), separates span (`staff engineer      direct reports  0, teams influenced 3, engineers
+  reached 24` against `engineering manager direct reports  6, teams influenced 1, engineers reached
+  12`), shows compensation shape (`principal is 3.10x junior for the same craft`) and counts why
+  promotions stall (`no evidence of scope beyond own team                 9 (36%)`); expectation
+  scores and ratios are labelled a declared model, not employer data
 
 **20-PROJECT-LABORATORY**
 - [ ] `PROJ-01` `README.md` overview, grading rubric, how solutions are separated
