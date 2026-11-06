@@ -41,6 +41,14 @@ rehearsed recovery) are what turn a deployment into a system you can run at 3 a.
 - `load-balancing.md` · `scaling.md`
 - `observability.md` · `incident-management.md` · `cloud-cost-management.md`
 
+Every lesson embeds one executable probe as its first Python block and quotes that probe's real
+output beneath it. The probes use only the standard library — `ipaddress`, `hashlib`, `hmac`,
+`sqlite3`, `datetime` — and run on the lab host (Windows 11, Python 3.13.5); save a block under the
+filename given in the lesson and run it. Console and provider steps (creating a bucket, attaching a
+policy, buying reserved capacity, paging an on-call rotation) are marked **labelled reference**: no
+cloud account, provider SDK or pager exists on the host, so those steps are described but not
+executed.
+
 ## Exercises and practice
 
 Design and calculation exercises that need no cloud account, plus optional hands-ons where you

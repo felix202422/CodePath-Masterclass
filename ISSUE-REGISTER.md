@@ -1032,19 +1032,113 @@ runnable only on machines without the tool (label them), link rot after file ren
   reference
 
 **17-CLOUD-AND-PRODUCTION** (prereq: 16)
-- [ ] `CLD-01` `README.md`
-- [ ] `CLD-02` `cloud-computing-fundamentals.md`
-- [ ] `CLD-03` `virtual-machines.md`
-- [ ] `CLD-04` `cloud-networking.md`
-- [ ] `CLD-05` `object-storage.md`
-- [ ] `CLD-06` `managed-databases.md`
-- [ ] `CLD-07` `identity-and-access-management.md`
-- [ ] `CLD-08` `secrets-and-configuration.md`
-- [ ] `CLD-09` `load-balancing.md`
-- [ ] `CLD-10` `scaling.md`
-- [ ] `CLD-11` `observability.md`
-- [ ] `CLD-12` `incident-management.md`
-- [ ] `CLD-13` `cloud-cost-management.md`
+- [x] `CLD-01` `README.md` — subject index; prereq chain (06, 16) named; a lab-host and
+  probe-pointer paragraph added, stating that every lesson embeds one executed probe and that
+  console and provider steps are labelled reference; all twelve lesson filenames match this
+  register; the next-subject pointer to `18-ADVANCED-ENGINEERING` resolves; `check-links` passes
+- [x] `CLD-02` `cloud-computing-fundamentals.md` — 16 sections; `fundamentals_probe.py` multiplies
+  path availability (`request path lb x app x db : 99.840065%`, `downtime allowed per month :
+  70.11 min`), separates redundancy from failure domains (`two instances, one zone : 99.5975%` at
+  `176.4 min` versus `two instances, two zones : 99.9959%` at `1.8 min`, so `what the second zone
+  buys : 174.6 min/month`), splits fourteen controls by service model (`IaaS ... customer 10
+  shared 2 provider 2`, `PaaS 6 5 3`, `SaaS 3 4 7`), derives `monthly budget : 43.8 min` with `6x
+  burn ... 7306 min`, finds the billing `crossover : 4.14 M requests/month`, and shows a second
+  region lifting `<=50 ms` coverage from `45%` to `75%` and `<=200 ms` from `75%` to `100%`.
+  Provider consoles and the shared-responsibility documents are labelled reference
+- [x] `CLD-03` `virtual-machines.md` — 16 sections; `vm_probe.py` prices six instance types from
+  `small ... 15.18` to `cpu-2x ... 242.94`, rightsizes three services to `total rightsized $
+  123.97/month vs $427.23 default -> saves $303.26 (71%)`, shows oversubscription as steal (`1x
+  ... 0.0%` through `4x ... 75.0%` with `throughput 25% of demand`), times `total cold start 55
+  s` and `replacing 10 instances, 2 at a time: ... 425s (7.1 min)`, and prices preemptible
+  capacity at `$0.0499/h (70% discount)` saving `$510.18` while `drain time must stay under the
+  120 s notice (ok)`. Creating instances and reading a hypervisor's steal counter are labelled
+  reference
+- [x] `CLD-04` `cloud-networking.md` — 16 sections; `networking_probe.py` plans six subnets with
+  `251 usable` and `4091 usable` addresses, validates `overlapping pairs: 0` and `addresses
+  allocated: 13056 of 65536 (19.9%)`, evaluates five flows including `admin ssh 22 ALLOW
+  0.0.0.0/0:22` and `internet scans the database 5432 DENY no matching rule`, audits `privileged
+  ports open to the internet: 3`, resolves routes until a deleted NAT yields `8.8.8.8 ->
+  blackhole (no route)`, and shows a stateless ACL rejecting the reply (`reply to port 51000
+  permitted: False`) where a stateful group tracks it. Provider VPC consoles and live
+  security-group evaluation are labelled reference
+- [x] `CLD-05` `object-storage.md` — 16 sections; `object_storage_probe.py` deduplicates by
+  content hash (`logical bytes 41900, stored bytes 26400 (63% after dedupe)`), contrasts a
+  multipart ETag `19019d16dd0f439825c39a2c5b9178fd-3` with the single-part
+  `ee8e104a3ce4b8f60f0e0106f20f51a4` for identical bytes and reassembles `reassembled ==
+  original: True`, exercises versioning until `get after delete: None (NoSuchKey)` with `listing
+  still contains the key: True`, paginates with a next-token, verifies presigned URLs (`valid`,
+  `expired`, `signature mismatch` twice), and derives `3 replicas: ... (5.5 nines)` against `10+4
+  erasure: ... (5.9 nines)`. Creating a bucket and configuring lifecycle rules are labelled
+  reference
+- [x] `CLD-06` `managed-databases.md` — 16 sections; `managed_db_probe.py` runs real SQLite: `SCAN
+  orders` becomes `SEARCH orders USING INDEX idx_orders_customer (customer_id=?)`, a join costs
+  `1 statement, 500 rows` against `500 statements, 1000 rows` for the N+1 loop (`round trips
+  saved: 499`), pool 10 gives `mean wait 195.0 ms, utilisation 99%` against `pool 20 ... 0.0 ms,
+  72%`, `12 app instances x 20 connections = 240 against a server limit of 100 -> 140 rejected
+  at connect`, failover is `detection 20s + promotion 15s + DNS TTL 30s = 65s window` costing
+  `~390` errors with one attempt and `~39` with three, replica lag is `1.2 s` (`696 of 14400`
+  stale reads), and a restore takes `107 min against a 60 min RTO -> breach`. Provisioning a
+  managed instance and performing a real failover are labelled reference
+- [x] `CLD-07` `identity-and-access-management.md` — 16 sections; `iam_probe.py` evaluates
+  policies over a 33-action catalogue (`app-role ... 4/33`, `legacy-admin ... 28/33`, `deployer
+  ... 14/33`), applies explicit-deny precedence and boundaries (`Deny kms:Decrypt ... outside
+  permissions boundary boundary`, `no allow statement (implicit deny)`), derives least privilege
+  from six logged calls (`narrowing legacy-admin to app-role removes 24 of 28 allowed actions
+  (86%)`), walks a six-row confused-deputy table where `scoped-trust ... denied` until the
+  external ID matches, and detects escalation paths (`deployer holds 3: ['iam:AttachRolePolicy',
+  'iam:CreatePolicyVersion', 'iam:PassRole']`, `app-role holds 0`). Creating roles, attaching
+  policies and reading a provider's access analyzer are labelled reference
+- [x] `CLD-08` `secrets-and-configuration.md` — 16 sections; `secrets_probe.py` merges three
+  layers (`defaults < .env < environment, 6 keys`, `APP_ENV resolved to 'production'`), reports
+  exactly one validation error (`DATABASE_URL is required but has no value in any layer`),
+  compares `naive dump length 137, values exposed: 3` with `DB_PASSWORD present in naive dump:
+  True; in redacted: False`, scores a scanner on a labelled corpus (`true positives 5, false
+  positives 0, false negatives 0`, `precision 100%, recall 100%`), rotates an HMAC key with real
+  verification (`no overlap : 400 of 400 live tokens rejected` versus `24 h overlap: 0 of 400`),
+  and computes entropy (`token_urlsafe(32): 43 chars, 256 bits`, a six-digit code `2 min to
+  exhaust at 10k guesses/min`, `'hunter2': 21 bits if truly random`). Creating a vault secret,
+  configuring automatic rotation and reading a secret-access audit log are labelled reference
+- [x] `CLD-09` `load-balancing.md` — 16 sections; `load_balancing_probe.py` runs four selectors
+  against six backends with one 8x slower: `round_robin ... 51.7ms ... 160.0ms ... 16.7%`
+  versus `p2c_response ... 31.6ms ... 160.0ms ... 2.6%` at `23.5%` spread, moves `1558/10000`
+  keys with consistent hashing against `8608/10000 (86.1%)` for modulo, prices failure detection
+  (`15s window -> 156 failed requests`, `6s window -> 62`, `20s window -> 208`, `passive ejection
+  after 5 consecutive 5xx ... 5 requests`), and counts `4,000 users (16.7%)` losing sessions when
+  one of six nodes dies. Creating a real balancer, registering targets and reading its access
+  logs are labelled reference
+- [x] `CLD-10` `scaling.md` — 16 sections; `scaling_probe.py` computes `900 / (120 x 0.60) = 12.5
+  -> 13 instances`, `36` busy of `62` slots, and `Little's law at 100 ms: 90 requests in flight,
+  of which 36 are being served and 54 are queued`; the ten-minute ramp separates the policies
+  (`fixed 3 ... breach 432 s ... worst 6480ms`, `fixed 12 ... breach 0 ... mean util 42%`,
+  `reactive 180s cooldown ... 335 s`, `reactive 60s cooldown ... 275 s`, `predictive, no lag ...
+  5 s`), and the delay is decomposed as `boot 90s: capacity decided at t=180 serves traffic at
+  t=270` with `the ramp adds 4.4 req/s every second`. Creating an autoscaling group and observing
+  a real scale-out are labelled reference
+- [x] `CLD-11` `observability.md` — 16 sections; `observability_probe.py` merges two latency
+  distributions (`average of the two p99s: 90.6 ms` against `p99 of the merged fleet: 99.9 ms`,
+  `error from averaging: 9%`), quantises a histogram (`p 95: true 72.1 ms, from buckets 96.3 ms
+  (34% error)`), multiplies labels (`4800 series`, `240,000,000 series (457.8 GiB)` once `user_id`
+  is added), samples rare errors (`1% sampling captures 10 failing traces; chance of capturing
+  none is 4.3e-05`), prices logs (`57.0 GB/day, 1711 GB/month`, `30-day retention ... $855/month
+  ingest`, trimming a debug line for `$272`), and derives burn-rate windows (`14.4x: 3000 min`,
+  `99.87% achieved against 99.9% target uses 130% of the budget`). Running Prometheus, a tracing
+  backend or a log platform is labelled reference
+- [x] `CLD-12` `incident-management.md` — 16 sections; `incident_probe.py` reconstructs `16
+  entries from 3 sources, ordered by corrected time` after correcting `api-2 ... +37 s`, computes
+  `detected 10:02:11 +4 min`, `mitigated ... +10 min`, `recovered ... +21 min` and `MTTR (signal
+  -> recovered): 21 min`, burns `19% of a 30-day 99.9% budget in one incident`, sizes `3 of 24
+  checkout shards -> 22,500 of 180,000 users (12.5%)` and `$415` of exposure, groups `47 raw
+  alerts from 4 rules` into `5 pages`, and proves the lead time (`pool exhaustion at 09:58:12,
+  4.0 min before the checkout alert`; `p99 latency was already 240 ms ... 4 min before the
+  error-rate alert`). Paging a real on-call rotation, using an incident tool and running a live
+  postmortem review are labelled reference
+- [x] `CLD-13` `cloud-cost-management.md` — 16 sections; `cost_probe.py` prices eight meters to
+  `total 3424.51` with `egress ... 32%`, `log ingest ... 25%`, `managed database ... 20%` and
+  `compute ... 11%`, derives `$2.1952 per million requests`, ranks seven optimisations to `total
+  identified 2117.60 62% -> $1306.91/month`, models `spot at 70% off with 10% interruption risk:
+  expected 63% saving before engineering cost`, and grows traffic (`doubling traffic doubles
+  compute to $742.85 but egress scales too: $2140.16 at 24 TB`). Reading a billing console,
+  setting budgets and purchasing reserved capacity are labelled reference
 
 **18-ADVANCED-ENGINEERING** (prereq: 13, 16, 17)
 - [ ] `ADV-01` `README.md`
