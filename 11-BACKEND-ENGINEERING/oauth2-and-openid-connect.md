@@ -394,5 +394,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [File Uploads](file-uploads.md) — multipart bodies, limits, and safe
   storage on the API you've secured.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-app/README.md)
+- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-application/README.md)
   — "Login with X" as the project's optional identity provider.

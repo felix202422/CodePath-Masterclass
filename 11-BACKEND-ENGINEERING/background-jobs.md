@@ -393,5 +393,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [API Documentation](api-documentation.md) — the contract you've now
   executed (202/200/404/409…) written down as a machine-readable contract.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-app/README.md)
+- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-application/README.md)
   — exports/notifications behind exactly this accept-and-poll pattern.

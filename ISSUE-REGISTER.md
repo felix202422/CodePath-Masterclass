@@ -1313,16 +1313,39 @@ runnable only on machines without the tool (label them), link rot after file ren
   scores and ratios are labelled a declared model, not employer data
 
 **20-PROJECT-LABORATORY**
-- [ ] `PROJ-01` `README.md` overview, grading rubric, how solutions are separated
-- [ ] `PROJ-02` Project 01 command-line application (spec, milestones, tasks, criteria, hints)
-- [ ] `PROJ-03` Project 02 responsive portfolio
-- [ ] `PROJ-04` Project 03 database application
-- [ ] `PROJ-05` Project 04 REST API
-- [ ] `PROJ-06` Project 05 full-stack application
-- [ ] `PROJ-07` Project 06 Flutter mobile app
-- [ ] `PROJ-08` Project 07 secure production application
-- [ ] `PROJ-09` `capstone-project/`
-- [ ] `PROJ-10` `reference-solution/` per project, written only after the spec exists
+- [x] `PROJ-01` `README.md` overview, grading rubric, how solutions are separated —
+  seven graded projects plus a capstone, a seven-dimension rubric whose weights shift
+  (`Requirements 20 -> 15`, `Tests 15 -> 20`, `Security 10 -> 15`), a zero-score cap
+  in correctness or security, completion at 70 and portfolio-ready at 85, and the
+  five-step solutions cycle; the eight brief links resolve
+- [x] `PROJ-02` Project 01 command-line application — expense-ledger brief, 18 numbered
+  sections, `FR-1..10`, exit codes `0 ok / 1 usage / 2 data / 3 not found / 4 write`,
+  `AC-1..12`; measured `h2=19 ac=12 fr=10`, the solutions policy as the extra H2
+- [x] `PROJ-03` Project 02 responsive portfolio — 18 sections, `FR-1..10`, four-width
+  matrix (360/768/1024/1440), axe and keyboard criteria, `AC-1..12`; measured
+  `h2=19 ac=12 fr=10`; the prerequisite row links the JavaScript lesson in `08`
+- [x] `PROJ-04` Project 03 database application — tool-library schema with a partial
+  unique index on active loans (`WHERE returned_at IS NULL`), concurrency and restore
+  criteria, `FR-1..11`, `AC-1..12`; measured `h2=19 ac=12 fr=11`
+- [x] `PROJ-05` Project 04 REST API — workshop job tracker on Spring Boot + PostgreSQL,
+  seven-state machine, `ETag`/`If-Match` with 412 and 428, idempotency keys,
+  `FR-1..14`, `AC-1..12`; measured `h2=19 ac=12 fr=14`
+- [x] `PROJ-06` Project 05 full-stack application — community kitchen rota, `HttpOnly`
+  cookie sessions with double-submit CSRF, optimistic claim with snapshot rollback,
+  server-side authorisation, `FR-1..12`, `AC-1..12`; measured `h2=19 ac=12 fr=12`
+- [x] `PROJ-07` Project 06 Flutter mobile app — offline-first field survey, client
+  uuids as idempotency keys, sync queue with backoff, crash recovery
+  (`syncing -> pending`), conflict table, `FR-1..12`, `AC-1..12`; measured
+  `h2=19 ac=12 fr=12`
+- [x] `PROJ-08` Project 07 secure production application — STRIDE model with control
+  references, pipeline gates, readiness-gated rollback under 5 min, SLO burn-rate
+  alerts, restore drill, `FR-1..14`, `AC-1..12`; measured `h2=19 ac=12 fr=14`
+- [x] `PROJ-09` `capstone-project/` — six gates `G0..G5`, fixed core `FR-1..8` plus
+  6-12 chosen requirements, `NFR-1..8`, `AC-1..12`, a 15-minute walkthrough script;
+  measured `h2=19 ac=12`
+- [x] `PROJ-10` `reference-solution/` per project — eight guides (seven projects plus
+  the capstone assessment guide), each opening with a stop-and-attempt warning header;
+  measured `projects 8 with_solution 8` and `sol_lines 95..202`
 
 **21-REFERENCE-LIBRARY**
 - [ ] `REF-01` `README.md`

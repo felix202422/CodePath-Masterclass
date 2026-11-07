@@ -391,5 +391,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [Backend Testing](backend-testing.md) — the checks from every lesson
   in this subject, turned into a suite that runs on every change.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-app/README.md)
+- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-application/README.md)
   — correlation ids wired end-to-end from the frontend's requests into these logs.

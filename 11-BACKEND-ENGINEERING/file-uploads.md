@@ -358,5 +358,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [Caching](caching.md) — the same "compute once, serve many, invalidate
   correctly" discipline for reads you already have.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-app/README.md)
+- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-application/README.md)
   — avatar/image uploads behind exactly these rules.

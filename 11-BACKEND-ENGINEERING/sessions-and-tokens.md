@@ -392,5 +392,5 @@ Observable evidence that you have understood this lesson:
 - Next lesson: [OAuth2 and OpenID Connect](oauth2-and-openid-connect.md) — delegating
   the whole credential problem to a provider, and what "Login with X" moves.
 - Practice: [exercise sets](exercises/README.md) for this subject.
-- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-app/README.md)
+- Where it is applied: [Project 05 — Full-Stack App](../20-PROJECT-LABORATORY/project-05-full-stack-application/README.md)
   — browser sessions on top of the API these lessons built.
