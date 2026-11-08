@@ -556,6 +556,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Code Review](code-review.md) — what to do inside the review this lesson sized and
   scheduled
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — every project
   there is graded partly on the workflow that produced it

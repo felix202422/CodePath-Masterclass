@@ -58,7 +58,7 @@ result.
 it** — no higher (higher re-renders strangers), no lower (siblings can't see it). When the
 lift crosses three or four levels, or the readers stop sharing a subtree (routes, modals,
 a header reading page state), you have left composition territory and entered
-[state management](../state-management.md)'s ladder — the lift itself doesn't change, only
+[state management](../../state-management.md)'s ladder — the lift itself doesn't change, only
 who owns the provider.
 
 ## Exercise 3 — `Box` with `as` + className merge

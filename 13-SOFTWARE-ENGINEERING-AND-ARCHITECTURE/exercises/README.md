@@ -323,5 +323,5 @@ with the reason visible → revert → green (that exact drill is set 8's closin
 
 **After all twelve sets:** Milestone 8's exercise requirement is satisfied for this
 subject. The next thing it buys you is the ADR for
-[Project 07](../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md) —
+[Project 07](../../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md) —
 set 9's boundary evidence and set 12's trade-off numbers are the raw material.

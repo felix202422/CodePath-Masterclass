@@ -69,8 +69,21 @@ runnable only on machines without the tool (label them), link rot after file ren
 - [x] `ROOT-01` Clone repository and probe push credentials — clone done; push dry-run probe passed
 - [x] `ROOT-02` `VERSIONS.md` version baseline with official sources — **Done**
 - [x] `ROOT-03` `ISSUE-REGISTER.md` (this file) — **Done**
-- [ ] `ROOT-04` Confirm author identity and sole-contributor policy in git config — **Done locally**, re-verify after first push
-- [ ] `ROOT-15` Import this register into GitHub issues/milestones/board when `gh auth login` succeeds
+- [x] `ROOT-04` Confirm author identity and sole-contributor policy in git config —
+  verified 2026-11-08: `git config user.name` → `Felix Haule` and `git config user.email` →
+  `bulksms1705@gmail.com`; `git log --format='%Ae' | sort -u` returns that single address across
+  all **71** commits, and `git shortlog -sne --all` lists exactly one author, which matches the
+  documented policy in `CONTRIBUTING.md` ("This repository is maintained by a single author" —
+  no contributor lists, bot authorship or co-author trailers without the maintainer's consent)
+
+- [ ] `ROOT-15` Import this register into GitHub issues/milestones/board when
+  `gh auth login` succeeds — **blocked, still open (2026-11-08):** `gh auth status` →
+  "You are not logged into any GitHub hosts. To log in, run: gh auth login". No issue, milestone,
+  label or project board has been created. This is the only open register item and it is
+  infrastructure, not content: the 366 done entries below are the import payload, and `QA-09`
+  records the explicit non-import. Run `gh auth login`, then import each entry as an issue (done
+  ones closed, this one open)
+
 
 ## M1 — Repository foundations (Phase B)
 
@@ -1423,15 +1436,58 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 ## M10 — Final validation (Phase K)
 
-- [ ] `QA-01` All links resolve (`scripts/check-links.py` clean)
-- [ ] `QA-02` All required sections present (`scripts/check-curriculum.py` clean)
-- [ ] `QA-03` Prerequisite ordering manually reviewed per directory README
-- [ ] `QA-04` Code examples compiled/run where a toolchain exists; others labelled
-- [ ] `QA-05` No credentials, tokens, or private keys anywhere in the repository
-- [ ] `QA-06` Diagrams reviewed for technical accuracy and correct relative paths
-- [ ] `QA-07` Roadmap matches prerequisite structure (no advanced topic before its prerequisite)
-- [ ] `QA-08` `CHANGELOG.md` updated; `COMPLETION-REPORT.md` written with every gap disclosed
-- [ ] `QA-09` Register imported to GitHub or explicitly reported as not done
+- [x] `QA-01` All links resolve — `python scripts/check-links.py --strict` exit 0:
+  "527 Markdown files checked, 0 broken reference(s), 0 planned-but-unwritten target(s)". The 20
+  targets the progressive mode had tolerated were **real dangling links** and are fixed: 18
+  `[exercise set](exercises/README.md)` links in subjects 16 and 19 (neither has a separate
+  `exercises/` directory) now point at each README's `#exercises-and-practice` section;
+  `09-…/exercises/solutions/set-4-solutions.md` needed `../../state-management.md` rather than
+  `../`; and `13-…/exercises/README.md` needed `../../20-PROJECT-LABORATORY/…`
+- [x] `QA-02` All required sections present — `python scripts/check-curriculum.py --strict` exit 0:
+  "root files 15, subjects present 22/22, subject files checked 301, images checked 15, 0
+  structural problem(s)". Fixed the checker's own reporting bug on the way: it counted **files
+  scanned** and printed that as "images checked" (532) — it now counts image references (15)
+- [x] `QA-03` Prerequisite ordering reviewed per directory README — all **22/22** subject READMEs
+  carry a `## Prerequisites` section; **0** reference a subject with an equal or higher number;
+  every prerequisite link resolves under the strict link check, so each chain names only material
+  that precedes it. `ROADMAP.md` milestone placement agrees (see `QA-07`)
+- [x] `QA-04` Code examples compiled/run where a toolchain exists; others labelled — re-ran the
+  shipped lab at final state: `postgresql/verify.sh` on a fresh PostgreSQL 18.6 cluster →
+  `7 passed, 0 failed`. Inventoried all **2,371** fenced blocks (console 562, unlabeled 348,
+  text 320, Mermaid 267, Java 234, Python 149, SQL 104, Dart 89, Bash 66, TSX 63, JS/TS 66,
+  YAML/CSS/HTML and other formats the rest). **229** explicit "not executed / not run / labelled /
+  illustration" labels across 29 directories disclose what could not run here: Docker (daemon
+  down — `docker info` fails at `npipe:////./pipe/dockerDesktopLinuxEngine`), Gradle (absent) and
+  real Linux/systemd/apt (Windows host)
+- [x] `QA-05` No credentials, tokens, or private keys anywhere in the repository — scanned every
+  tracked file for private-key blocks, GitHub/AWS/OpenAI/Slack token shapes, assigned secrets,
+  JDBC passwords and bcrypt hashes: **0 real credentials**. The 3 `-----BEGIN … PRIVATE KEY-----`
+  hits are detection-lab fixtures, the 4 AWS hits are AWS's published `AKIAIOSFODNN7EXAMPLE`, and
+  the remaining hits are labelled `EXAMPLE` / `demo` / `lab-only` values. `git ls-files` matches
+  no `.env`, `.pem`, `.key`, `id_rsa` or `.netrc`; `.gitignore` blocks them (its missing final
+  newline was also fixed)
+- [x] `QA-06` Diagrams reviewed for technical accuracy and correct relative paths — all **267**
+  Mermaid diagrams were extracted, parsed **and rendered to SVG** in Chromium with Mermaid 11:
+  **267/267 ok, 0 failures**. Two could not parse and were fixed: an unquoted edge label
+  containing parentheses in `11-BACKEND-ENGINEERING/caching.md` (`|remove(key)|` →
+  `|"remove(key)"|`) and quotes inside a flowchart label in
+  `12-MOBILE-DEVELOPMENT/camera-and-qr-codes.md` (`T[Tap "scan"]` → `T["Tap scan"]`). Image
+  references: 15, **0** missing targets, **0** empty alt text (2 apparent misses are inline-code
+  examples of the naming convention, not links). Visual taste and colour contrast were not judged
+- [x] `QA-07` Roadmap matches prerequisite structure — `ROADMAP.md` lists **11** milestones
+  covering subjects 00–21 **exactly once** in ascending order, and **0** prerequisites appear in a
+  later milestone than the subject that depends on them
+- [x] `QA-08` `CHANGELOG.md` updated; `COMPLETION-REPORT.md` written with every gap disclosed —
+  the changelog gained entries for subjects 12–21, the final validation pass, and a `Fixed`
+  section (two diagrams, the validator counter, 20 dangling links, `.gitignore`); the new
+  `COMPLETION-REPORT.md` records 531 files / 139,546 lines / 1,121,467 words, the executed-vs-
+  labelled toolchain table, **15 disclosed gaps** (no human editorial review, no CI, Docker/Gradle/
+  real-Linux unverified, TypeScript unpinned, 9 SVG assets, and the rest) and the commands that
+  reproduce every claim; it is linked from `README.md`
+- [x] `QA-09` Register imported to GitHub or explicitly reported as not done — **explicitly
+  reported as not done**: `gh auth status` → "You are not logged into any GitHub hosts." No issue,
+  milestone or board exists; `ISSUE-REGISTER.md` is the board and is import-ready
+  (see `COMPLETION-REPORT.md` §4 and `ROOT-15`, the one open entry)
 
 ---
 
@@ -1439,14 +1495,20 @@ runnable only on machines without the tool (label them), link rot after file ren
 
 This section is updated at the end of every batch so the next session can resume without guessing.
 
-- **Last updated:** 2026-10-27 (M0, M1, 00-START-HERE, 01-COMPUTER-FOUNDATIONS,
-  02-PROGRAMMING-FUNDAMENTALS, 03-DEVELOPER-TOOLS, 04-JAVA-PROGRAMMING,
-  05-DATA-STRUCTURES-AND-ALGORITHMS, 06-INTERNET-AND-WEB-FOUNDATIONS,
-  07-HTML-AND-CSS, 08-JAVASCRIPT-AND-TYPESCRIPT, 09-FRONTEND-ENGINEERING, and
-  10-DATABASE-ENGINEERING complete — TOOL-01…12, JAVA-01…23, DSA-01…19, WEB-01…11,
-  HTML-01…12, JS-01…14, FE-01…19, and DB-01…21 all done; milestone M4's subject track is
-  finished and pushed at `79e4da1`; batch 12 (subject 10) closes Milestone 6's database
-  half — 11-BACKEND-ENGINEERING is the next batch)
+- **Final state (2026-11-08):** all 22 subjects are written and the curriculum is complete.
+  **366 of 367** register entries are done; the one open entry is `ROOT-15` (import this register
+  into GitHub), blocked because `gh` is unauthenticated. Final validation, strict:
+  `check-links.py --strict` → 527 files, **0 broken, 0 planned**; `check-curriculum.py --strict` →
+  22/22 subjects, 301 subject files, 15 image references, **0 structural problems**; 267/267 Mermaid
+  diagrams parsed *and rendered* in Chromium; the shipped PostgreSQL lab re-ran `7 passed, 0 failed`
+  on a fresh 18.6 cluster; 0 real credentials in 531 files. `COMPLETION-REPORT.md` records the
+  inventory, the executed-vs-labelled toolchain table and 15 disclosed gaps; `CHANGELOG.md` covers
+  subjects 12–21 plus the fixes. Nothing is queued: the only remaining action needs a GitHub login.
+- **Build history below is historical.** Each of the following bullets is the snapshot written at the
+  end of one batch, including the toolchain seams found while writing it; their file/validation
+  counts are that batch's, not the repository's final numbers. Kept because the seams (Docker and
+  Gradle absent, `pg_ctl` pipe hang, jsdom 26 pin, tsc bare-CLI `noImplicitAny`, headless minimum
+  width) are the reasons specific lessons are labelled instead of executed.
 - **Batch 12 complete:** `10-DATABASE-ENGINEERING` — `DB-01`…`DB-21` all written and
   checked: 17 lessons + `README.md`, the shipped `postgresql/` lab (schema/seed/queries/
   expected/`verify.sh`), a consistent `shop` sample schema, and `exercises/` — 12 sets with

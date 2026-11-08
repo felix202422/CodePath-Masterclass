@@ -9,6 +9,61 @@ milestone completed, PATCH = corrections and clarity fixes).
 
 ### Added
 
+- **Subject 12 — Mobile Development** — eighteen lessons (mobile architecture through app
+  release) with transcripts executed on Flutter **3.47.7** / Dart **3.13.5**: `flutter create`,
+  the widget-test battery (including a real `FlutterError: A RenderFlex overflowed`), and
+  `flutter build apk --debug` plus `flutter build appbundle --release` →
+  `√ Built app-release.aab (43.0MB)`. Includes two exercise sets with twelve solutions and a
+  project brief for the Flutter app.
+
+- **Subject 13 — Software Engineering and Architecture** — eighteen lessons covering
+  requirements, design, architecture styles, DDD, documentation and the complete development
+  process, with trade-off tables and labelled illustrations where a running system cannot
+  demonstrate the concept.
+
+- **Subject 14 — Testing and Quality** — eleven lessons from test strategy through unit,
+  integration, contract, performance and exploratory testing, with seven labelled transcripts and
+  two exercise sets (twelve solutions).
+
+- **Subject 15 — Application Security** — fourteen lessons on the OWASP risk set, secrets
+  management, TLS, injection, authentication and authorisation, each backed by a redaction or
+  attack lab (fake repositories and throwaway certificates under the ignored `.scratch/`).
+
+- **Subject 16 — DevOps and Infrastructure** — nineteen lessons on DevOps culture, Linux
+  administration, containers, CI/CD, infrastructure as code and observability; Docker, Gradle and
+  systemd commands are **labelled** because the daemon and those tools are absent from the
+  authoring machine.
+
+- **Subject 17 — Cloud and Production** — twelve lessons on cloud models, deployment, scaling,
+  secrets and configuration, monitoring, incident response and cost, with log-redaction labs
+  executed locally and cloud-provider commands labelled.
+
+- **Subject 18 — Advanced Engineering** — ten lessons on performance, concurrency, distributed
+  systems, system design and engineering judgement.
+
+- **Subject 19 — Professional Development** — nine lessons on code review, collaboration, technical
+  writing, interviews, career growth and working with legacy code.
+
+- **Subject 20 — Project Laboratory** — seven progressively harder project briefs
+  (command-line application, responsive portfolio, database application, REST API, full-stack
+  application, Flutter mobile app, secure production application) plus a capstone, each with scope,
+  milestones, acceptance criteria and a separate solution.
+
+- **Subject 21 — Reference Library** — twelve pages answering one kind of question each: a
+  **327-term glossary** mapped to the lessons that teach each term, **115 common errors** with
+  cause/diagnose/fix, command, Git, SQL, HTTP status-code (48 codes), Java, JavaScript/TypeScript,
+  Linux and Docker references, and 44 official documentation links (all returned HTTP 200).
+  Executable content was run rather than asserted: the SQL reference against a throwaway
+  PostgreSQL 18.6 cluster, Java with `javac --release 21`, JavaScript on Node 24.13.1, and
+  TypeScript with `tsc 5.9.3 --strict`.
+
+- **Final validation pass** — every Mermaid diagram extracted and rendered in a real browser
+  (**267 parsed, 267 rendered**), the shipped database lab re-run green (**7 passed, 0 failed**), a
+  credential scan (0 real secrets; every hit a labelled fixture), and roadmap/prerequisite
+  consistency checks (22/22 READMEs, 0 forward dependencies, 0 prerequisites introduced after their
+  dependants). Results and every remaining gap are recorded in
+  [COMPLETION-REPORT.md](COMPLETION-REPORT.md).
+
 - **Subject 11 — Backend Engineering** — twenty lessons (backend fundamentals through
   backend testing) with transcripts **executed** in a Spring Boot 4.1.1 + Java 21 +
   PostgreSQL 18.6 lab (`spring-smoke` shape): the plain-Java layered probe's full
@@ -248,6 +303,25 @@ milestone completed, PATCH = corrections and clarity fixes).
   `scripts/check-curriculum.py` (structure and required-section checks).
 - **Visual learning system** — `assets/` with per-topic subdirectories, an original SVG branding
   mark, and a manifest documenting source, license, and attribution rules for every asset.
+
+### Fixed
+
+- **Two Mermaid diagrams that could not render** — an unquoted edge label containing parentheses in
+  `11-BACKEND-ENGINEERING/caching.md` (`|remove(key)|` → `|"remove(key)"|`) and quotes inside a
+  flowchart label in `12-MOBILE-DEVELOPMENT/camera-and-qr-codes.md` (`T[Tap "scan"]` →
+  `T["Tap scan"]`). Both were found by parsing and rendering all 267 diagrams in a browser.
+- **`scripts/check-curriculum.py` image counter** — the summary line counted Markdown files scanned
+  and printed the total as "images checked" (it reported 532 against 14 real image references). It
+  now counts image references.
+- **20 dangling links** — `check-links.py` had been reporting them as "planned-but-unwritten"
+  instead of failures: 18 `[exercise set](exercises/README.md)` links in subjects 16 and 19
+  (neither ships a separate `exercises/` directory, so they now point at each README's
+  `#exercises-and-practice` section) and two wrong relative depths in
+  `09-FRONTEND-ENGINEERING/exercises/solutions/set-4-solutions.md` and
+  `13-SOFTWARE-ENGINEERING-AND-ARCHITECTURE/exercises/README.md`. Strict mode now reports 0
+  broken and 0 planned targets across 527 files.
+- **`.gitignore`** — added the missing final newline.
+
 
 ### Notes
 

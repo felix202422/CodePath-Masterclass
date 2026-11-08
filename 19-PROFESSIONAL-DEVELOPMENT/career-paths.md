@@ -521,6 +521,6 @@ Observable evidence that you have understood this lesson:
 
 - Back to the subject index: [19 — Professional Development](README.md) — the nine lessons as one
   programme
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — the capstone is
   the evidence base for the first promotion case

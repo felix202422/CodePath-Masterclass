@@ -509,6 +509,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Technical Interviews](technical-interviews.md) — where the same structured reasoning is
   observed and scored
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — the debugging
   project is graded on the log, not only the fix

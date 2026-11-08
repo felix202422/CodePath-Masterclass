@@ -113,13 +113,14 @@ def check_subject(subject: Path, errors: list[str]) -> tuple[int, int]:
 
 
 def check_images(errors: list[str]) -> int:
+    """Count image references (not files scanned) and flag empty alt text."""
     checked = 0
     for md in sorted(REPO_ROOT.rglob("*.md")):
         if any(part in SKIP_DIRS for part in md.parts):
             continue
-        checked += 1
         for line_no, line in enumerate(md.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
             for match in IMAGE_REF.finditer(line):
+                checked += 1
                 if not match.group(1).strip():
                     errors.append(f"{md.relative_to(REPO_ROOT)}:{line_no} image without alt text")
     return checked

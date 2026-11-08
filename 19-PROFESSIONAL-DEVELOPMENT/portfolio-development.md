@@ -471,6 +471,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Teamwork and Communication](teamwork-and-communication.md) — the skills that make the
   work behind a portfolio visible to a team
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — the capstone is
   the portfolio piece this lesson describes

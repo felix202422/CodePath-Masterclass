@@ -145,7 +145,7 @@ the next lesson's executed gate.
 
 ```mermaid
 flowchart LR
-    T[Tap "scan"] --> P{permission granted?}
+    T["Tap scan"] --> P{permission granted?}
     P -- no --> R[Explain → system dialog<br/>platform channel]
     R --> G{granted?}
     G -- settings-blocked --> D[Degraded flow]

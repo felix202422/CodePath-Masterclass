@@ -471,6 +471,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Open-Source Contributions](open-source-contributions.md) — where documentation is the
   first thing a stranger reads and the contribution guide is the workflow
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — every project
   ships a README and a runbook, both graded

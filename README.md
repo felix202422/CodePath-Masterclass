@@ -99,6 +99,7 @@ The curriculum moves in one direction: **nothing is taught before the thing it d
 - [VERSIONS.md](VERSIONS.md) — the exact tool versions every example is written against
 - [LABS.md](LABS.md) — the lab environment behind every "executed" transcript, and how to rebuild it
 - [ISSUE-REGISTER.md](ISSUE-REGISTER.md) — what is written, what is not, and what comes next
+- [COMPLETION-REPORT.md](COMPLETION-REPORT.md) — what was validated, how, and every gap left open
 - [templates/](templates/lesson-template.md) — the structure every lesson follows
 - [scripts/](scripts/README.md) — validation tooling that checks structure and links
 - [assets/](assets/README.md) — diagrams and visual learning material, with source and license records

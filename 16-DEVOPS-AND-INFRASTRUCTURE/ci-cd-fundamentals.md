@@ -667,5 +667,5 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [GitHub Actions](github-actions.md) — the workflow file, triggers, matrices and
   expressions that implement this model
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [Secure Production Application](../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md)

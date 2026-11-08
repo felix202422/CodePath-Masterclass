@@ -463,6 +463,6 @@ Observable evidence that you have understood this lesson:
 ## 16. Next Steps
 
 - Next lesson: [Career Paths](career-paths.md) — how the skills in this subject map to roles and levels
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — team projects are
   graded on communication artefacts as well as code

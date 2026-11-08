@@ -544,7 +544,7 @@ Observable evidence that you have understood this lesson:
 ## 16. Next Steps
 
 - Subject index: [DevOps and Infrastructure](../README.md)
-- Practice: [exercise set](../exercises/README.md)
+- Practice: [exercise set](../README.md#exercises-and-practice)
 - Where it is applied: [Secure Production Application](../../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md)
 - Revisit: [Monitoring and Logging](../monitoring-and-logging.md) — the signals these playbooks
   consume

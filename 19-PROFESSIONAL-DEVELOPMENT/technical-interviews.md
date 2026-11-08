@@ -491,6 +491,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Portfolio Development](portfolio-development.md) — the evidence an interview will ask
   you to discuss
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — the capstone is
   designed to be defensible in exactly this conversation

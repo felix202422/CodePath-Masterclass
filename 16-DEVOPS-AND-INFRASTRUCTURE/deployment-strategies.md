@@ -568,5 +568,5 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Monitoring and Logging](monitoring-and-logging.md) — how you know whether the
   deploy you just completed is healthy
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [Secure Production Application](../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md)

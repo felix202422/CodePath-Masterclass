@@ -513,6 +513,6 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Debugging Methodology](debugging-methodology.md) — the systematic process behind the
   reproductions this lesson depends on
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [20-PROJECT-LABORATORY](../20-PROJECT-LABORATORY/README.md) — capstone work
   is expected to include one external contribution

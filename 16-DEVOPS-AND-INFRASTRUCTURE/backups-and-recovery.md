@@ -539,5 +539,5 @@ Observable evidence that you have understood this lesson:
 
 - Next lesson: [Troubleshooting Playbooks](troubleshooting/README.md) — the diagnosis procedure that
   turns these signals into a cause
-- Practice: [exercise set](exercises/README.md)
+- Practice: [exercise set](README.md#exercises-and-practice)
 - Where it is applied: [Secure Production Application](../20-PROJECT-LABORATORY/project-07-secure-production-application/README.md)

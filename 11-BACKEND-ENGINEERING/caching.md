@@ -162,7 +162,7 @@ flowchart LR
         K -->|"hit"| H["serve cache<br/>source=cache, 0 ms<br/>hits++"]
         K -->|"miss"| D["compute (db, 307 ms)<br/>misses++<br/>put(key)"]
         D --> H2["serve db"]
-        W["POST /invalidate/{sku}"] -->|remove(key)| K
+        W["POST /invalidate/{sku}"] -->|"remove(key)"| K
     end
     subgraph L2 [Layer 2 — HTTP]
         E["GET /doc"] --> ET{"If-None-Match<br/>== ETag?"}
