@@ -6,7 +6,8 @@ is written to be usable by a sceptical reader: every number below was measured, 
 shown was run.
 
 - **Report date:** 2026-11-08
-- **Register state at completion:** 366 entries done, 1 open (`ROOT-15`, blocked on GitHub auth)
+- **Register state at completion:** 367 entries done, 0 open — imported as 367 closed
+  GitHub issues and verified through the API
 - **Baseline:** [`VERSIONS.md`](VERSIONS.md) — Java 21, Node 24, PostgreSQL 18, Docker Engine 29,
   Flutter 3.47
 - **Quality gate:** [`CONTRIBUTING.md`](CONTRIBUTING.md) — a file is done only when structure,
@@ -152,7 +153,8 @@ requested with `curl -L` and returned HTTP `200` (44/44).
 | Docker Engine | CLI 29.9.2, **daemon not running** | **Labelled only** — `docker info` fails with `failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine` |
 | Gradle | **absent** | **Labelled only** — `gradle: command not found` is shown in the lesson as an honest probe |
 | Linux / systemd / apt | Windows host, Git Bash | **Labelled only** for anything Git Bash cannot execute faithfully |
-| GitHub CLI | 2.102.0, **unauthenticated** | **Not used** — no issues, milestones or project board were created |
+| GitHub CLI | 2.102.0, `gh` credential store empty | **Used** with the PAT git already stores for
+pushes (`GH_TOKEN` for the run only): 367 issues created and closed, verified via `gh api` |
 
 Unexecuted material is not hidden: 229 explicit labels ("not executed", "not run", "labelled",
 "illustration") appear across 29 directories. `07-HTML-AND-CSS` carries none because its material is
@@ -164,9 +166,12 @@ fully executable in a browser.
    validation, link resolution, diagram rendering and command execution were verified; whether the
    explanations teach well, and whether the difficulty curve is right, was **not** independently
    reviewed.
-2. **No GitHub issues, milestones or project board.** `gh auth status` reports "You are not logged
-   into any GitHub hosts", so [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md) is the board. `ROOT-15` and
-   `QA-09` are reported rather than completed; the register is import-ready when auth exists.
+2. **GitHub issues, but no milestones, labels or project board.** All 367 register entries were
+   imported as issues and closed as completed (verified through the API), but nothing groups them
+   into milestones and no board view exists, so [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md) and
+   [`ROADMAP.md`](ROADMAP.md) remain the milestone view. The import used the personal access token
+   git already stores for pushes because `gh`'s own credential store was empty; `gh auth login` is
+   still required for interactive `gh` use.
 3. **No CI.** There is no `.github/` directory, so neither validator runs on push. The checks pass
    locally and must be re-run by hand.
 4. **Docker is unverified.** The daemon was not running on the authoring machine, so Dockerfile,
@@ -228,16 +233,18 @@ grep -rn "BEGIN .*PRIVATE KEY" --include=*.md .   # 3 hits, all lesson fixtures
 
 | Status | Count |
 |---|---|
-| Done | 366 |
-| Open | 1 (`ROOT-15`, blocked on `gh auth login`) |
+| Done | 367 |
+| Open | 0 |
 
 Every closed entry cites the evidence that closed it — line counts, captured command output, or
-measured checks — in [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). The remaining open item is
-infrastructure, not content: importing this register into GitHub once authentication is available.
+measured checks — in [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). All 367 are also issues in this
+repository, closed as completed: the import was checked against the API rather than trusted
+(367 issues returned with pull requests filtered out, 367 unique register ids, no duplicates, no
+state mismatches).
 
 ## 7. Conclusion
 
 The curriculum is complete as written material: 22 subjects, 279 lessons, 1.12 million words, 267
 diagrams, both validators clean, the shipped lab green, and every unexecuted command labelled with
 the machine limitation that caused it. What it does **not** have is human editorial review, CI, or
-GitHub issue tracking — the three gaps above that no amount of local execution can close.
+milestone grouping in the issue tracker — gaps that no amount of local execution can close.

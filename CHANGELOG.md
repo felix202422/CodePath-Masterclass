@@ -303,6 +303,9 @@ milestone completed, PATCH = corrections and clarity fixes).
   `scripts/check-curriculum.py` (structure and required-section checks).
 - **Visual learning system** — `assets/` with per-topic subdirectories, an original SVG branding
   mark, and a manifest documenting source, license, and attribution rules for every asset.
+- **GitHub issue mirror** — all 367 `ISSUE-REGISTER.md` entries imported as issues in this
+  repository, closed as completed, with the mapping verified through the API (367 issues, 367
+  unique ids, no duplicates, no state mismatches).
 
 ### Fixed
 
