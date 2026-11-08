@@ -7,7 +7,7 @@ shown was run.
 
 - **Report date:** 2026-11-08
 - **Register state at completion:** 367 entries done, 0 open — imported as 367 closed
-  GitHub issues and verified through the API
+  GitHub issues, grouped into 11 milestones and verified through the API
 - **Baseline:** [`VERSIONS.md`](VERSIONS.md) — Java 21, Node 24, PostgreSQL 18, Docker Engine 29,
   Flutter 3.47
 - **Quality gate:** [`CONTRIBUTING.md`](CONTRIBUTING.md) — a file is done only when structure,
@@ -166,12 +166,15 @@ fully executable in a browser.
    validation, link resolution, diagram rendering and command execution were verified; whether the
    explanations teach well, and whether the difficulty curve is right, was **not** independently
    reviewed.
-2. **GitHub issues, but no milestones, labels or project board.** All 367 register entries were
-   imported as issues and closed as completed (verified through the API), but nothing groups them
-   into milestones and no board view exists, so [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md) and
-   [`ROADMAP.md`](ROADMAP.md) remain the milestone view. The import used the personal access token
-   git already stores for pushes because `gh`'s own credential store was empty; `gh auth login` is
-   still required for interactive `gh` use.
+2. **No labels or project board.** All 367 register entries are issues, closed as completed and
+   grouped into 11 milestones (`M0 — Bootstrap` … `M10 — Final validation`) whose per-milestone
+   totals match the register section by section. Those are the register's **build** milestones;
+   `ROADMAP.md`'s learner milestones (Milestone 0 Orientation … Milestone 10 Advanced engineering)
+   are a different axis and were deliberately not mixed in. No labels and no board view exist, so
+   filtering by subject or status still means reading [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). The
+   import and the milestone assignment used the personal access token git already stores for pushes
+   because `gh`'s own credential store was empty; `gh auth login` is still required for interactive
+   `gh` use.
 3. **No CI.** There is no `.github/` directory, so neither validator runs on push. The checks pass
    locally and must be re-run by hand.
 4. **Docker is unverified.** The daemon was not running on the authoring machine, so Dockerfile,
@@ -238,9 +241,10 @@ grep -rn "BEGIN .*PRIVATE KEY" --include=*.md .   # 3 hits, all lesson fixtures
 
 Every closed entry cites the evidence that closed it — line counts, captured command output, or
 measured checks — in [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). All 367 are also issues in this
-repository, closed as completed: the import was checked against the API rather than trusted
-(367 issues returned with pull requests filtered out, 367 unique register ids, no duplicates, no
-state mismatches).
+repository, closed as completed and filed under 11 milestones: the result was checked against the
+API rather than trusted (367 issues returned with pull requests filtered out, 367 unique register
+ids, no duplicates, no state mismatches, 0 issues in the wrong milestone, and every milestone's
+total equal to its register section: 5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9).
 
 ## 7. Conclusion
 

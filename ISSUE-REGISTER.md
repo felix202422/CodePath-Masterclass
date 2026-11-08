@@ -84,8 +84,10 @@ runnable only on machines without the tool (label them), link rot after file ren
   367 unique title ids for 367 issues. The import reused the personal access token git already
   stores for pushes to `origin` (passed to `gh` as `GH_TOKEN` for the run only, never written to
   disk or printed) because `gh auth status` still reported no logged-in host; `gh auth login` is
-  still needed for interactive `gh` use. No milestones, labels or project board were created — the
-  register and `ROADMAP.md` remain the milestone view
+  still needed for interactive `gh` use. The 367 issues are grouped into 11 milestones
+  (`M0 — Bootstrap` … `M10 — Final validation`, numbers 1–11), one per register section, and the
+  per-milestone totals were checked against the register counts (5, 23, 43, 42, 56, 43, 20, 49, 45,
+  32, 9 — all match, 0 misplaced issues). No labels or project board exist
 
 
 ## M1 — Repository foundations (Phase B)

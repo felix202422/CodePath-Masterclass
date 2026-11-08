@@ -306,6 +306,9 @@ milestone completed, PATCH = corrections and clarity fixes).
 - **GitHub issue mirror** — all 367 `ISSUE-REGISTER.md` entries imported as issues in this
   repository, closed as completed, with the mapping verified through the API (367 issues, 367
   unique ids, no duplicates, no state mismatches).
+- **Milestones** — 11 build milestones, `M0 — Bootstrap` through `M10 — Final validation`, one per
+  register section; every issue assigned, and each milestone's total equals its section's entry
+  count (5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9).
 
 ### Fixed
 
