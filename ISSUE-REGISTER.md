@@ -1348,18 +1348,78 @@ runnable only on machines without the tool (label them), link rot after file ren
   measured `projects 8 with_solution 8` and `sol_lines 95..202`
 
 **21-REFERENCE-LIBRARY**
-- [ ] `REF-01` `README.md`
-- [ ] `REF-02` `glossary.md`
-- [ ] `REF-03` `common-errors.md`
-- [ ] `REF-04` `command-reference.md`
-- [ ] `REF-05` `git-reference.md`
-- [ ] `REF-06` `sql-reference.md`
-- [ ] `REF-07` `http-status-codes.md`
-- [ ] `REF-08` `java-reference.md`
-- [ ] `REF-09` `javascript-reference.md`
-- [ ] `REF-10` `linux-reference.md`
-- [ ] `REF-11` `docker-reference.md`
-- [ ] `REF-12` `official-resources.md`
+- [x] `REF-01` `README.md` — 11 sections: what the subject covers, page-writing rules
+  (four rules: one page one question, answer before context, vendored against
+  `VERSIONS.md`, executed where executable), a 12-row register table, why it
+  matters, prerequisites, page list, keeping-it-current habits, exercises,
+  outcomes, five common blockers; `check-curriculum` accepts the subject README
+  (Prerequisites/Lessons/Next present) and `check-links` resolves every link
+- [x] `REF-02` `glossary.md` — 327 entries in 18 tables grouped by subject
+  (foundations, programming, Java, DSA, web, HTML/CSS, JS/TS, frontend, databases,
+  backend, mobile, architecture, testing, security, DevOps, cloud, advanced,
+  professional); each row is term, a one-or-two-sentence definition and a link to
+  the lesson that teaches it; measured `rows 327 missing 0` and 0 duplicate terms
+  after disambiguating the SQL and domain meanings of "aggregate"
+- [x] `REF-03` `common-errors.md` — 115 entries in 14 groups (shell, Git, Java,
+  Maven, JavaScript/npm, TypeScript, Python, PostgreSQL, HTTP/browser, Docker,
+  Flutter/Gradle, test failures); every row is message, cause, diagnose command,
+  fix, plus a reading rule (first line mentioning your code) and a six-step
+  method for messages not listed
+- [x] `REF-04` `command-reference.md` — 92 rows: navigation, files, reading,
+  searching and text tools, pipes and exit codes, permissions, processes,
+  networking, environment, package and build tools, and three executed
+  compile/run blocks (javac, node, curl health probe); no entry without the flag
+  that matters most
+- [x] `REF-05` `git-reference.md` — 59 rows organised by goal rather than flag:
+  inspect, undo locally, branch, synchronise, combine and move, find the breaking
+  commit (with a `git bisect` walkthrough), stash, conflict markers, tags and
+  one-time configuration; every history-rewriting or destructive entry states the
+  consequence, and pushed commits are directed to `git revert`
+- [x] `REF-06` `sql-reference.md` — 16 sections and a PostgreSQL 18 schema/queries
+  set **executed** on a throwaway `initdb --auth=trust` cluster (port 55432):
+  `psql -v ON_ERROR_STOP=1 -f verify.sql` exit 0 across joins, `filter` aggregates,
+  windows, CTEs, `distinct on`, `LATERAL`, upsert with `returning`, dates,
+  `generate_series`, JSONB, transactions and `explain`; captures quoted, e.g.
+  `Grace | 2 | 225.25`, `{"orders": 5, "revenue": 467.75}` and the bitmap-index
+  query plan
+- [x] `REF-07` `http-status-codes.md` — 48 codes from `100` to `511` grouped by
+  class, with use-for and do-not-use-for columns, method semantics (safe,
+  idempotent, expected success codes), the RFC 9110 §15 cacheability table,
+  required headers per code (Location, Allow, WWW-Authenticate, Retry-After,
+  ETag), decision tables for 401/403, 400/422, 404/410, 500/503 and eight common
+  mistakes
+- [x] `REF-08` `java-reference.md` — 14 sections; every snippet compiled with
+  `javac --release 21` (exit 0) and run: `area(circle r=1)=3.14`, `max=9`,
+  `money=375`, `byLength={5=[delta, alpha, bravo], 7=[charlie]}`, `virtual=true`,
+  `fileLines=2`; covers records, sealed types, exhaustive pattern switch,
+  collections, streams, `Optional`, generics/PECS, exceptions, `Files`, the time
+  API and virtual threads
+- [x] `REF-09` `javascript-reference.md` — 15 sections; JS snippets run on Node
+  24.13.1 (`sorted: [ 'alpha', 'bravo', 'charlie', 'delta' ]`,
+  `total: 22`, `clone keeps types: true true`, `json round-trip: string {}`,
+  `order after tick: sync,microtask,timeout`) and TS snippets compiled with
+  `tsc 5.9.3 --strict` (exit 0, `unwrap: 42`,
+  `describe: string(3) array(2) null number`); covers coercion, arrays with
+  mutate/copy columns, `Map`/`Set`, modules, promise combinators, error
+  narrowing, discriminated unions, generics, `satisfies` and utility types
+- [x] `REF-10` `linux-reference.md` — 14 sections: filesystem layout, octal
+  permissions and special bits, users and groups, processes and signals, a
+  complete systemd unit, timers/cron, networking, apt, disks, logs, SSH, shell
+  startup files and four Windows/WSL pitfalls; systemd and package commands are
+  labelled **not executed** because the authoring host is Windows, shell/file/text
+  behaviour is consistent with `command-reference.md`
+- [x] `REF-11` `docker-reference.md` — 13 sections: image/container/layer model,
+  commands by task, `docker run` flags, Dockerfile instructions, layer-ordering
+  rule, three multi-stage builds (Spring Boot, Node, Go distroless), health
+  checks with `start-period`, volumes, networking, a Compose example with
+  `service_healthy`, crash triage and `.dockerignore`; marked **not executed**
+  because `docker info` failed (`failed to connect to the docker API at
+  npipe:////./pipe/dockerDesktopLinuxEngine` — daemon not running)
+- [x] `REF-12` `official-resources.md` — 44 official links in 8 groups (languages,
+  frameworks, data, web/HTTP/accessibility, security, DevOps/cloud, testing,
+  practice), each with what it is best for and a version note; every URL checked
+  with `curl -L` and returned `200` (44/44), plus a six-point guide to reading
+  documentation efficiently
 
 ## M10 — Final validation (Phase K)
 
