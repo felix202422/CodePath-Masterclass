@@ -177,8 +177,11 @@ fully executable in a browser.
    board view exists. The import, milestone and label passes used the personal access token git
    already stores for pushes because `gh`'s own credential store was empty; `gh auth login` is still
    required for interactive `gh` use.
-3. **No CI.** There is no `.github/` directory, so neither validator runs on push. The checks pass
-   locally and must be re-run by hand.
+3. **CI checks structure and links only.** `.github/workflows/validate.yml` runs both validators
+   in `--strict` mode on every push and pull request, so a broken link or a missing required
+   section cannot land unnoticed. It does **not** run the Mermaid render harness, re-execute any
+   lesson command, or judge whether prose teaches well — those remain manual, as the rest of this
+   section describes.
 4. **Docker is unverified.** The daemon was not running on the authoring machine, so Dockerfile,
    Compose and container-debugging material is written from documented behaviour and labelled as
    unexecuted.
@@ -254,5 +257,6 @@ entry count); the 37 cross-cutting entries carry none.
 
 The curriculum is complete as written material: 22 subjects, 279 lessons, 1.12 million words, 267
 diagrams, both validators clean, the shipped lab green, and every unexecuted command labelled with
-the machine limitation that caused it. What it does **not** have is human editorial review, CI, or
-milestone grouping in the issue tracker — gaps that no amount of local execution can close.
+the machine limitation that caused it. What it does **not** have is human editorial review, a
+render-and-execute CI job, or milestone grouping in the issue tracker — gaps that no amount of
+local execution can close. CI validates structure and links; it cannot judge teaching quality.

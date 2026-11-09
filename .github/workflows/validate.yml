@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validators:
+    name: curriculum and link validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Structure and required sections
+        run: python scripts/check-curriculum.py --strict
+
+      - name: Relative links and image references
+        run: python scripts/check-links.py --strict

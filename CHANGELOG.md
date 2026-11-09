@@ -312,6 +312,8 @@ milestone completed, PATCH = corrections and clarity fixes).
 - **Subject labels** — one label per subject (22, `00-START-HERE` … `21-REFERENCE-LIBRARY`) applied to
   the 330 entries whose register prefix maps to that subject, so the issue tracker filters by
   subject; the 37 cross-cutting ROOT/QA/TPL/ASSET/SUBJ/SCR entries are left unlabelled.
+- **CI** — `.github/workflows/validate.yml` runs `check-curriculum.py --strict` and
+  `check-links.py --strict` on every push and pull request (Python 3.13, standard library only).
 
 ### Fixed
 
