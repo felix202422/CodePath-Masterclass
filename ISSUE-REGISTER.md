@@ -87,7 +87,10 @@ runnable only on machines without the tool (label them), link rot after file ren
   still needed for interactive `gh` use. The 367 issues are grouped into 11 milestones
   (`M0 — Bootstrap` … `M10 — Final validation`, numbers 1–11), one per register section, and the
   per-milestone totals were checked against the register counts (5, 23, 43, 42, 56, 43, 20, 49, 45,
-  32, 9 — all match, 0 misplaced issues). No labels or project board exist
+  32, 9 — all match, 0 misplaced issues). Labels: one per subject (`00-START-HERE` …
+  `21-REFERENCE-LIBRARY`, 22 labels), taken from the register's 1:1 ID prefixes and applied to the
+  **330** subject entries, so the tracker filters by subject; the **37** cross-cutting entries
+  (ROOT, QA, TPL, ASSET, SUBJ, SCR) carry no subject label. No project board exists
 
 
 ## M1 — Repository foundations (Phase B)

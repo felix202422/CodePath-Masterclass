@@ -309,6 +309,9 @@ milestone completed, PATCH = corrections and clarity fixes).
 - **Milestones** — 11 build milestones, `M0 — Bootstrap` through `M10 — Final validation`, one per
   register section; every issue assigned, and each milestone's total equals its section's entry
   count (5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9).
+- **Subject labels** — one label per subject (22, `00-START-HERE` … `21-REFERENCE-LIBRARY`) applied to
+  the 330 entries whose register prefix maps to that subject, so the issue tracker filters by
+  subject; the 37 cross-cutting ROOT/QA/TPL/ASSET/SUBJ/SCR entries are left unlabelled.
 
 ### Fixed
 

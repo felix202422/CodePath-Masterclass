@@ -166,15 +166,17 @@ fully executable in a browser.
    validation, link resolution, diagram rendering and command execution were verified; whether the
    explanations teach well, and whether the difficulty curve is right, was **not** independently
    reviewed.
-2. **No labels or project board.** All 367 register entries are issues, closed as completed and
-   grouped into 11 milestones (`M0 — Bootstrap` … `M10 — Final validation`) whose per-milestone
-   totals match the register section by section. Those are the register's **build** milestones;
-   `ROADMAP.md`'s learner milestones (Milestone 0 Orientation … Milestone 10 Advanced engineering)
-   are a different axis and were deliberately not mixed in. No labels and no board view exist, so
-   filtering by subject or status still means reading [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). The
-   import and the milestone assignment used the personal access token git already stores for pushes
-   because `gh`'s own credential store was empty; `gh auth login` is still required for interactive
-   `gh` use.
+2. **No project board, and 37 issues carry no subject label.** All 367 register entries are
+   issues, closed as completed, grouped into 11 milestones (`M0 — Bootstrap` … `M10 — Final
+   validation`) whose per-milestone totals match the register section by section. Those are the
+   register's **build** milestones; `ROADMAP.md`'s learner milestones (Milestone 0 Orientation …
+   Milestone 10 Advanced engineering) are a different axis and were deliberately not mixed in.
+   Twenty-two subject labels (`00-START-HERE` … `21-REFERENCE-LIBRARY`) tag the 330 entries whose
+   register prefix maps to a subject; the 37 cross-cutting entries (ROOT, QA, TPL, ASSET, SUBJ, SCR)
+   are deliberately left unlabelled rather than forced into a subject they do not belong to, and no
+   board view exists. The import, milestone and label passes used the personal access token git
+   already stores for pushes because `gh`'s own credential store was empty; `gh auth login` is still
+   required for interactive `gh` use.
 3. **No CI.** There is no `.github/` directory, so neither validator runs on push. The checks pass
    locally and must be re-run by hand.
 4. **Docker is unverified.** The daemon was not running on the authoring machine, so Dockerfile,
@@ -244,7 +246,9 @@ measured checks — in [`ISSUE-REGISTER.md`](ISSUE-REGISTER.md). All 367 are als
 repository, closed as completed and filed under 11 milestones: the result was checked against the
 API rather than trusted (367 issues returned with pull requests filtered out, 367 unique register
 ids, no duplicates, no state mismatches, 0 issues in the wrong milestone, and every milestone's
-total equal to its register section: 5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9).
+total equal to its register section: 5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9). Each subject entry
+also carries its subject's label (22 labels, 330 issues, every label's count equal to its prefix's
+entry count); the 37 cross-cutting entries carry none.
 
 ## 7. Conclusion
 
