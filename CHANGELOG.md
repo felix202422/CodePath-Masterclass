@@ -58,7 +58,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   TypeScript with `tsc 5.9.3 --strict`.
 
 - **Final validation pass** — every Mermaid diagram extracted and rendered in a real browser
-  (**267 parsed, 267 rendered**), the shipped database lab re-run green (**7 passed, 0 failed**), a
+  (**265 parsed, 265 rendered**), the shipped database lab re-run green (**7 passed, 0 failed**), a
   credential scan (0 real secrets; every hit a labelled fixture), and roadmap/prerequisite
   consistency checks (22/22 READMEs, 0 forward dependencies, 0 prerequisites introduced after their
   dependants). Results and every remaining gap are recorded in
