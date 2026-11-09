@@ -125,15 +125,18 @@ milestone completed, PATCH = corrections and clarity fixes).
   column, revoke re-denies, RLS reader sees 1 of 5 rows), and `jsonb` semantics (`->` 12 vs `->>`
   `'12'`, explicit-null vs missing key, `@>` matching 12,501 of 50,004 rows at 13.549 ms, 37,503
   rows filtered pre-GIN).
+
 - **Shipped PostgreSQL lab — `10-DATABASE-ENGINEERING/postgresql/`** — one-file `shop.sql`
-  schema+seed, split `01-schema.sql`/`02-seed.sql` (pg_dump 18.6), seven check queries `q1`…`q7`
-  with byte-exact `expected/` captures, a README, and `verify.sh`, which rebuilds a scratch
+  schema+seed, split `01-schema.sql`/`02-seed.sql` (pg_dump 18.6), seven check queries `q1`…
+  `q7` with byte-exact `expected/` captures, a README, and `verify.sh`, which rebuilds a scratch
   database and diffs every result: **7 passed, 0 failed** (Windows CRLF stripped in-script so
   the captures diff clean on any platform).
+
 - **Exercises — Subject 10** — `exercises/README.md` with 12 sets mapped to all 17 lessons
   (introductory → intermediate → independent, every exercise with observable criteria) and
   `exercises/solutions/` — 12 separated solution files behind the attempt-first warning, quoting
   only real captures.
+
 - **`LABS.md`** — a root guide mapping every lab environment this repository's transcripts came
   from (shipped PostgreSQL lab, Java, browser, JS/TS, React/Vitest, Python validation tooling) to
   the subjects each serves, with bootstrap commands and the reproduce-a-transcript method; linked
@@ -152,11 +155,11 @@ milestone completed, PATCH = corrections and clarity fixes).
   `body -> body -> effect -> cleanup -> effect` trace, `useRef` mutation proving
   `renders 1 -> 1`, the composition gotchas (`n=0` renders `"0"`, capital-vs-lowercase alias)
   and lifted state across siblings, `MemoryRouter` back/replace and `<Outlet>` nesting, the
-  controlled-form round trip (`typed \"Ada\" → input.value=\"Ada\"`) with derived validity
-  (`submit disabled at start: true | after blur: \"needs @\"`), context's identity costs
+  controlled-form round trip (`typed \"Ada\\\" → input.value=\\\"Ada\\\"`) with derived validity
+  (`submit disabled at start: true | after blur: \\\"needs @\\\"`), context's identity costs
   (`memoized consumer renders: 1 → 2`, `unstable provider value: consumer renders 1 → 2` vs
   `unrelated component renders: 1 → 1`), the four-state fetch surface with abort
-  (`error state: \"network down\" | abort-on-unmount: signal aborted = true`,
+  (`error state: \\\"network down\\\" | abort-on-unmount: signal aborted = true`,
   `renders: 3 | fetches: 1`), the auth trade-offs executed rather than asserted (localStorage
   token readable by any same-origin script `true`, memory token dying on reload, **two 401s →
   refresh calls: 1**, guard redirect with `?next=`), the error-boundary pair (blank tree without
@@ -175,6 +178,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   Project 05; and `exercises/` — twelve observation-first sets mirroring each lesson's ladder
   with a separated solutions directory (thirteen files quoting the lab's probe receipts and
   labelling shape-only answers for the open-ended designs).
+
 - **Subject 08 — JavaScript and TypeScript** — twelve lessons (JavaScript fundamentals through
   type narrowing) with every transcript **executed** on the authoring machine (Node 24.13.1,
   tsc 7.0.2 under `--strict`, headless Chrome 156): the nine-expression coercion ladder
@@ -209,6 +213,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   the open-ended designs (focus-trapping modal, module layout, settings loader, frozen-
   dashboard diagnosis, payments taxonomy, adoption plan with ratchet, editor type layer,
   typed event bus, chat-event pipeline).
+
 - **Subject 07 — HTML and CSS** — ten lessons (HTML fundamentals through accessibility) with
   every browser transcript **executed** on the authoring machine (Chrome 156 headless,
   `--dump-dom`/`--screenshot`/computed-style probes, axe-core 4.10.2 in-page): the box-model
@@ -229,6 +234,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   harder build briefs (semantic article page, responsive navigation, form-heavy settings
   screen) with reviewer-style acceptance criteria (axe 0, heading outline, 360/1440px via
   device emulation, keyboard pass, computed contrast) feeding Project 02's promotion gate.
+
 - **Subject 06 — Internet and Web Foundations** — nine lessons (how the internet works through
   browsers and rendering) with every transcript **executed** on the authoring machine (curl
   8.22.0, OpenSSL 3.5.9, Python 3.13.5, Chrome 156 headless, `nslookup` against the live ISP
@@ -249,6 +255,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   transcripts, hand computations verified against `ipaddress`, and shape-only answers for the
   open-ended designs (migration runbook, transport policy, certificate-failure decision tree,
   URL design test matrix, rendering-jank decision table).
+
 - **Subject 05 — Data Structures and Algorithms** — eighteen lessons (algorithm analysis
   through graph algorithms) with every transcript **executed** on the authoring machine
   (JDK 25.0.4.1, `javac --release 21`): counted and instrumented implementations throughout —
@@ -264,6 +271,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   complexity claim with counters, and one stated-without-steps problem each), eighteen
   separated solution files stating complexity and worst case, and a three-rung hint ladder
   per set.
+
 - **Subject 04 — Java Programming** — twenty-one lessons (environment setup through build tools)
   with every transcript **executed** on the authoring machine (JDK 25.0.4.1 with
   `javac --release 21`, Maven 3.9.16): the compile/run cycle with `javap` major-version proof,
@@ -274,6 +282,7 @@ milestone completed, PATCH = corrections and clarity fixes).
   one original SVG diagram (`assets/java/inheritance-diagram.svg`), twenty-one exercise sets
   and twenty-one separated solution files. Gradle is absent from the writing machine and is
   labelled as such rather than simulated.
+
 - **Subject 03 — Developer Tools** — ten lessons (terminal fundamentals, Windows environment,
   Linux fundamentals, editors and IDEs, package managers, environment variables, Git fundamentals,
   branching and merging, GitHub workflows, pull requests and code review) with transcripts
@@ -282,43 +291,60 @@ milestone completed, PATCH = corrections and clarity fixes).
   diagrams (`assets/tools/`); and `troubleshooting/` — nine diagnosis guides plus the graded
   drills in `exercises.md` that carry this subject's practice per `CURRICULUM-MAP.md`. GitHub web
   UI, Actions, and real-Linux blocks are labelled illustrations where they could not be executed.
+
 - **Subject 02 — Programming Fundamentals** — twelve lessons (computational thinking through
   modular programming) with every Python transcript **executed** on the authoring machine
   (Python 3.13.5), three original SVG diagrams (`assets/programming/`: assignment/rebinding,
   call stack, debugging cycle), twelve exercise sets and twelve separated solution files, plus a
   modular-programming capstone whose reference implementation was run and hand-verified.
+
 - **Version baseline** — `VERSIONS.md` pinning every tool version lessons are written against,
   verified 2026-10-17 against official sources, with deliberate-choice rationales.
+
 - **Issue register** — `ISSUE-REGISTER.md`: the full curriculum backlog with milestones, a standard
   issue template, status tracking, and an always-current unfinished-work summary.
+
 - **Textbook homepage** — `README.md` with mission, audience table, learning path, full table of
   contents, exercise rules, and the six-level proficiency system.
+
 - **Navigation system** — `ROADMAP.md` (11 competence-gated milestones with promotion criteria),
   `CURRICULUM-MAP.md` (competency → lesson → exercise → project), `LEARNING-GUIDE.md` (evidence-
   based study method), `PROGRESS-TRACKER.md` (eight tracked dimensions, six levels).
+
 - **Project policies** — `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1),
   `SECURITY.md`, `SUPPORT.md`.
+
 - **Templates** — lesson, exercise, project, and progress templates in `templates/`.
+
 - **Validation tooling** — `scripts/check-links.py` (relative link and image resolution) and
   `scripts/check-curriculum.py` (structure and required-section checks).
+
 - **Visual learning system** — `assets/` with per-topic subdirectories, an original SVG branding
   mark, and a manifest documenting source, license, and attribution rules for every asset.
+
 - **GitHub issue mirror** — all 367 `ISSUE-REGISTER.md` entries imported as issues in this
   repository, closed as completed, with the mapping verified through the API (367 issues, 367
   unique ids, no duplicates, no state mismatches).
+
 - **Milestones** — 11 build milestones, `M0 — Bootstrap` through `M10 — Final validation`, one per
   register section; every issue assigned, and each milestone's total equals its section's entry
   count (5, 23, 43, 42, 56, 43, 20, 49, 45, 32, 9).
+
 - **Subject labels** — one label per subject (22, `00-START-HERE` … `21-REFERENCE-LIBRARY`) applied to
   the 330 entries whose register prefix maps to that subject, so the issue tracker filters by
   subject; the 37 cross-cutting ROOT/QA/TPL/ASSET/SUBJ/SCR entries are left unlabelled.
-- **CI** — `.github/workflows/validate.yml` runs `check-curriculum.py --strict` and
-  `check-links.py --strict` on every push and pull request (Python 3.13, standard library only).
+
+- **CI** — `.github/workflows/validate.yml` runs `check-curriculum.py --strict`,
+  `check-links.py --strict`, and a Mermaid syntax-and-render check (`scripts/mermaid/check.mjs`)
+  on every push and pull request (Python 3.13 standard library only; the render check uses a
+  headless browser to confirm every `mermaid` fence parses and renders, but only checks
+  syntax/renderability of the diagram — not its teaching quality or match to the surrounding
+  prose).
 
 ### Fixed
 
 - **Two Mermaid diagrams that could not render** — an unquoted edge label containing parentheses in
-  `11-BACKEND-ENGINEERING/caching.md` (`|remove(key)|` → `|"remove(key)"|`) and quotes inside a
+  `11-BACKEND-ENGINEERING/caching.md` (`|remove(key)|` → `|"remove(key)"`) and quotes inside a
   flowchart label in `12-MOBILE-DEVELOPMENT/camera-and-qr-codes.md` (`T[Tap "scan"]` →
   `T["Tap scan"]`). Both were found by parsing and rendering all 267 diagrams in a browser.
 - **`scripts/check-curriculum.py` image counter** — the summary line counted Markdown files scanned

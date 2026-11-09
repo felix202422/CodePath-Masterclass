@@ -1,0 +1,13 @@
+{
+  "name": "codepath-mermaid-check",
+  "private": true,
+  "type": "module",
+  "description": "Renders every Mermaid diagram in the curriculum so CI fails when one is broken.",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "mermaid": "^11.0.0",
+    "puppeteer": "^24.0.0"
+  }
+}
